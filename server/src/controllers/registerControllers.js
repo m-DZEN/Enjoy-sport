@@ -11,11 +11,14 @@ const registerUser = async (req, res) => {
       console.log('===> NEED-NEW-LOGIN');
       res.json({ backendResult: 'NEED-NEW-LOGIN' });
     } else {
-      const hashPassword = await bcrypt.hash(password, 9); // !!! Хеширование пароля перед записью в БД ('9' - кол-во циклов хеширования)
+      // !!! Хеширование пароля перед записью в БД ('9' - кол-во циклов хеширования)
+      const hashPassword = await bcrypt.hash(password, 9);
       const newUserData = await User.create({ login, password: hashPassword });
       req.session.user = { userLogin: newUserData.login, userId: newUserData.id };
       console.log('req.session.user ===>', req.session.user);
-      // !!! Перед отправкой ответа на "фронт" необходимо дождаться записи файла в "sessions" при помощи следующей конструкции:
+
+      // !!! Перед отправкой ответа на "фронт" необходимо дождаться записи файла
+      // в "sessions" при помощи следующей конструкции:
       req.session.save(() => {
         console.log('===> REGISTER-OK');
         res.json({ backendResult: 'REGISTER-OK', userInfo: req.session.user });
