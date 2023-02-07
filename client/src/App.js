@@ -75,7 +75,6 @@ function App() {
                           path="auth"
                           element={(
                             <>
-                              <Statistic />
                               <AuthContextProvider>
                                 <AuthForm />
                               </AuthContextProvider>
