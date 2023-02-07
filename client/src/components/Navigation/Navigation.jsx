@@ -6,13 +6,16 @@ export default function Navigation() {
     <>
     <div>
       <Link to='/'>
-        <button>Today</button>
+        <button>My Day</button>
       </Link>
       <Link to='/statistic'>
         <button>Statistic</button>
       </Link>
       <Link to='/cabinet'>
         <button>ClientName</button>
+      </Link>
+      <Link to='/settings'>
+        <button>Setting</button>
       </Link>
       <Outlet />
     </div>
