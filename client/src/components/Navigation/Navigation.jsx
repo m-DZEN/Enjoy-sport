@@ -45,7 +45,7 @@ export default function Navigation() {
         <button>Statistic</button>
       </Link>
       <Link to='/cabinet'>
-        <button>ClientName</button>
+        <button>Cabinet</button>
       </Link>
       <Link to='/settings'>
         <button>Setting</button>

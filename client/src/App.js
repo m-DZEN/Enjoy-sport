@@ -54,6 +54,7 @@ function App() {
   }, []);
 
   return (
+    <>
     <div className="App">
       {isLoading && (
         <h3>Loading...</h3>
@@ -89,6 +90,11 @@ function App() {
                </Routes>
       )}   
     </div>  
+            <footer>
+            <p>информация о тренере</p>
+            <p>информация о разработчиках</p>
+          </footer>
+    </>
   );
 }
 
