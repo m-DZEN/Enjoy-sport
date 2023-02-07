@@ -10,6 +10,7 @@ import Registration from './components/Registration/Registration';
 
 function App() {
   return (
+    <>
     <div className="App">
        <Routes>
           <Route path='/login' element={<Login />}></Route>
@@ -22,6 +23,11 @@ function App() {
           </Route>
         </Routes>
     </div>  
+            <footer>
+            <p>информация о тренере</p>
+            <p>информация о разработчиках</p>
+          </footer>
+    </>
   );
 }
 
