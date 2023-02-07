@@ -11,10 +11,9 @@ export default function Navigation() {
       <Link to='/statistic'>
         <button>Statistic</button>
       </Link>
-      {/* <Link to='/cabinet'>
+      <Link to='/cabinet'>
         <button>ClientName</button>
-      </Link> */}
-      <h1>Hello</h1>
+      </Link>
       <Outlet />
     </div>
     </>
