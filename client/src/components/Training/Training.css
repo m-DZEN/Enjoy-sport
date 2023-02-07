@@ -1,0 +1,23 @@
+body {
+
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.btn-show {
+ margin: 5px;
+}
+
+.btn-show:hover + .block-none {
+
+}
+
+.block-none {
+  /* display: none; */
+  padding: 5px;
+}
+
