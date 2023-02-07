@@ -5,10 +5,19 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class DailyList extends Model {
     static associate({
-      Users,
+      User, Day, DailyTrain, DailyRecipe,
     }) {
-      this.belongsTo(Users, {
+      this.belongsTo(User, {
         foreignKey: 'user_id',
+      });
+      this.belongsTo(Day, {
+        foreignKey: 'day_id',
+      });
+      this.belongsTo(DailyTrain, {
+        foreignKey: 'dailyTrain_id',
+      });
+      this.belongsTo(DailyRecipe, {
+        foreignKey: 'dailyRecipe_id',
       });
     }
   }

@@ -4,11 +4,11 @@ const {
 
 module.exports = (sequelize, DataTypes) => {
   class DailyTrain extends Model {
-    static associate({ Trainings, DailyLists }) {
-      this.hasMany(DailyLists, {
+    static associate({ Training, DailyList }) {
+      this.hasMany(DailyList, {
         foreignKey: 'dailyTrain_id',
       });
-      this.belongsTo(Trainings, {
+      this.belongsTo(Training, {
         foreignKey: 'Training_id',
       });
     }
@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   DailyTrain.init({
     training_id: DataTypes.INTEGER,
     weight: DataTypes.INTEGER,
-    set: DataTypes.INTEGER,
+    sets: DataTypes.INTEGER,
     rep: DataTypes.INTEGER,
     rest: DataTypes.INTEGER,
   }, {

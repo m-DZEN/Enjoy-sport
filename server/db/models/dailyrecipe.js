@@ -4,11 +4,11 @@ const {
 
 module.exports = (sequelize, DataTypes) => {
   class DailyRecipe extends Model {
-    static associate({ DailyLists, Recipes }) {
-      this.hasMany(DailyLists, {
+    static associate({ DailyList, Recipe }) {
+      this.hasMany(DailyList, {
         foreignKey: 'dailyRecipe_id',
       });
-      this.belongsTo(Recipes, {
+      this.belongsTo(Recipe, {
         foreignKey: 'dailyTrain_id',
       });
     }

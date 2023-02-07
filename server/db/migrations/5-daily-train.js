@@ -18,7 +18,7 @@ module.exports = {
       weight: {
         type: Sequelize.INTEGER,
       },
-      set: {
+      sets: {
         type: Sequelize.INTEGER,
       },
       rep: {
