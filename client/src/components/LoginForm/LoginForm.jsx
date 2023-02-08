@@ -28,7 +28,7 @@ export default function LoginForm() {
           placeholder="Your Password..."
           required
         />
-        <button type="submit">Login</button>
+        <button type="submit">Вход</button>
       </form>
       {errorInfo}
     </>

@@ -51,8 +51,8 @@ function App() {
         console.log('ERROR:', error.message);
       }
     }());
-  // тут был пустой массив но эслинт ругался
-  }, [dispatch]);
+  // тут пустой массив
+  }, []);
 
   return (
     <>
@@ -64,16 +64,14 @@ function App() {
         <Routes>
               <Route path='/' element={<Navigation />}>
                   <Route element={<ProtectedRoute user={user.userLogin} redirectPath="auth/login" />}>
-                    <Route path='/login' element={<Login />}></Route>
-                    <Route path='/registration' element={<Registration />}></Route>
                     <Route path='' element={<Training />} />
                     <Route path='/statistic' element={<Statistic />} />
                     <Route path='/cabinet' element={<Cabinet />} />
                     <Route path='/settings' element={<Settings />} />
-                </Route>
+                  </Route>
               </Route>
                   <Route element={<ProtectedRoute user={!user.userLogin} redirectPath="/" />}>
-                        <Route
+                      <Route
                           path="auth"
                           element={(
                             <>
@@ -83,12 +81,12 @@ function App() {
                             </>
                           )}
                         >
-                          <Route path="login" element={<LoginForm />} />
-                          <Route path="register" element={<RegisterForm />} />
-                        </Route>
+                  <Route path="login" element={<LoginForm />} />
+                  <Route path="register" element={<RegisterForm />} />
                   </Route>
-                      <Route path="*" element={<NotFoundPage />} />
-               </Routes>
+              </Route>
+                  <Route path="*" element={<NotFoundPage />} />
+        </Routes>
       )}   
     </div>  
             <footer>
