@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../context/Auth.context';
+import styles from './LoginForm.module.css'
 
 export default function LoginForm() {
   const {
@@ -10,27 +11,27 @@ export default function LoginForm() {
   } = useContext(AuthContext);
 
   return (
-    <>
+    <div>
       <form onSubmit={(event) => handleAuthFormSubmit(event, 'login')}>
-        <input
+        <input className={styles.loginform}
           type="text"
           name="login"
           value={authFormInput.login}
           onChange={handleAuthFormInputChange}
-          placeholder="Your Login..."
+          placeholder="Ваше имя..."
           required
         />
-        <input
+        <input className={styles.loginform}
           type="password"
           name="password"
           value={authFormInput.password}
           onChange={handleAuthFormInputChange}
-          placeholder="Your Password..."
+          placeholder="И пароль..."
           required
         />
-        <button type="submit">Login</button>
+        <button type="submit">Войти</button>
       </form>
       {errorInfo}
-    </>
+    </div>
   );
 }

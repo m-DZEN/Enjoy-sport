@@ -13,10 +13,10 @@ export default function AuthForm() {
     <>
       <div>
         <Link to="/auth/login">
-          Login
+          Войти
         </Link>
         <Link to="/auth/register">
-          Register
+          Регистрация
         </Link>
       </div>
       <Outlet />
