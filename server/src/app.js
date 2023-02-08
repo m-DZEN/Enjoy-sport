@@ -10,10 +10,10 @@ const FileStore = require('session-file-store')(session);
 const dbConnectCheck = require('../db/dbConnectCheck');
 
 const app = express();
-const PORT = process.env.PORT ?? 3042;
+const PORT = process.env.PORT ?? 3001;
 const SESSION_SECRET = process.env.SESSION_SECRET ?? 'qwerty';
 
-// dbConnectCheck(); // !!! Проверка подключения к БД
+dbConnectCheck(); // !!! Проверка подключения к БД
 
 const indexRoutes = require('./routes/indexRoutes');
 const registerRoutes = require('./routes/registerRoutes');
