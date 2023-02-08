@@ -1,0 +1,30 @@
+body {
+
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.block {
+   position: relative;  
+    display: inline-block;
+}
+
+.btn-show {
+ margin: 5px;
+}
+
+/* .block-none {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  padding: 5px;
+}
+
+.block:hover .block-none {
+  display: block;
+} */
+

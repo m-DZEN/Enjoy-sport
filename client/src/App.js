@@ -18,6 +18,8 @@ import AuthForm from './components/AuthForm/AuthForm';
 import LoginForm from './components/LoginForm/LoginForm';
 import RegisterForm from './components/RegisterForm/RegisterForm';
 import NotFoundPage from './components/NotFoundPage/NotFoundPage';
+import TrainingNutrition from './components/Training/TrainingNutrition/TrainingNutrition';
+import TrainingWorkout from './components/Training/TrainingWorkout/TrainingWorkout';
 
 import './App.css';
 
@@ -67,6 +69,14 @@ function App() {
                     <Route path='/login' element={<Login />}></Route>
                     <Route path='/registration' element={<Registration />}></Route>
                     <Route path='' element={<Training />} />
+
+                    <Route path='/nutrition'>
+            <Route index element={<TrainingNutrition/>}/>
+            </Route>
+
+            <Route path='/workout'>
+            <Route index element={<TrainingWorkout/>}/>
+            </Route>
                     <Route path='/statistic' element={<Statistic />} />
                     <Route path='/cabinet' element={<Cabinet />} />
                     <Route path='/settings' element={<Settings />} />
