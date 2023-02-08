@@ -1,5 +1,5 @@
 {
-  "name": "client",
+  "name": "test-graphs",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -10,10 +10,15 @@
     "context": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+<<<<<<< HEAD:client/package.json
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.8.1",
     "react-scripts": "^5.0.1",
     "redux": "^4.2.1",
+=======
+    "react-scripts": "5.0.1",
+    "recharts": "^2.3.2",
+>>>>>>> 12ef5fd8c3054dd17bc4115e88bbba05af39749d:test-graphs/package.json
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -39,5 +44,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^8.33.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0"
   }
 }
