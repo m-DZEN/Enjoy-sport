@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function Training() {
   return (
     <div className="container">
-      <div>
+      <div className="block">
         <button className="btn-show">Понедельник</button>
         <div className="block-none">
           <p>Понедельник</p>
@@ -17,7 +17,7 @@ export default function Training() {
           </Link>
         </div>
       </div>
-      <div>
+      <div className="block">
         <button className="btn-show">Вторник</button>
         <div className="block-none">
           <p>Вторник</p>
@@ -29,7 +29,7 @@ export default function Training() {
           </Link>
         </div>
       </div>
-      <div>
+      <div className="block">
         <button className="btn-show">Среда</button>
         <div className="block-none">
           <p>Среда</p>
@@ -41,7 +41,7 @@ export default function Training() {
           </Link>
         </div>
       </div>
-      <div>
+      <div className="block">
         <button className="btn-show">Четверг</button>
         <div className="block-none">
           <Link to="/workout">
@@ -52,7 +52,7 @@ export default function Training() {
           </Link>
         </div>
       </div>
-      <div>
+   <div className="block">
         <button className="btn-show">Пятница</button>
         <div className="block-none">
           <p>Пятница</p>
@@ -64,7 +64,7 @@ export default function Training() {
           </Link>
         </div>
       </div>
-      <div>
+   <div className="block">
         <button className="btn-show">Суббота</button>
         <div className="block-none">
           <p>Суббота</p>
@@ -76,7 +76,7 @@ export default function Training() {
           </Link>
         </div>
       </div>
-      <div>
+      <div className="block">
         <button className="btn-show">Воскресенье</button>
         <div className="block-none">
           <p>Воскресенье</p>
