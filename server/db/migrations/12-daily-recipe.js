@@ -1,15 +1,22 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Trainings', {
+    await queryInterface.createTable('DailyRecipes', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      title: {
-        type: Sequelize.STRING,
+      recipe_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Recipes',
+          key: 'id',
+        },
+      },
+      mass: {
+        type: Sequelize.INTEGER,
       },
       createdAt: {
         defaultValue: Sequelize.fn('now'),
@@ -24,6 +31,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Trainings');
+    await queryInterface.dropTable('DailyRecipes');
   },
 };
