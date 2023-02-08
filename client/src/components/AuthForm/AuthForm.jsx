@@ -6,7 +6,7 @@ export default function AuthForm() {
 
   useEffect(() => {
     navigate('/auth/login');
-    // тут должен быть пустой массив
+    // должен быть пустой
   }, []);
 
   return (

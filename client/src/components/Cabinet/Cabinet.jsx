@@ -1,4 +1,6 @@
 import React from "react";
+import ButtonChatAndMotivation from "../ButtonChatAndMotivation/ButtonChatAndMotivation";
+import "./Cabinet.css";
 
 export default function Cabinet() {
   return (
@@ -8,6 +10,12 @@ export default function Cabinet() {
           <h2 style={{ color: "red" }}>введите свои данные</h2>
         </div>
         <div className="inputDiv">
+          <div>
+            <label>
+              дата рождения
+              <input />
+            </label>
+          </div>
           <div>
             <label>
               рост
@@ -21,20 +29,21 @@ export default function Cabinet() {
             </label>
           </div>
           <div>
-            <label>пол
-            <select>
-              <option>мужской</option>
-              <option>женский</option>
-            </select>
+            <label>
+              пол
+              <select>
+                <option>мужской</option>
+                <option>женский</option>
+              </select>
             </label>
           </div>
           <div>
-            <label>телосложение
-          <select> 
-              <option>худощавое</option>
-              <option>полное</option>
-            </select>
-
+            <label>
+              телосложение
+              <select>
+                <option>худощавое</option>
+                <option>полное</option>
+              </select>
             </label>
           </div>
         </div>
@@ -43,15 +52,16 @@ export default function Cabinet() {
             <h3 style={{ color: "red" }}>выберите программу тренировок</h3>
           </div>
           <div>
-            <div>
-              <h4>цель тренировок</h4>
-            </div>
-            <div>
+            <div>   
+            <label>
+                цель
               <select>
                 <option>похудеть</option>
                 <option>набрать вес</option>
                 <option>удержать вес</option>
               </select>
+              </label>
+                {/* <input /> */}
             </div>
             <div>
               <label>
@@ -61,7 +71,7 @@ export default function Cabinet() {
             </div>
           </div>
         </div>
-          <h3 style={{ color: "red" }}>Список продуктов</h3>
+        <h3 style={{ color: "red" }}>Список продуктов</h3>
         <div className="products">
           <div className="ol">
             <p>ем с удовольствием</p>
@@ -75,7 +85,7 @@ export default function Cabinet() {
             </ol>
           </div>
           <div className="ol">
-          <p>аллергия</p>
+            <p>аллергия</p>
             <ol>
               <li>
                 <input />
@@ -85,25 +95,16 @@ export default function Cabinet() {
               </li>
             </ol>
           </div>
-          
         </div>
         <div>
           <div>
-          <button>Противопоказания</button>
+            <button>Противопоказания</button>
           </div>
           <div>
-          <button>Сохранить</button>
-          </div>   
-          <div>
-          <button>Чат с тренером</button>
-          </div>   
-          <div>
-          <button>Получить мотивацию</button>
+            <button>Сохранить</button>
           </div>
-       
-
         </div>
-
+        <ButtonChatAndMotivation />
       </div>
     </>
   );
