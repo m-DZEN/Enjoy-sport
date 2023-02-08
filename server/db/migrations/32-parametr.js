@@ -1,19 +1,40 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('DailyRecipes', {
+    await queryInterface.createTable('Parametrs', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      recipe_id: {
+      user_id: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'Recipes',
+          model: 'Users',
           key: 'id',
         },
+      },
+      data: {
+        type: Sequelize.DATE,
+      },
+      currentWeight: {
+        type: Sequelize.INTEGER,
+      },
+      hipGirth: {
+        type: Sequelize.INTEGER,
+      },
+      buttocksGirth: {
+        type: Sequelize.INTEGER,
+      },
+      waistGirth: {
+        type: Sequelize.INTEGER,
+      },
+      breastGirth: {
+        type: Sequelize.INTEGER,
+      },
+      bicepsGirth: {
+        type: Sequelize.INTEGER,
       },
       createdAt: {
         defaultValue: Sequelize.fn('now'),
@@ -28,6 +49,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('DailyRecipes');
+    await queryInterface.dropTable('Parametrs');
   },
 };
