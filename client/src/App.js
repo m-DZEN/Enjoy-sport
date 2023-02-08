@@ -20,6 +20,7 @@ import RegisterForm from './components/RegisterForm/RegisterForm';
 import NotFoundPage from './components/NotFoundPage/NotFoundPage';
 import TrainingNutrition from './components/Training/TrainingNutrition/TrainingNutrition';
 import TrainingWorkout from './components/Training/TrainingWorkout/TrainingWorkout';
+import Slider from './components/Slider/Slider'
 
 import './App.css';
 
@@ -63,6 +64,7 @@ function App() {
         <h3>Loading...</h3>
       )}
       {!isLoading && (
+        <>
         <Routes>
               <Route path='/' element={<Navigation />}>
                   <Route element={<ProtectedRoute user={user.userLogin} redirectPath="auth/login" />}>
@@ -89,16 +91,22 @@ function App() {
                             <>
                               <AuthContextProvider>
                                 <AuthForm />
+                                <Slider />
                               </AuthContextProvider>
                             </>
                           )}
-                        >
+                        >  
+                        
                           <Route path="login" element={<LoginForm />} />
                           <Route path="register" element={<RegisterForm />} />
+                         
                         </Route>
+                        
                   </Route>
                       <Route path="*" element={<NotFoundPage />} />
                </Routes>
+              
+              </> 
       )}   
     </div>  
           <footer>

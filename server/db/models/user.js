@@ -22,6 +22,11 @@ module.exports = (sequelize, DataTypes) => {
     height: DataTypes.INTEGER,
     weight: DataTypes.INTEGER,
     body_type: DataTypes.STRING,
+    type_program: DataTypes.STRING,
+    final_weight: DataTypes.INTEGER,
+    ready: DataTypes.TEXT,
+    notready: DataTypes.TEXT,
+    contra: DataTypes.TEXT,
   }, {
     sequelize,
     modelName: 'User',
