@@ -1,8 +1,14 @@
 import React from 'react'
+import ButtonChatAndMotivation from '../ButtonChatAndMotivation/ButtonChatAndMotivation'
 
 export default function Recipe() {
   return (
-    <div>Recipe</div>
+    <>
+    <p>вторник</p>
+    <p>завтрак</p>
+    <p>рецепт</p>
+    <ButtonChatAndMotivation />
+    </>
   )
 }
 
