@@ -53,7 +53,8 @@ function App() {
         console.log('ERROR:', error.message);
       }
     }());
-  }, []);
+  // тут был пустой массив но эслинт ругался
+  }, [dispatch]);
 
   return (
     <>
