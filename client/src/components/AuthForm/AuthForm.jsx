@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link, Outlet, useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 
 export default function AuthForm() {
   const navigate = useNavigate();
@@ -10,16 +10,6 @@ export default function AuthForm() {
   }, []);
 
   return (
-    <>
-      <div>
-        <Link to="/auth/login">
-          Login
-        </Link>
-        <Link to="/auth/register">
-          Register
-        </Link>
-      </div>
       <Outlet />
-    </>
   );
 }

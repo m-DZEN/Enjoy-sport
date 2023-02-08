@@ -101,9 +101,9 @@ function App() {
                </Routes>
       )}   
     </div>  
-            <footer>
-            <p>информация о тренере</p>
-            <p>информация о разработчиках</p>
+          <footer>
+            <p className='footerinfo'>информация о тренере</p>
+            <p className='footerinfo'>информация о разработчиках</p>
           </footer>
     </>
   );
