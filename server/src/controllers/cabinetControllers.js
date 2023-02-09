@@ -2,7 +2,7 @@ const { User } = require('../../db/models');
 
 const setUserData = async (req, res) => {
   const { user } = req.body;
-  // console.log('req.body ===>', req.body);
+  console.log('req.body ===>', req.body);
   try {
     const userData = await User.findAll({ where: { id: user.userId }, raw: true });
     console.log('userData---------->', userData);
@@ -14,11 +14,11 @@ const setUserData = async (req, res) => {
 };
 
 const createUserData = async (req, res) => {
-  // console.log('req.body ===>', req.session);
+  console.log('req.body ===>', req.session);
   const { inputs } = req.body;
   const { user } = req.body;
-  // console.log('---------->', user.userId);
-  // console.log('inputs---------->', inputs);
+  console.log('---------->', user.userId);
+  console.log('inputs---------->', inputs);
 
   try {
     const userData = await User.update({
