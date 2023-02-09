@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { createUserData } = require('../controllers/cabinetControllers');
+const { createUserData, setUserData } = require('../controllers/cabinetControllers');
 
-// module.exports = router.get('/', userData);
+module.exports = router.post('/', setUserData);
 module.exports = router.put('/', createUserData);
