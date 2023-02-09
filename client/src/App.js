@@ -20,6 +20,7 @@ import TrainingWorkout from './components/Training/TrainingWorkout/TrainingWorko
 import Slider from './components/Slider/Slider';
 
 import './App.css';
+import WSChat from './components/WSChat/WSChat';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -71,6 +72,7 @@ function App() {
               <Route path="/statistic" element={<Statistic />} />
               <Route path="/cabinet" element={<Cabinet />} />
               <Route path="/settings" element={<Settings />} />
+              <Route path="/wschat" element={<WSChat />} />
             </Route>
           </Route>
 

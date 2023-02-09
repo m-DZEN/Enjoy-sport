@@ -1,8 +1,8 @@
 const { User } = require('../../db/models');
 
-const userData = async (res, req) => {
-  
-}
+// const userData = async (res, req) => {
+
+// };
 
 const createUserData = async (req, res) => {
   // console.log('req.body ===>', req.body);
@@ -19,10 +19,10 @@ const createUserData = async (req, res) => {
       gender: inputs.gender,
       body_type: inputs.bodyType,
       type_program: inputs.typeProgram,
-    final_weight: inputs.finishWeight,
-    ready: inputs.ready,
-    notready: inputs.notReady,
-    contra: inputs.contra,
+      final_weight: inputs.finishWeight,
+      ready: inputs.ready,
+      notready: inputs.notReady,
+      contra: inputs.contra,
     }, {
       where: { id: user.userId },
     });
@@ -33,5 +33,7 @@ const createUserData = async (req, res) => {
   }
 };
 
-module.exports = { userData, 
-  createUserData };
+module.exports = {
+  // userData,
+  createUserData,
+};

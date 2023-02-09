@@ -47,6 +47,9 @@ export default function Navigation() {
         <Link to="/settings">
           <button type="button">Setting</button>
         </Link>
+        <Link to="/wschat">
+          <button type="button">WSChat</button>
+        </Link>
         <button type="button" onClick={handleLogout}>Logout</button>
       </div>
       <Outlet />
