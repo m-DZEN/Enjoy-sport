@@ -31,7 +31,7 @@ export default function Cabinet() {
         credentials: 'include',
       });
       const data = await res.json();
-      // console.log('data', data);
+      console.log('data', data);
 
       setInputs((pre) => ({ ...pre, ...data }));
     }());
@@ -133,7 +133,7 @@ export default function Cabinet() {
                   value={inputs.body_type}
                   required
                   onChange={formHandler}
-                  name="bodyType"
+                  name="body_type"
                 >
                   <option value="full">полное</option>
                   <option value="thin">худощавое</option>

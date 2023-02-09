@@ -67,7 +67,7 @@ export default function Settings() {
               />
             </label>
           </div>
-          <div>
+          {/* <div>
             <label>
               password
               <input
@@ -77,7 +77,7 @@ export default function Settings() {
                 name="password"
               />
             </label>
-          </div>
+          </div> */}
           <div>
             <label>
               email
