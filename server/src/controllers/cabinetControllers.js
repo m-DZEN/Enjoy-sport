@@ -13,7 +13,7 @@ const createUserData = async (req, res) => {
 
   try {
     const userData = await User.update({
-      burthday: inputs.burthday,
+      birthday: inputs.birthday,
       height: inputs.height,
       weight: inputs.weight,
       gender: inputs.gender,

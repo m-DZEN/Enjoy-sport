@@ -8,11 +8,18 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      type_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'TypeFoods',
+          key: 'id',
+        },
+      },
       title: {
         type: Sequelize.STRING,
       },
       description: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
       },
       createdAt: {
         defaultValue: Sequelize.fn('now'),
