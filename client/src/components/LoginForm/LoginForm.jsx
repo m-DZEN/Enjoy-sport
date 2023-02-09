@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
-import { AuthContext } from '../../context/Auth.context';
-import styles from './LoginForm.module.css'
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../context/Auth.context';
+import styles from './LoginForm.module.css';
+
 export default function LoginForm() {
   const {
     authFormInput,
@@ -13,7 +14,8 @@ export default function LoginForm() {
   return (
     <div>
       <form onSubmit={(event) => handleAuthFormSubmit(event, 'login')}>
-        <input className={styles.loginform}
+        <input
+          className={styles.loginform}
           type="text"
           name="login"
           value={authFormInput.login}
@@ -21,7 +23,8 @@ export default function LoginForm() {
           placeholder="Ваше имя..."
           required
         />
-        <input className={styles.loginform}
+        <input
+          className={styles.loginform}
           type="password"
           name="password"
           value={authFormInput.password}
@@ -32,8 +35,8 @@ export default function LoginForm() {
         <button type="submit">Войти</button>
       </form>
       <Link to="/auth/register">
-          или зарегистрироваться
-        </Link>
+        или зарегистрироваться
+      </Link>
       {errorInfo}
     </div>
   );

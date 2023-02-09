@@ -6,11 +6,10 @@ export default function AuthForm() {
 
   useEffect(() => {
     navigate('/auth/login');
-    // тут тоже был пустой массив но ругался эслинт
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // тут тоже был пустой массив но ругался эслинт
   }, []);
 
   return (
-      <Outlet />
+    <Outlet />
   );
 }

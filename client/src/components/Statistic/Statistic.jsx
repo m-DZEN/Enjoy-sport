@@ -1,7 +1,9 @@
-import React from "react";
-import ButtonChatAndMotivation from "../ButtonChatAndMotivation/ButtonChatAndMotivation";
-import Grafics from "../Graphics/Graphics";
-import "./Statistic.css";
+/* eslint-disable react/jsx-indent */
+/* eslint-disable react/self-closing-comp */
+import React from 'react';
+import ButtonChatAndMotivation from '../ButtonChatAndMotivation/ButtonChatAndMotivation';
+import Grafics from '../Graphics/Graphics';
+import './Statistic.css';
 
 export default function Statistic() {
   return (

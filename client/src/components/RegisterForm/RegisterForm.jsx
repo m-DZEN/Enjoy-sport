@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import { AuthContext } from '../../context/Auth.context';
-import styles from '../../components/LoginForm/LoginForm.module.css'
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../context/Auth.context';
+import styles from '../LoginForm/LoginForm.module.css';
 
 export default function RegisterForm() {
   const {
@@ -14,7 +14,8 @@ export default function RegisterForm() {
   return (
     <>
       <form onSubmit={(event) => handleAuthFormSubmit(event, 'register')}>
-        <input className={styles.loginform}
+        <input
+          className={styles.loginform}
           type="text"
           name="login"
           value={authFormInput.login}
@@ -22,7 +23,8 @@ export default function RegisterForm() {
           placeholder="Ваше имя..."
           required
         />
-        <input className={styles.loginform}
+        <input
+          className={styles.loginform}
           type="password"
           name="password"
           value={authFormInput.password}
@@ -33,8 +35,8 @@ export default function RegisterForm() {
         <button type="submit">Регистрация</button>
       </form>
       <Link to="/auth/login">
-          или войти 
-        </Link>
+        или войти
+      </Link>
       {errorInfo}
     </>
   );

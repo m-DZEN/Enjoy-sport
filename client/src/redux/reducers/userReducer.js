@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable default-param-last */
 const initialUserState = { userLogin: null, userId: null, userPoints: 0 };
 
 const SET_USER_INFO = 'SET_USER_INFO';

@@ -4,6 +4,7 @@
     height: 500px;
     margin: auto;
     box-sizing: border-box;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     overflow: hidden;
