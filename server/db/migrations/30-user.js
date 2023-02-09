@@ -18,7 +18,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       burthday: {
-        type: Sequelize.DATE,
+        type: Sequelize.DATEONLY,
       },
       gender: {
         type: Sequelize.STRING,

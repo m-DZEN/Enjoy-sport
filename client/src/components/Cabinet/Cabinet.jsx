@@ -1,38 +1,48 @@
-import React, { useState } from 'react';
-// import { useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import ButtonChatAndMotivation from '../ButtonChatAndMotivation/ButtonChatAndMotivation';
 import './Cabinet.css';
 
 export default function Cabinet() {
   const user = useSelector((store) => store.userStore);
-  console.log(user.userId);
+  // console.log('user.userId=====cabinet', user);
+
+  // const [els, setEls] = useState({});
+  const [inputs, setInputs] = useState({
+    burthday: ' ',
+    height: ' ',
+    weight: ' ',
+    gender: 'female',
+    body_type: 'full',
+    type_program: 'loseWeight',
+    final_weight: ' ',
+    ready: ' ',
+    notready: ' ',
+    contra: ' ',
+  });
+
+  useEffect(() => {
+    (async function () {
+      // console.log('user.userId useEffect', user);
+      const res = await fetch('http://localhost:3001/cabinet', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ user }),
+        credentials: 'include',
+      });
+      const data = await res.json();
+      console.log('data', data);
+
+      setInputs((pre) => ({ ...pre, ...data }));
+    }());
+  }, []);
+  console.log('els===>useEff', inputs);
 
   // useEffect(() => {
-  //   (const res = await fetch("http://localhost:3001/cabinet", {
-  //     method: "PUT",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({ inputs, user }),
-  //     credentials: "include",
-  //   }))()
-  // }, [])
-
-  const initState = {
-    burthday: '',
-    height: '',
-    weight: '',
-    gender: 'female',
-    bodyType: 'full',
-    typeProgram: 'loseWeight',
-    finishWeight: '',
-    ready: 'db',
-    notReady: 'db',
-    contra: 'db',
-  };
-
-  const [inputs, setInputs] = useState(initState);
+  //   setInputs(els);
+  // }, [els]);
 
   const formHandler = (e) => {
     console.log(e.target.name, e.target.value);
@@ -51,7 +61,7 @@ export default function Cabinet() {
     });
     const data = await res.json();
     console.log('data', data);
-    setInputs(initState);
+    setInputs(inputs);
   };
   return (
     <div>
@@ -122,7 +132,7 @@ export default function Cabinet() {
               <label>
                 телосложение
                 <select
-                  value={inputs.bodyType}
+                  value={inputs.body_type}
                   required
                   onChange={formHandler}
                   name="bodyType"
@@ -142,7 +152,7 @@ export default function Cabinet() {
                 <label>
                   цель
                   <select
-                    value={inputs.typeProgram}
+                    value={inputs.type_program}
                     onChange={formHandler}
                     name="typeProgram"
                   >
@@ -157,11 +167,11 @@ export default function Cabinet() {
                 <label>
                   желаемый вес
                   <input
-                    value={inputs.finishWeight}
+                    value={inputs.final_weight}
                     required
                     type="number"
                     onChange={formHandler}
-                    name="finishWeight"
+                    name="final_weight"
                   />
                 </label>
               </div>
@@ -174,7 +184,6 @@ export default function Cabinet() {
               <p>готов отказаться</p>
               <textarea
                 value={inputs.ready}
-                required
                 onChange={formHandler}
                 name="ready"
               />
@@ -182,10 +191,9 @@ export default function Cabinet() {
             <div className="ol">
               <p>не готов отказаться</p>
               <textarea
-                value={inputs.notReady}
-                required
+                value={inputs.notready}
                 onChange={formHandler}
-                name="notReady"
+                name="notready"
               />
             </div>
           </div>
@@ -207,10 +215,8 @@ export default function Cabinet() {
             </button>
           </div>
         </form>
-        <div>
-          <ButtonChatAndMotivation />
-        </div>
       </div>
+
       <ButtonChatAndMotivation />
     </div>
   );
