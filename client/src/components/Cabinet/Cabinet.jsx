@@ -9,7 +9,7 @@ export default function Cabinet() {
 
   // const [els, setEls] = useState({});
   const [inputs, setInputs] = useState({
-    burthday: ' ',
+    birthday: ' ',
     height: ' ',
     weight: ' ',
     gender: 'female',
@@ -78,11 +78,11 @@ export default function Cabinet() {
               <label>
                 дата рождения
                 <input
-                  value={inputs.burthday}
+                  value={inputs.birthday}
                   required
                   onChange={formHandler}
                   type="date"
-                  name="burthday"
+                  name="birthday"
                 />
               </label>
             </div>

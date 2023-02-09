@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'dailyTrain_id',
       });
       this.belongsTo(Training, {
-        foreignKey: 'Training_id',
+        foreignKey: 'training_id',
       });
     }
   }
