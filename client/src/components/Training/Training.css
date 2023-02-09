@@ -1,34 +1,46 @@
-body {
-
-}
-
-.container {
+.workout_container {
   display: flex;
+  align-items: center;
   justify-content: center;
   flex-direction: column;
 }
 
-.block {
-   position: relative;  
-    display: inline-block;
-}
-
-.btn-show {
- margin: 5px;
-}
+ .block-show {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10vh;
+  width: 50vw;
+  border: solid rgb(244, 241, 245);
+  border-radius: 20px;
+  margin: 5px;
+ }
 
  .block-none {
   display: none;
-  position: absolute;
-  z-index: 1;
-  padding: 5px;
 }
 
-.block-none Link {
-  display: auto;
+ .block:hover .block-show {
+  display: none;
 }
 
+ .block:hover .block-none {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: blueviolet;
 
-.block:hover .block-none {
-  display: block;
+  height: 10vh;
+  width: 80vw;
+  border: solid rgb(217, 167, 236);
+  border-radius: 20px;
+  margin: 5px;
+
+}  
+
+
+.linkButton {
+  
+  display: flex;
+  color: rgb(255, 255, 255);
 }
