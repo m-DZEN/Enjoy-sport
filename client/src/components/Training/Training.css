@@ -28,11 +28,11 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  background-color: blueviolet;
+  background-color: #974d55;
 
   height: 10vh;
   width: 80vw;
-  border: solid rgb(217, 167, 236);
+  border: solid #d8b3b3;
   border-radius: 20px;
   margin: 5px;
 
@@ -42,5 +42,5 @@
 .linkButton {
   
   display: flex;
-  color: rgb(255, 255, 255);
+  color: #1a0d0d;
 }
