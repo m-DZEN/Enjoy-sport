@@ -1,5 +1,5 @@
-import React from "react";
-import "./TrainingNutrition.modules.css";
+import React from 'react';
+import './TrainingNutrition.modules.css';
 
 export default function TrainingNutrition() {
   return (
@@ -14,7 +14,7 @@ export default function TrainingNutrition() {
         </thead>
         <tbody>
           <tr>
-            <th colspan="5">Завтрак</th>
+            <th colSpan="5">Завтрак</th>
           </tr>
           <tr>
             <th>Сырники</th>
@@ -29,7 +29,7 @@ export default function TrainingNutrition() {
             <td>40</td>
           </tr>
           <tr>
-            <th colspan="5">Обед</th>
+            <th colSpan="5">Обед</th>
           </tr>
           <tr>
             <th>Борщ</th>
@@ -44,7 +44,7 @@ export default function TrainingNutrition() {
             <td>-</td>
           </tr>
           <tr>
-            <th colspan="5">Ужин</th>
+            <th colSpan="5">Ужин</th>
           </tr>
           <tr>
             <th>Салат</th>

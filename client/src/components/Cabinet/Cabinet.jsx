@@ -1,9 +1,14 @@
+
+/* eslint-disable react/button-has-type */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import ButtonChatAndMotivation from "../ButtonChatAndMotivation/ButtonChatAndMotivation";
 import "./Cabinet.css";
+
 
 export default function Cabinet() {
   const user = useSelector((store) => store.userStore);
@@ -55,8 +60,11 @@ export default function Cabinet() {
     setInputs(initState);
   };
   return (
-    <>
+    <div>
       <div>
+        <h2 style={{ color: 'red' }}>введите свои данные</h2>
+      </div>
+      <div className="inputDiv">
         <div>
           <h2 style={{ color: "blue" }}>введите свои данные</h2>
         </div>
@@ -205,10 +213,10 @@ export default function Cabinet() {
           </div>
         </form>
         <div>
-
         <ButtonChatAndMotivation />
         </div>
       </div>
-    </>
+      <ButtonChatAndMotivation />
+    </div>
   );
 }

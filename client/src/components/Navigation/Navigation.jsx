@@ -1,11 +1,14 @@
-import React from "react";
+/* eslint-disable func-names */
+/* eslint-disable no-console */
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable react/button-has-type */
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 
 import { clearUserInfoAction } from '../../redux/reducers/userReducer';
 
 export default function Navigation() {
-
   const user = useSelector((store) => store.userStore);
   console.log('user ===>', user);
 
@@ -33,21 +36,18 @@ export default function Navigation() {
     }());
   };
 
-
-
   return (
-    <>
     <div>
-      <Link to='/'>
+      <Link to="/">
         <button>My Day</button>
       </Link>
-      <Link to='/statistic'>
+      <Link to="/statistic">
         <button>Statistic</button>
       </Link>
-      <Link to='/cabinet'>
+      <Link to="/cabinet">
         <button>Cabinet</button>
       </Link>
-      <Link to='/settings'>
+      <Link to="/settings">
         <button>Setting</button>
       </Link>
       <Link>
@@ -55,6 +55,5 @@ export default function Navigation() {
       </Link>
       <Outlet />
     </div>
-    </>
   );
 }

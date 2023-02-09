@@ -32,6 +32,21 @@ module.exports = {
       body_type: {
         type: Sequelize.STRING,
       },
+      type_program: {
+        type: Sequelize.STRING,
+      },
+      final_weight: {
+        type: Sequelize.INTEGER,
+      },
+      ready: {
+        type: Sequelize.TEXT,
+      },
+      notready: {
+        type: Sequelize.TEXT,
+      },
+      contra: {
+        type: Sequelize.TEXT,
+      },
       createdAt: {
         defaultValue: Sequelize.fn('now'),
         allowNull: false,

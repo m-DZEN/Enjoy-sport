@@ -1,93 +1,28 @@
-import React from "react";
-import "./Training.css";
-import { Link } from "react-router-dom";
+import React from 'react';
+import './Training.css';
+import { Link } from 'react-router-dom';
 
 export default function Training() {
+  const days = [
+    { title: 'Понедельник' },
+    { title: 'Вторник' },
+    { title: 'Среда' },
+    { title: 'Четверг' },
+    { title: 'Пятница' },
+    { title: 'Суббота' },
+    { title: 'Воскресенье' },
+  ];
   return (
-    <div className="container">
-      <div className="block">
-        <button className="btn-show">Понедельник</button>
-        <div className="block-none">
-          <p>Понедельник</p>
-          <Link to="/workout">
-            <button>Тренировки</button>
-          </Link>
-          <Link to="/nutrition">
-            <button>Питание</button>
-          </Link>
+    <div className="workout_container">
+      {days.map((el) => (
+        <div className="block">
+          <div className="btn-show">{el.title}</div>
+          <div className="block-none">
+            <Link className="link" to="/workout"> Тренировки</Link>
+            <Link className="link" to="/nutrition">Питание</Link>
+          </div>
         </div>
-      </div>
-      <div className="block">
-        <button className="btn-show">Вторник</button>
-        <div className="block-none">
-          <p>Вторник</p>
-          <Link to="/workout">
-            <button>Тренировки</button>
-          </Link>
-          <Link to="/nutrition">
-            <button>Питание</button>
-          </Link>
-        </div>
-      </div>
-      <div className="block">
-        <button className="btn-show">Среда</button>
-        <div className="block-none">
-          <p>Среда</p>
-          <Link to="/workout">
-            <button>Тренировки</button>
-          </Link>
-          <Link to="/nutrition">
-            <button>Питание</button>
-          </Link>
-        </div>
-      </div>
-      <div className="block">
-        <button className="btn-show">Четверг</button>
-        <div className="block-none">
-          <Link to="/workout">
-            <button>Тренировки</button>
-          </Link>
-          <Link to="/nutrition">
-            <button>Питание</button>
-          </Link>
-        </div>
-      </div>
-   <div className="block">
-        <button className="btn-show">Пятница</button>
-        <div className="block-none">
-          <p>Пятница</p>
-          <Link to="/workout">
-            <button>Тренировки</button>
-          </Link>
-          <Link to="/nutrition">
-            <button>Питание</button>
-          </Link>
-        </div>
-      </div>
-   <div className="block">
-        <button className="btn-show">Суббота</button>
-        <div className="block-none">
-          <p>Суббота</p>
-          <Link to="/workout">
-            <button>Тренировки</button>
-          </Link>
-          <Link to="/nutrition">
-            <button>Питание</button>
-          </Link>
-        </div>
-      </div>
-      <div className="block">
-        <button className="btn-show">Воскресенье</button>
-        <div className="block-none">
-          <p>Воскресенье</p>
-          <Link to="/workout">
-            <button>Тренировки</button>
-          </Link>
-          <Link to="/nutrition">
-            <button>Питание</button>
-          </Link>
-        </div>
-      </div>
+      ))}
     </div>
   );
 }
