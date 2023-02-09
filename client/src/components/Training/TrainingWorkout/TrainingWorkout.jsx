@@ -46,6 +46,7 @@ export default function TrainingWorkout() {
               <div>
                 {' '}
                 Подходов
+                {' '}
                 {el.sets}
                 {' '}
               </div>
