@@ -23,6 +23,8 @@ const registerRoutes = require('./routes/registerRoutes');
 const loginRoutes = require('./routes/loginRoutes');
 const logoutRoutes = require('./routes/logoutRoutes');
 const cabinetRoutes = require('./routes/cabinetRoutes');
+const settingsRoutes = require('./routes/settingsRoutes');
+const statisticRoures = require('./routes/statisticRoures')
 
 app.use(cors({
   origin: ['http://localhost:3000'], // !!! Список адресов, с которых разрешены запросы на данный сервер
@@ -54,6 +56,8 @@ app.use('/register', registerRoutes);
 app.use('/login', loginRoutes);
 app.use('/logout', logoutRoutes);
 app.use('/cabinet', cabinetRoutes);
+app.use('/settings', settingsRoutes);
+app.use('/statistic', statisticRoures);
 
 const server = httpServer.createServer(app);
 server.on('upgrade', (req, socket, head) => {

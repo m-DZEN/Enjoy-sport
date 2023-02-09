@@ -5,9 +5,7 @@ import './Cabinet.css';
 
 export default function Cabinet() {
   const user = useSelector((store) => store.userStore);
-  // console.log('user.userId=====cabinet', user);
 
-  // const [els, setEls] = useState({});
   const [inputs, setInputs] = useState({
     birthday: ' ',
     height: ' ',
@@ -33,19 +31,19 @@ export default function Cabinet() {
         credentials: 'include',
       });
       const data = await res.json();
-      console.log('data', data);
+      // console.log('data', data);
 
       setInputs((pre) => ({ ...pre, ...data }));
     }());
   }, []);
-  console.log('els===>useEff', inputs);
+  // console.log('els===>useEff', inputs);
 
   // useEffect(() => {
   //   setInputs(els);
   // }, [els]);
 
   const formHandler = (e) => {
-    console.log(e.target.name, e.target.value);
+    // console.log(e.target.name, e.target.value);
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
@@ -59,8 +57,8 @@ export default function Cabinet() {
       body: JSON.stringify({ inputs, user }),
       credentials: 'include',
     });
-    const data = await res.json();
-    console.log('data', data);
+    await res.json();
+    // console.log('data', data);
     setInputs(inputs);
   };
   return (
