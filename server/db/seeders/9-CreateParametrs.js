@@ -4,7 +4,7 @@ module.exports = {
     await queryInterface.bulkInsert('Parametrs', [
       {
         user_id: 2,
-        data: '2022-01-01 00:00:00.000 +0300',
+        data: '2022-01-01',
         currentWeight: 100,
         hipGirth: 55,
         buttocksGirth: 100,
@@ -14,7 +14,7 @@ module.exports = {
       },
       {
         user_id: 2,
-        data: '2022-01-02 00:00:00.000 +0300',
+        data: '2022-01-02',
         currentWeight: 100,
         hipGirth: 55,
         buttocksGirth: 100,
@@ -24,7 +24,7 @@ module.exports = {
       },
       {
         user_id: 2,
-        data: '2022-01-03 00:00:00.000 +0300',
+        data: '2022-01-03',
         currentWeight: 100,
         hipGirth: 55,
         buttocksGirth: 99,
@@ -34,7 +34,7 @@ module.exports = {
       },
       {
         user_id: 2,
-        data: '2022-01-04 00:00:00.000 +0300',
+        data: '2022-01-04',
         currentWeight: 99,
         hipGirth: 54,
         buttocksGirth: 99,
@@ -44,7 +44,7 @@ module.exports = {
       },
       {
         user_id: 2,
-        data: '2022-01-05 00:00:00.000 +0300',
+        data: '2022-01-05',
         currentWeight: 99,
         hipGirth: 54,
         buttocksGirth: 99,
@@ -54,7 +54,7 @@ module.exports = {
       },
       {
         user_id: 2,
-        data: '2022-01-06 00:00:00.000 +0300',
+        data: '2022-01-06',
         currentWeight: 99,
         hipGirth: 54,
         buttocksGirth: 98,
@@ -64,7 +64,7 @@ module.exports = {
       },
       {
         user_id: 2,
-        data: '2022-01-07 00:00:00.000 +0300',
+        data: '2022-01-07',
         currentWeight: 98,
         hipGirth: 54,
         buttocksGirth: 98,
@@ -74,7 +74,7 @@ module.exports = {
       },
       {
         user_id: 2,
-        data: '2022-01-08 00:00:00.000 +0300',
+        data: '2022-01-08',
         currentWeight: 98,
         hipGirth: 53,
         buttocksGirth: 98,
@@ -84,17 +84,7 @@ module.exports = {
       },
       {
         user_id: 2,
-        data: '2022-01-09 00:00:00.000 +0300',
-        currentWeight: 98,
-        hipGirth: 53,
-        buttocksGirth: 97,
-        waistGirth: 87,
-        breastGirth: 96,
-        bicepsGirth: 35,
-      },
-      {
-        user_id: 2,
-        data: '2022-01-09 00:00:00.000 +0300',
+        data: '2022-01-09',
         currentWeight: 97,
         hipGirth: 53,
         buttocksGirth: 97,
@@ -104,7 +94,7 @@ module.exports = {
       },
       {
         user_id: 2,
-        data: '2022-01-10 00:00:00.000 +0300',
+        data: '2022-01-10',
         currentWeight: 97,
         hipGirth: 52,
         buttocksGirth: 97,
@@ -114,7 +104,7 @@ module.exports = {
       },
       {
         user_id: 2,
-        data: '2022-01-11 00:00:00.000 +0300',
+        data: '2022-01-11',
         currentWeight: 96,
         hipGirth: 52,
         buttocksGirth: 96,
@@ -124,7 +114,7 @@ module.exports = {
       },
       {
         user_id: 2,
-        data: '2022-01-12 00:00:00.000 +0300',
+        data: '2022-01-12',
         currentWeight: 96,
         hipGirth: 52,
         buttocksGirth: 96,
@@ -134,7 +124,7 @@ module.exports = {
       },
       {
         user_id: 2,
-        data: '2022-01-13 00:00:00.000 +0300',
+        data: '2022-01-13',
         currentWeight: 96,
         hipGirth: 51,
         buttocksGirth: 96,
@@ -144,7 +134,7 @@ module.exports = {
       },
       {
         user_id: 2,
-        data: '2022-01-14 00:00:00.000 +0300',
+        data: '2022-01-14',
         currentWeight: 95,
         hipGirth: 51,
         buttocksGirth: 95,
@@ -154,7 +144,7 @@ module.exports = {
       },
       {
         user_id: 3,
-        data: '2022-01-01 00:00:00.000 +0300',
+        data: '2022-01-01',
         currentWeight: 45,
         hipGirth: 25,
         buttocksGirth: 60,
@@ -164,7 +154,7 @@ module.exports = {
       },
       {
         user_id: 3,
-        data: '2022-01-02 00:00:00.000 +0300',
+        data: '2022-01-02',
         currentWeight: 45,
         hipGirth: 25,
         buttocksGirth: 60,
@@ -174,7 +164,7 @@ module.exports = {
       },
       {
         user_id: 3,
-        data: '2022-01-03 00:00:00.000 +0300',
+        data: '2022-01-03',
         currentWeight: 45,
         hipGirth: 25,
         buttocksGirth: 60,
@@ -184,7 +174,7 @@ module.exports = {
       },
       {
         user_id: 3,
-        data: '2022-01-04 00:00:00.000 +0300',
+        data: '2022-01-04',
         currentWeight: 46,
         hipGirth: 26,
         buttocksGirth: 61,
@@ -194,7 +184,7 @@ module.exports = {
       },
       {
         user_id: 3,
-        data: '2022-01-05 00:00:00.000 +0300',
+        data: '2022-01-05',
         currentWeight: 46,
         hipGirth: 26,
         buttocksGirth: 61,
@@ -204,7 +194,7 @@ module.exports = {
       },
       {
         user_id: 3,
-        data: '2022-01-06 00:00:00.000 +0300',
+        data: '2022-01-06',
         currentWeight: 46,
         hipGirth: 26,
         buttocksGirth: 61,
@@ -214,7 +204,7 @@ module.exports = {
       },
       {
         user_id: 3,
-        data: '2022-01-07 00:00:00.000 +0300',
+        data: '2022-01-07',
         currentWeight: 47,
         hipGirth: 27,
         buttocksGirth: 62,
@@ -224,7 +214,7 @@ module.exports = {
       },
       {
         user_id: 3,
-        data: '2022-01-08 00:00:00.000 +0300',
+        data: '2022-01-08',
         currentWeight: 47,
         hipGirth: 27,
         buttocksGirth: 62,
@@ -234,17 +224,7 @@ module.exports = {
       },
       {
         user_id: 3,
-        data: '2022-01-09 00:00:00.000 +0300',
-        currentWeight: 47,
-        hipGirth: 27,
-        buttocksGirth: 62,
-        waistGirth: 52,
-        breastGirth: 67,
-        bicepsGirth: 21,
-      },
-      {
-        user_id: 3,
-        data: '2022-01-09 00:00:00.000 +0300',
+        data: '2022-01-09',
         currentWeight: 47,
         hipGirth: 28,
         buttocksGirth: 63,
@@ -254,7 +234,7 @@ module.exports = {
       },
       {
         user_id: 3,
-        data: '2022-01-10 00:00:00.000 +0300',
+        data: '2022-01-10',
         currentWeight: 48,
         hipGirth: 28,
         buttocksGirth: 63,
@@ -264,7 +244,7 @@ module.exports = {
       },
       {
         user_id: 3,
-        data: '2022-01-11 00:00:00.000 +0300',
+        data: '2022-01-11',
         currentWeight: 48,
         hipGirth: 28,
         buttocksGirth: 63,
@@ -274,7 +254,7 @@ module.exports = {
       },
       {
         user_id: 3,
-        data: '2022-01-12 00:00:00.000 +0300',
+        data: '2022-01-12',
         currentWeight: 48,
         hipGirth: 29,
         buttocksGirth: 64,
@@ -284,7 +264,7 @@ module.exports = {
       },
       {
         user_id: 3,
-        data: '2022-01-13 00:00:00.000 +0300',
+        data: '2022-01-13',
         currentWeight: 49,
         hipGirth: 29,
         buttocksGirth: 64,
@@ -294,7 +274,7 @@ module.exports = {
       },
       {
         user_id: 3,
-        data: '2022-01-14 00:00:00.000 +0300',
+        data: '2022-01-14',
         currentWeight: 49,
         hipGirth: 29,
         buttocksGirth: 65,

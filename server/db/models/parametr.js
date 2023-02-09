@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Parametr.init({
     user_id: DataTypes.INTEGER,
-    data: DataTypes.DATE,
+    data: DataTypes.DATEONLY,
     currentWeight: DataTypes.INTEGER,
     hipGirth: DataTypes.INTEGER,
     buttocksGirth: DataTypes.INTEGER,

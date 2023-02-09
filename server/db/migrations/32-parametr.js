@@ -16,7 +16,7 @@ module.exports = {
         },
       },
       data: {
-        type: Sequelize.DATE,
+        type: Sequelize.DATEONLY,
       },
       currentWeight: {
         type: Sequelize.INTEGER,
