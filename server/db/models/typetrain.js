@@ -4,8 +4,8 @@ const {
 
 module.exports = (sequelize, DataTypes) => {
   class TypeTrain extends Model {
-    static associate({ Trainings }) {
-      this.hasMany(Trainings, {
+    static associate({ Training }) {
+      this.hasMany(Training, {
         foreignKey: 'type_id',
       });
     }
