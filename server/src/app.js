@@ -21,6 +21,7 @@ const loginRoutes = require('./routes/loginRoutes');
 const logoutRoutes = require('./routes/logoutRoutes');
 const gameRoutes = require('./routes/gameRoutes');
 const answerRoutes = require('./routes/answerRoutes');
+const cabinetRoutes = require('./routes/cabinetRoutes');
 
 app.use(cors({
   origin: ['http://localhost:3000'], // !!! Список адресов, с которых разрешены запросы на данный сервер
@@ -58,6 +59,7 @@ app.use('/login', loginRoutes);
 app.use('/logout', logoutRoutes);
 app.use('/game', gameRoutes);
 app.use('/answer', answerRoutes);
+app.use('/cabinet', cabinetRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server started at PORT: ${PORT}`);
