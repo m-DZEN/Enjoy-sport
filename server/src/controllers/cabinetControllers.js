@@ -5,7 +5,7 @@ const setUserData = async (req, res) => {
   console.log('req.body ===>', req.body);
   try {
     const userData = await User.findAll({ where: { id: user.userId }, raw: true });
-    console.log('userData---------->', userData);
+    console.log('userData----------cabContr>', userData);
     res.json(userData[0]);
   } catch (error) {
     console.log(error);
@@ -18,7 +18,7 @@ const createUserData = async (req, res) => {
   const { inputs } = req.body;
   const { user } = req.body;
   console.log('---------->', user.userId);
-  console.log('inputs---------->', inputs);
+  console.log('inputs---------->createUserData', inputs);
 
   try {
     const userData = await User.update({
@@ -26,9 +26,9 @@ const createUserData = async (req, res) => {
       height: inputs.height,
       weight: inputs.weight,
       gender: inputs.gender,
-      body_type: inputs.bodyType,
+      body_type: inputs.body_type,
       type_program: inputs.typeProgram,
-      final_weight: inputs.finishWeight,
+      final_weight: inputs.final_weight,
       ready: inputs.ready,
       notready: inputs.notready,
       contra: inputs.contra,
