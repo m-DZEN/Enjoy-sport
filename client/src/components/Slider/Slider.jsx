@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/alt-text */
 import React, { useState, useEffect } from 'react';
 
 import slide1 from './img/1.jpg';
@@ -10,12 +9,11 @@ import './Slider.css';
 
 export default function Slider() {
   const img = [
-    // eslint-disable-next-line jsx-a11y/alt-text
-    <img key={slide1} src={slide1} />,
-    <img key={slide2} src={slide2} />,
-    <img key={slide3} src={slide3} />,
-    <img key={slide4} src={slide4} />,
-    <img key={slide5} src={slide5} />,
+    <img key={slide1} src={slide1} alt="slide1" />,
+    <img key={slide2} src={slide2} alt="slide2" />,
+    <img key={slide3} src={slide3} alt="slide3" />,
+    <img key={slide4} src={slide4} alt="slide4" />,
+    <img key={slide5} src={slide5} alt="slide5" />,
   ];
   // Индекс текущего слайда
   const [activeIndex, setActiveIndex] = useState(0);
@@ -23,8 +21,7 @@ export default function Slider() {
   // Хук Effect
   useEffect(() => {
     // Запускаем интервал
-    // eslint-disable-next-line no-unused-vars
-    const interval = setInterval(() => {
+    const intervalId = setInterval(() => {
       // Меняем состояние
       setActiveIndex((current) => {
         // Вычисляем индекс следующего слайда, который должен вывестись
@@ -34,7 +31,7 @@ export default function Slider() {
       });
     }, 3000);
     // Выключаем интервал
-    return () => clearInterval();
+    return () => clearInterval(intervalId);
   }, []);
 
   // Вычисляем индекс предыдущего слайда

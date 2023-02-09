@@ -1,16 +1,15 @@
-/* eslint-disable no-console */
-/* eslint-disable func-names */
 import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+
 import { setUserInfoAction, clearUserInfoAction } from './redux/reducers/userReducer';
+import AuthContextProvider from './context/Auth.context';
 
 import Navigation from './components/Navigation/Navigation';
 import Statistic from './components/Statistic/Statistic';
 import Cabinet from './components/Cabinet/Cabinet';
 import Training from './components/Training/Training';
 import Settings from './components/Settings/Settings';
-import AuthContextProvider from './context/Auth.context';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import AuthForm from './components/AuthForm/AuthForm';
 import LoginForm from './components/LoginForm/LoginForm';
@@ -51,30 +50,30 @@ function App() {
         console.log('ERROR:', error.message);
       }
     }());
-  // тут был пустой массив но эслинт ругался
-  }, [dispatch]);
+  }, []);
 
   return (
-    // eslint-disable-next-line react/jsx-filename-extension
     <>
       <div className="App">
+
         {isLoading && (
         <h3>Loading...</h3>
         )}
+
         {!isLoading && (
         <Routes>
+
           <Route path="/" element={<Navigation />}>
             <Route element={<ProtectedRoute user={user.userLogin} redirectPath="auth/login" />}>
-              <Route path="" element={<Training />} />
-              <Route path="/nutrition">
-                <Route index element={<TrainingNutrition />} />
-              </Route>
+              <Route path="/" element={<Training />} />
+              <Route path="/nutrition" element={<TrainingNutrition />} />
               <Route path="/workout" element={<TrainingWorkout />} />
               <Route path="/statistic" element={<Statistic />} />
               <Route path="/cabinet" element={<Cabinet />} />
               <Route path="/settings" element={<Settings />} />
             </Route>
           </Route>
+
           <Route element={<ProtectedRoute user={!user.userLogin} redirectPath="/" />}>
             <Route
               path="auth"
@@ -83,18 +82,19 @@ function App() {
                   <AuthForm />
                   <Slider />
                 </AuthContextProvider>
-                          )}
+              )}
             >
               <Route path="login" element={<LoginForm />} />
               <Route path="register" element={<RegisterForm />} />
-
             </Route>
-
           </Route>
+
           <Route path="*" element={<NotFoundPage />} />
+
         </Routes>
         )}
       </div>
+
       <footer>
         <p className="footerinfo">информация о тренере</p>
         <p className="footerinfo">информация о разработчиках</p>

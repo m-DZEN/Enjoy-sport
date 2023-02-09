@@ -1,6 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable react/jsx-filename-extension */
-/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';

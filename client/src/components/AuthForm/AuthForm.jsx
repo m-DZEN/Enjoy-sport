@@ -6,7 +6,6 @@ export default function AuthForm() {
 
   useEffect(() => {
     navigate('/auth/login');
-  // тут тоже был пустой массив но ругался эслинт
   }, []);
 
   return (

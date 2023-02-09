@@ -1,14 +1,8 @@
-
-/* eslint-disable react/button-has-type */
-/* eslint-disable jsx-a11y/label-has-associated-control */
-
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
-import { useSelector } from "react-redux";
-import ButtonChatAndMotivation from "../ButtonChatAndMotivation/ButtonChatAndMotivation";
-import "./Cabinet.css";
-
+import React, { useState } from 'react';
+// import { useEffect } from "react";
+import { useSelector } from 'react-redux';
+import ButtonChatAndMotivation from '../ButtonChatAndMotivation/ButtonChatAndMotivation';
+import './Cabinet.css';
 
 export default function Cabinet() {
   const user = useSelector((store) => store.userStore);
@@ -24,18 +18,18 @@ export default function Cabinet() {
   //     credentials: "include",
   //   }))()
   // }, [])
-  
+
   const initState = {
-    burthday: "",
-    height: "",
-    weight: "",
-    gender: "female",
-    bodyType: "full",
-    typeProgram: "loseWeight",
-    finishWeight: "",
-    ready: "db",
-    notReady: "db",
-    contra: "db",
+    burthday: '',
+    height: '',
+    weight: '',
+    gender: 'female',
+    bodyType: 'full',
+    typeProgram: 'loseWeight',
+    finishWeight: '',
+    ready: 'db',
+    notReady: 'db',
+    contra: 'db',
   };
 
   const [inputs, setInputs] = useState(initState);
@@ -47,16 +41,16 @@ export default function Cabinet() {
 
   const createUserData = async (e) => {
     e.preventDefault();
-    const res = await fetch("http://localhost:3001/cabinet", {
-      method: "PUT",
+    const res = await fetch('http://localhost:3001/cabinet', {
+      method: 'PUT',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({ inputs, user }),
-      credentials: "include",
+      credentials: 'include',
     });
     const data = await res.json();
-    console.log("data", data);
+    console.log('data', data);
     setInputs(initState);
   };
   return (
@@ -66,7 +60,7 @@ export default function Cabinet() {
       </div>
       <div className="inputDiv">
         <div>
-          <h2 style={{ color: "blue" }}>введите свои данные</h2>
+          <h2 style={{ color: 'blue' }}>введите свои данные</h2>
         </div>
         <form onSubmit={createUserData}>
           <div className="inputDiv">
@@ -141,7 +135,7 @@ export default function Cabinet() {
           </div>
           <div className="mainTrain">
             <div>
-              <h3 style={{ color: "blue" }}>выберите программу тренировок</h3>
+              <h3 style={{ color: 'blue' }}>выберите программу тренировок</h3>
             </div>
             <div>
               <div>
@@ -174,7 +168,7 @@ export default function Cabinet() {
             </div>
           </div>
 
-          <h3 style={{ color: "blue" }}>Список продуктов</h3>
+          <h3 style={{ color: 'blue' }}>Список продуктов</h3>
           <div className="products">
             <div className="ol">
               <p>готов отказаться</p>
@@ -183,7 +177,7 @@ export default function Cabinet() {
                 required
                 onChange={formHandler}
                 name="ready"
-              ></textarea>
+              />
             </div>
             <div className="ol">
               <p>не готов отказаться</p>
@@ -192,7 +186,7 @@ export default function Cabinet() {
                 required
                 onChange={formHandler}
                 name="notReady"
-              ></textarea>
+              />
             </div>
           </div>
           <div>
@@ -203,17 +197,18 @@ export default function Cabinet() {
                 required
                 onChange={formHandler}
                 name="contra"
-              ></textarea>{" "}
+              />
+              {' '}
             </div>
           </div>
           <div>
-            <button type="submit" style={{ color: "red" }}>
+            <button type="submit" style={{ color: 'red' }}>
               Сохранить
             </button>
           </div>
         </form>
         <div>
-        <ButtonChatAndMotivation />
+          <ButtonChatAndMotivation />
         </div>
       </div>
       <ButtonChatAndMotivation />

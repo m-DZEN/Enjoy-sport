@@ -1,5 +1,3 @@
-/* eslint-disable react/button-has-type */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 
 export default function Settings() {
@@ -35,7 +33,7 @@ export default function Settings() {
         </div>
       </div>
       <div>
-        <button>SAVE</button>
+        <button type="button">SAVE</button>
       </div>
     </div>
   );

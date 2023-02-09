@@ -1,7 +1,3 @@
-/* eslint-disable func-names */
-/* eslint-disable no-console */
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable react/button-has-type */
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
@@ -37,23 +33,23 @@ export default function Navigation() {
   };
 
   return (
-    <div>
-      <Link to="/">
-        <button>My Day</button>
-      </Link>
-      <Link to="/statistic">
-        <button>Statistic</button>
-      </Link>
-      <Link to="/cabinet">
-        <button>Cabinet</button>
-      </Link>
-      <Link to="/settings">
-        <button>Setting</button>
-      </Link>
-      <Link>
+    <>
+      <div>
+        <Link to="/">
+          <button type="button">My Day</button>
+        </Link>
+        <Link to="/statistic">
+          <button type="button">Statistic</button>
+        </Link>
+        <Link to="/cabinet">
+          <button type="button">Cabinet</button>
+        </Link>
+        <Link to="/settings">
+          <button type="button">Setting</button>
+        </Link>
         <button type="button" onClick={handleLogout}>Logout</button>
-      </Link>
+      </div>
       <Outlet />
-    </div>
+    </>
   );
 }

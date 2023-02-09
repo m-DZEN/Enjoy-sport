@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-indent */
-/* eslint-disable react/self-closing-comp */
 import React from 'react';
 import ButtonChatAndMotivation from '../ButtonChatAndMotivation/ButtonChatAndMotivation';
 import Grafics from '../Graphics/Graphics';
@@ -20,7 +18,7 @@ export default function Statistic() {
         <div className="changeVol">
           <div>изменение веса </div>
           <div>
-            <input></input>
+            <input />
           </div>
         </div>
         <div>
@@ -30,36 +28,36 @@ export default function Statistic() {
           <div className="changeVol">
             <div>бедра </div>
             <div>
-              <input></input>
+              <input />
             </div>
           </div>
           <div className="changeVol">
             <div>ягодицы </div>
             <div>
-              <input></input>
+              <input />
             </div>
           </div>
           <div className="changeVol">
             <div>талия </div>
             <div>
-              <input></input>
+              <input />
             </div>
           </div>
           <div className="changeVol">
             <div>грудь </div>
             <div>
-              <input></input>
+              <input />
             </div>
           </div>
           <div className="changeVol">
             <div>бицепс </div>
             <div>
-              <input></input>
+              <input />
             </div>
           </div>
         </div>
       </div>
-    <Grafics />
+      <Grafics />
       <ButtonChatAndMotivation />
     </>
   );
