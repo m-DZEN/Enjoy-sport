@@ -4,7 +4,7 @@ import { Link, Outlet, useNavigate } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { clearUserInfoAction } from '../../redux/reducers/userReducer';
 
@@ -41,23 +41,24 @@ export default function Navigation() {
 
       <Navbar bg="light" expand="lg">
         <Container>
-          <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Brand>
+            <Link to="/">Enjoy Sport</Link>
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="dark-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#link">Link</Nav.Link>
-              <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                  Separated link
-                </NavDropdown.Item>
-              </NavDropdown>
+              <Nav.Link>
+                <Link to="/statistic">Статистика</Link>
+              </Nav.Link>
+              <Nav.Link>
+                <Link to="/cabinet">Личный кабинет</Link>
+              </Nav.Link>
+              <Nav.Link>
+                <Link to="/settings">Настройки</Link>
+              </Nav.Link>
+              <Nav.Link>
+                <Link to="/wschat">Чат с тренером</Link>
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -65,6 +66,9 @@ export default function Navigation() {
 
       <Link to="/">
         <button type="button">My Day</button>
+      </Link>
+      <Link to="/wschat">
+        <button type="button">WSChat</button>
       </Link>
       <Link to="/statistic">
         <button type="button">Statistic</button>
@@ -74,9 +78,6 @@ export default function Navigation() {
       </Link>
       <Link to="/settings">
         <button type="button">Setting</button>
-      </Link>
-      <Link to="/wschat">
-        <button type="button">WSChat</button>
       </Link>
       <button type="button" onClick={handleLogout}>Logout</button>
       <Outlet />
