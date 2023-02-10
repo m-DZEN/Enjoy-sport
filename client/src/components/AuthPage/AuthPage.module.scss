@@ -3,6 +3,9 @@
 $color1: #360000;
 $color2: #ee7272;
 $color3: #5a0004;
+$color4: #ffb9b9;
+$color5: #a31919;
+
 $mainWidth: 350px;
 $mainHeight: 800px;
 
@@ -47,7 +50,7 @@ $mainHeight: 800px;
 .mainButton {
   width: 150px;
   height: 30px;
-  color: $color2;
+  color: $color4;
   font-size: 15px;
   font-weight: 700;
   font-family: 'Kurale', serif;
