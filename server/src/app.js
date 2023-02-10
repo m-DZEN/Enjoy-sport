@@ -51,6 +51,10 @@ const sessionConfig = {
 const sessionParser = session(sessionConfig);
 app.use(sessionParser);
 
+// app.get('/test', (req, res) => {
+//   res.redirect('https://zenquotes.io/api/random');
+// });
+
 app.use('/', indexRoutes);
 app.use('/register', registerRoutes);
 app.use('/login', loginRoutes);
