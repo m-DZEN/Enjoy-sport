@@ -1,3 +1,6 @@
 npx create-react-app .
 npm i react-router-dom
 npm i react-redux redux @reduxjs/toolkit
+npm i react-transition-group
+npm i react-icons
+npm i sass
