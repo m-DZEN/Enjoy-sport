@@ -10,7 +10,7 @@ caption {
 }
 
 table {
-
+ color: azure;
 }
 
 th {
@@ -28,7 +28,7 @@ thead {
 
 thead tr th {  
   color: red;
- border-bottom: 1px solid black;
+ border-bottom: 1px solid rgb(245, 245, 245);
 }
 
 tbody {
