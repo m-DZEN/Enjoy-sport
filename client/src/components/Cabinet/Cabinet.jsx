@@ -20,6 +20,7 @@ export default function Cabinet() {
   });
 
   useEffect(() => {
+    // eslint-disable-next-line func-names
     (async function () {
       // console.log('user.userId useEffect', user);
       const res = await fetch('http://localhost:3001/cabinet', {

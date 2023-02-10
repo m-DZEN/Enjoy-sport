@@ -5,12 +5,14 @@ export default function Settings() {
   const user = useSelector((store) => store.userStore);
 
   const [inputs, setInputs] = useState({
+    name: ' ',
     login: ' ',
-    password: ' ',
+    // password: ' ',
     email: ' ',
   });
 
   useEffect(() => {
+    // eslint-disable-next-line func-names
     (async function () {
       // console.log('user.userId useEffect', user);
       const res = await fetch('http://localhost:3001/settings', {
@@ -22,12 +24,12 @@ export default function Settings() {
         credentials: 'include',
       });
       const data = await res.json();
-      // console.log('data==========>', data);
+      console.log('data==========>', data);
 
       setInputs((pre) => ({ ...pre, ...data }));
     }());
   }, []);
-  // console.log('inputs===>useEff', inputs);
+  console.log('inputs===>useEff', inputs);
 
   const formHandler = (e) => {
     // console.log(e.target.name, e.target.value);
@@ -56,6 +58,17 @@ export default function Settings() {
       </div>
       <form onSubmit={createUserData}>
         <div>
+          <div>
+            <label>
+              Имя
+              <input
+                value={inputs.name}
+                onChange={formHandler}
+                type="text"
+                name="name"
+              />
+            </label>
+          </div>
           <div>
             <label>
               Login
