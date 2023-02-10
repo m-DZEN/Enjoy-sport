@@ -1,7 +1,10 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
 import { clearUserInfoAction } from '../../redux/reducers/userReducer';
 
@@ -35,40 +38,47 @@ export default function Navigation() {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
-        <div className="container-fluid">
-          <a className="navbar-brand" href="#">Navbar</a>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon" />
-          </button>
-          <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div className="navbar-nav">
-              <a className="nav-link active" aria-current="page" href="#">Home</a>
-              <a className="nav-link" href="#">Features</a>
-              <a className="nav-link" href="#">Pricing</a>
-              <a className="nav-link disabled">Disabled</a>
-            </div>
-          </div>
-        </div>
-      </nav>
-      <div>
-        <Link to="/">
-          <button type="button">My Day</button>
-        </Link>
-        <Link to="/statistic">
-          <button type="button">Statistic</button>
-        </Link>
-        <Link to="/cabinet">
-          <button type="button">Cabinet</button>
-        </Link>
-        <Link to="/settings">
-          <button type="button">Setting</button>
-        </Link>
-        <Link to="/wschat">
-          <button type="button">WSChat</button>
-        </Link>
-        <button type="button" onClick={handleLogout}>Logout</button>
-      </div>
+
+      <Navbar bg="light" expand="lg">
+        <Container>
+          <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link href="#home">Home</Nav.Link>
+              <Nav.Link href="#link">Link</Nav.Link>
+              <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.2">
+                  Another action
+                </NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="#action/3.4">
+                  Separated link
+                </NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+
+      <Link to="/">
+        <button type="button">My Day</button>
+      </Link>
+      <Link to="/statistic">
+        <button type="button">Statistic</button>
+      </Link>
+      <Link to="/cabinet">
+        <button type="button">Cabinet</button>
+      </Link>
+      <Link to="/settings">
+        <button type="button">Setting</button>
+      </Link>
+      <Link to="/wschat">
+        <button type="button">WSChat</button>
+      </Link>
+      <button type="button" onClick={handleLogout}>Logout</button>
       <Outlet />
     </>
   );
