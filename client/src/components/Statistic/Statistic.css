@@ -2,7 +2,8 @@
   display: flex;
   justify-content:center;
   flex-wrap: wrap;
-flex-direction: row;
+ flex-direction: row;
+ color: white
 }
 
 .changeVol {
@@ -10,4 +11,8 @@ flex-direction: row;
   justify-content:center;
   flex-wrap: wrap;
 flex-direction: row;
+color: white
+}
+.changeParams {
+  color: white
 }

@@ -29,9 +29,9 @@ export default function Statistic() {
         credentials: 'include',
       });
       const data = await res.json();
-      // console.log('data==useEffect===stat', data);
+      console.log('data==useEffect===stat', data);
 
-      setInputs((pre) => ({ ...pre, ...data }));
+      setInputs((pre) => ({ ...pre, ...data[0] }));
     }());
   }, []);
 
@@ -52,8 +52,8 @@ export default function Statistic() {
       body: JSON.stringify({ inputs, user }),
       credentials: 'include',
     });
-    await res.json();
-    // console.log('data', data);
+    const data = await res.json();
+    console.log('dataStatistic', data);
     setInputs(inputs);
   };
 
@@ -69,7 +69,7 @@ export default function Statistic() {
         </div>
       </div>
       <form onSubmit={createUserData}>
-        <div>
+        <div className="changeParams">
           <div className="changeVol">
             <div>изменение веса </div>
             <div>
