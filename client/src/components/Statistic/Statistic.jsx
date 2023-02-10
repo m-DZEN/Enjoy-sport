@@ -17,6 +17,7 @@ export default function Statistic() {
   });
 
   useEffect(() => {
+    // eslint-disable-next-line func-names
     (async function () {
       // console.log('user.userId useEffect', user);
       const res = await fetch('http://localhost:3001/statistic', {

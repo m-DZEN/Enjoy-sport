@@ -16,6 +16,8 @@ module.exports = {
         },
       },
       data: {
+        defaultValue: Sequelize.fn('now'),
+        allowNull: false,
         type: Sequelize.DATEONLY,
       },
       currentWeight: {

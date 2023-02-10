@@ -9,7 +9,7 @@ const setUserSettings = async (req, res) => {
       {
         where: { id: user.userId },
         raw: true,
-        attributes: ['login', 'email'],
+        attributes: ['login', 'email', 'name'],
       },
     );
     // console.log('userData---------->', userData);
@@ -27,6 +27,7 @@ const createUserSettings = async (req, res) => {
     // const hashPassword = await bcrypt.hash(password, 9);
     const userData = await User.update({
       login: inputs.login,
+      name: inputs.name,
       email: inputs.email,
       // password: inputs.password,
     }, {
