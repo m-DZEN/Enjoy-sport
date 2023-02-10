@@ -27,47 +27,25 @@ export default function TrainingWorkout() {
       <div className="workout_container">
         <caption>{days[0].title}</caption>
         <div className="dailyTrain">
-          {dailyTrains.map((el) => (
-            <div className="dailyBox">
-              <div>
-                {' '}
-                {el.title}
-                {' '}
-              </div>
-              <div>
-                {' '}
-                Вес
-                {' '}
-                {el.weight}
-                {' '}
-                кг
-                {' '}
-              </div>
-              <div>
-                {' '}
-                Подходов
-                {' '}
-                {el.sets}
-                {' '}
-              </div>
-              <div>
-                {' '}
-                Повторений
-                {' '}
-                {el.rep}
-                {' '}
-              </div>
-              <div>
-                {' '}
-                Отдых
-                {' '}
-                {el.rest}
-                {' '}
-              </div>
-            </div>
-          ))}
+          <table>
+            <tr>
+              <th>Упражнение</th>
+              <th>Вес</th>
+              <th>Подходы</th>
+              <th>Повторения</th>
+              <th>Отдых</th>
+            </tr>
+            {dailyTrains.map((el) => (
+              <tr>
+                <td>{el.title}</td>
+                <td>{el.weight}</td>
+                <td>{el.sets}</td>
+                <td>{el.rep}</td>
+                <td>{el.rest}</td>
+              </tr>
+            ))}
+          </table>
         </div>
-
       </div>
       <button className="workout_btn" type="submit">Завершить</button>
 
