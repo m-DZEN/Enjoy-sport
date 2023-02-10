@@ -24,7 +24,7 @@ const loginRoutes = require('./routes/loginRoutes');
 const logoutRoutes = require('./routes/logoutRoutes');
 const cabinetRoutes = require('./routes/cabinetRoutes');
 const settingsRoutes = require('./routes/settingsRoutes');
-const statisticRoures = require('./routes/statisticRoures')
+const statisticRoures = require('./routes/statisticRoures');
 
 app.use(cors({
   origin: ['http://localhost:3000'], // !!! Список адресов, с которых разрешены запросы на данный сервер

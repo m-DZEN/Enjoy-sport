@@ -4,12 +4,13 @@ const setUserStatistic = async (req, res) => {
   const { user } = req.body;
   try {
     const userData = await Parametr.findAll({
-      limit: 1,
+      // limit: 1,
       where: { user_id: user.userId },
       order: [['createdAt', 'DESC']],
       raw: true,
     });
-    res.json(userData[0]);
+    console.log('++++++++++', userData);
+    res.json(userData);
   } catch (error) {
     console.log(error);
     res.sendStatus(400);
