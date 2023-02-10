@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React, { memo } from 'react';
 import {
   LineChart, // !!! Родительский элемент
@@ -108,10 +109,14 @@ const maxGirthY = ((Math.round(maxGirth / 5) * 5) + 10);
 const girthTickQuantity = ((maxGirthY - minGirthY) / 5) + 1;
 // console.log({ girthTickQuantity });
 
+const pageWidth = document.documentElement.scrollWidth;
+const winWidth = Math.floor(pageWidth * 0.8);
+console.log(winWidth);
+
 function BiaxialGraph() {
   return (
     <LineChart
-      width={600}
+      width={350}
       height={400}
       data={biaxialGraphData}
       margin={{

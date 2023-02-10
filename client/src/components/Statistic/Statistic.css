@@ -8,10 +8,12 @@
 
 .changeVol {
   display: flex;
-  justify-content:center;
-  flex-wrap: wrap;
-flex-direction: row;
-color: white
+  
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  color: white;
+  margin: 2px 40px 10px 40px;
 }
 .changeParams {
   color: white

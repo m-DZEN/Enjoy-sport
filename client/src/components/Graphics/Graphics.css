@@ -1,7 +1,12 @@
 .Graph {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  width: 700px;
+  width: 90vw;
   margin: auto;
+  display: flex;
+
 }
 
 .buttonBlock {
@@ -12,10 +17,13 @@
   height: 30px;
   padding: 0 20px;
   margin: 0 5px;
+  
 }
 
 .graphBlock {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #ffffff;
+  border-radius: 20px;
 }

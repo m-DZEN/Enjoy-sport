@@ -61,17 +61,19 @@ export default function Statistic() {
 
     <>
       <div className="daysOfTrenings">
+        {' '}
         <div>
-          <p>дней в тренировках</p>
+          <p>Дней в тренировках</p>
         </div>
         <div>
+          {' '}
           <p>20</p>
         </div>
       </div>
       <form onSubmit={createUserData}>
         <div className="changeParams">
           <div className="changeVol">
-            <div>изменение веса </div>
+            <div>Текущий вес </div>
             <div>
               <input
                 value={inputs.currentWeight}
@@ -86,7 +88,7 @@ export default function Statistic() {
           </div>
           <div>
             <div className="changeVol">
-              <div>бедра </div>
+              <div>Бёдра </div>
               <div>
                 <input
                   value={inputs.hipGirth}
@@ -97,7 +99,7 @@ export default function Statistic() {
               </div>
             </div>
             <div className="changeVol">
-              <div>ягодицы </div>
+              <div>Ягодицы </div>
               <div>
                 <input
                   value={inputs.buttocksGirth}
@@ -108,7 +110,7 @@ export default function Statistic() {
               </div>
             </div>
             <div className="changeVol">
-              <div>талия </div>
+              <div>Талия </div>
               <div>
                 <input
                   value={inputs.waistGirth}
@@ -119,7 +121,7 @@ export default function Statistic() {
               </div>
             </div>
             <div className="changeVol">
-              <div>грудь </div>
+              <div>Грудь </div>
               <div>
                 <input
                   value={inputs.breastGirth}
@@ -130,7 +132,7 @@ export default function Statistic() {
               </div>
             </div>
             <div className="changeVol">
-              <div>бицепс </div>
+              <div>Бицепс </div>
               <div>
                 <input
                   value={inputs.bicepsGirth}

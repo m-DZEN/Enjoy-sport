@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React, { memo } from 'react';
 import {
   BarChart, // !!! Родительский элемент
@@ -61,11 +62,14 @@ const maxPercentY = ((Math.round(maxPercent / 2) * 2) + 2) % 4 === 0
 
 const percentTickQuantity = ((maxPercentY - minPercentY) / 2) + 1;
 // console.log({ percentTickQuantity });
+const pageWidth = document.documentElement.scrollWidth;
+const winWidth = Math.floor(pageWidth * 0.8);
+console.log(winWidth);
 
 function Diagram() {
   return (
     <BarChart
-      width={550}
+      width={350}
       height={350}
       data={diagramData}
       barCategoryGap="15%"
