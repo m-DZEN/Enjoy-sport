@@ -14,6 +14,8 @@ module.exports = {
           model: 'Users',
           key: 'id',
         },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
       },
       data: {
         defaultValue: Sequelize.fn('now'),

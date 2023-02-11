@@ -25,10 +25,12 @@ footer{
   align-items: center;
   justify-content: center;
   position:absolute;
-  background-color: aqua;
+  background-color: rgb(33, 37, 41); 
+  color:white;
   bottom: 0px;
   height: 8vh;
   width: 100%;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .footerinfo {

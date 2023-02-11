@@ -1,4 +1,5 @@
 const router = require('express').Router();
-const { setUserList } = require('../controllers/adminListControllers');
+const { setUserList, deleteUser } = require('../controllers/adminListControllers');
 
 module.exports = router.get('/', setUserList);
+module.exports = router.delete('/', deleteUser);
