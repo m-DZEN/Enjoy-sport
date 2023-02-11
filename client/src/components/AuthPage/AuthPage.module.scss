@@ -1,13 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Kurale&display=swap');
-
-$color1: #360000;
-$color2: #ee7272;
-$color3: #5a0004;
-$color4: #ffb9b9;
-$color5: #a31919;
-
-$mainWidth: 350px;
-$mainHeight: 800px;
+@import "AuthStyles.scss";
 
 .main {
   width: $mainWidth;
@@ -25,10 +16,10 @@ $mainHeight: 800px;
 .mainContent {
   width: $mainWidth - 30px;
   height: $mainHeight * 0.75;
-  border: 3px solid $color3;
+  border: 3px solid $color6;
   border-radius: 25px;
   margin-bottom: 5px;
-  box-shadow: inset 0px 0px 70px $color3, 0px 0px 30px $color3;
+  box-shadow: inset 0px 0px 70px $color6, 0px 0px 30px $color6;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,37 +39,18 @@ $mainHeight: 800px;
 }
 
 .mainButton {
-  width: 150px;
-  height: 30px;
-  color: $color4;
-  font-size: 15px;
-  font-weight: 700;
-  font-family: 'Kurale', serif;
-  background: transparent;
-  border: 2px solid $color2;
-  border-radius: 10px;
+  @extend %myButtonStyle;
   margin: 5px 0;
-  padding: 0;
-  cursor: pointer;
-
-  &:hover {
-    box-shadow: 0px 0px 7px $color2, inset 0px 0px 10px $color2;
-  }
-
-  &:active {
-    box-shadow: 0px 0px 7px $color2, inset 0px 0px 10px $color2;
-    transform: scale(0.9);
-    outline-offset: none;
-  }
+  width: 150px;
 }
 
 .mainLogo {
   width: $mainWidth - 10px;
   height: 50px;
+  color: $color4;
   text-align: center;
-  font-family: 'Cinzel', serif;
-  color: $color2;
-  text-shadow: 0 0 10px $color2;
+  font-family: $appLogoFont;
+  text-shadow: 0 0 10px $color4;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -91,7 +63,7 @@ $mainHeight: 800px;
 
   &SmallText {
     font-size: 28px;
-    text-shadow: 0 0 10px $color2;
+    text-shadow: 0 0 10px $color4;
     padding-left: 10px;
   }
 
@@ -105,7 +77,7 @@ $mainHeight: 800px;
   }
 
   &Link {
-    color: $color2;
+    color: $color4;
     height: 40px;
     font-size: 20px;
     border-radius: 10px;
@@ -121,8 +93,8 @@ $mainHeight: 800px;
     }
 
     &:hover {
-      background-color: $color3;
-      box-shadow: 0px 0px 15px $color3, inset 0px 0px 15px $color1;
+      background-color: $color6;
+      box-shadow: 0px 0px 15px $color6, inset 0px 0px 15px $color1;
     }
 
     &:hover &Instagram {

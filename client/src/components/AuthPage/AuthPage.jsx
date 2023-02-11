@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
 import { CiDumbbell as Dumbbell } from 'react-icons/ci';
 import { SiInstagram as Instagram } from 'react-icons/si';
-import RegisterForm from './RegisterForm/RegisterForm';
-import LoginForm from './LoginForm/LoginForm';
+import RegisterForm from './AuthForms/RegisterForm';
+import LoginForm from './AuthForms/LoginForm';
 
 import styles from './AuthPage.module.scss';
 
@@ -15,7 +15,7 @@ const photos = [photo1, photo2, photo3];
 
 export default function AuthPage() {
   const [photoIndex, setPhotoIndex] = useState(0);
-  const [formVisible, setFormVisible] = useState(false);
+  const [formVisible, setFormVisible] = useState(true);
   const [isAlreadyRegistered, setIsAlreadyRegistered] = useState(true);
 
   useEffect(() => {

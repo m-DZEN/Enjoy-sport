@@ -1,5 +1,7 @@
 import React from 'react';
-import styles from './LoginForm.module.scss';
+import styles from './AuthForms.module.scss';
+
+import backImage1 from '../../../images/auth-backimage-001.svg';
 
 export default function LoginForm({ setIsAlreadyRegistered }) {
   return (
@@ -36,7 +38,17 @@ export default function LoginForm({ setIsAlreadyRegistered }) {
         </button>
       </form>
 
+      <div className={styles.errorBlock}>
+        {/* <p>Пользователя с указанным логином</p> */}
+        {/* <p>не существует!</p> */}
+        {/* <p>Введён неверный пароль!</p> */}
+        <p>Ошибка на сервере...</p>
+        <p>Пожалуйста, повторите попытку!</p>
+      </div>
+
       <div className={styles.fillBlock} />
+
+      <img src={backImage1} alt="backimage" style={{ height: '280px' }} />
 
       <button
         className={styles.formFutterButton}

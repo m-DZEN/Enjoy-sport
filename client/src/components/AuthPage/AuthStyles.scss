@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Kurale&display=swap');
+
+$appLogoFont: 'Cinzel', serif;
+$ordinaryFont: 'Kurale', serif;
+
+$color1: #360000;
+$color2: #6c0202;
+$color3: #a31919;
+$color4: #ee7272;
+$color5: #ffb9b9;
+$color6: #5a0004;
+$color7: rgba(255, 255, 255, 0.1);
+
+$mainWidth: 350px;
+$mainHeight: 800px;
+
+%myButtonStyle {
+  height: 30px;
+  color: $color5;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: $ordinaryFont;
+  background-color: $color7;
+  border: 2px solid $color4;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+
+  &:hover {
+    box-shadow: 0px 0px 5px $color5, inset 0px 0px 5px $color5;
+  }
+
+  &:active {
+    box-shadow: 0px 0px 5px $color5, inset 0px 0px 5px $color5;
+    transform: scale(0.9);
+  }
+}

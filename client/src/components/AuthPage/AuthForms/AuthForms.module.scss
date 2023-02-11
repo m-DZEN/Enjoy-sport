@@ -1,16 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Kurale&display=swap');
-
-$color1: #360000;
-$color2: #ee7272;
-$color3: #5a0004;
-$color4: #ffb9b9;
-$color5: #a31919;
+@import "../AuthStyles.scss";
 
 .form {
   width: 90%;
   height: 95%;
   font-family: 'Kurale', serif;
-  // border: 1px solid white;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,7 +12,7 @@ $color5: #a31919;
   &Logo {
     margin: 0 0 5px 0;
     padding: 0;
-    color: $color4;
+    color: $color5;
     font-size: 30px;
   }
 
@@ -33,17 +26,17 @@ $color5: #a31919;
 }
 
 .formBlockInput {
-  color: $color4;
+  color: $color5;
   width: 85%;
   margin: 5px 0;
   height: calc(30px - 4px);
-  border: 2px solid $color2;
+  border: 2px solid $color4;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.1);
   padding: 0 10px;
 
   &::placeholder {
-    color: $color2;
+    color: $color4;
     opacity: 0.7;
   }
 
@@ -51,29 +44,21 @@ $color5: #a31919;
   &:active {
     outline: 0;
     outline-offset: 0;
-    box-shadow: 0 0 7px $color4;
+    box-shadow: 0 0 7px $color5;
   }
 }
 
 .formBlockButton {
-  height: 30px;
-  color: $color4;
-  font-size: 15px;
-  font-weight: 700;
-  font-family: 'Kurale', serif;
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 2px solid $color2;
-  border-radius: 10px;
+  @extend %myButtonStyle;
+  padding: 0 20px;
   margin: 10px 0;
-  padding: 0 10px;
-  cursor: pointer;
 
   &:hover {
-    box-shadow: 0px 0px 5px $color2, inset 0px 0px 5px $color2;
+    box-shadow: 0px 0px 5px $color4, inset 0px 0px 5px $color4;
   }
 
   &:active {
-    box-shadow: 0px 0px 7px $color2, inset 0px 0px 10px $color2;
+    box-shadow: 0px 0px 5px $color4, inset 0px 0px 5px $color4;
     transform: scale(0.9);
   }
 }
@@ -84,13 +69,13 @@ $color5: #a31919;
 
 .formFutterButton {
   height: 30px;
-  color: $color4;
+  color: $color5;
   font-size: 15px;
   font-weight: 500;
   font-family: 'Kurale', serif;
   background: transparent;
   border: none;
-  margin-bottom: 5px;
+  margin: 15px 0 10px 0;
   cursor: pointer;
 
   &:hover {
@@ -100,5 +85,21 @@ $color5: #a31919;
   &:active {
     font-weight: 700;
     transform: scale(0.9);
+  }
+}
+
+.errorBlock {
+  height: 50px;
+  color: $color5;
+  font-size: 15px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+
+  > p {
+    padding: 0;
+    margin: 0;
+    line-height: 1.2em;
   }
 }

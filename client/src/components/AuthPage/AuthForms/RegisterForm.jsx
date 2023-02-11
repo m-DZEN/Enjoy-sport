@@ -1,5 +1,7 @@
 import React from 'react';
-import styles from './RegisterForm.module.scss';
+import styles from './AuthForms.module.scss';
+
+import backImage2 from '../../../images/auth-backimage-002.svg';
 
 export default function RegisterForm({ setIsAlreadyRegistered }) {
   return (
@@ -46,7 +48,18 @@ export default function RegisterForm({ setIsAlreadyRegistered }) {
         </button>
       </form>
 
+      <div className={styles.errorBlock}>
+        {/* <p>Пользователь с указанным email</p> */}
+        {/* <p>Пользователь с указанным логином</p> */}
+        {/* <p>уже существует!</p> */}
+        {/* <p>Введённые пароли не совпадают!</p> */}
+        <p>Ошибка на сервере...</p>
+        <p>Пожалуйста, повторите попытку!</p>
+      </div>
+
       <div className={styles.fillBlock} />
+
+      <img src={backImage2} alt="backimage" style={{ height: '200px' }} />
 
       <button
         className={styles.formFutterButton}
