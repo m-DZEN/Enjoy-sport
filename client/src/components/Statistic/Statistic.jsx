@@ -60,22 +60,30 @@ export default function Statistic() {
   return (
 
     <>
-      <div className="daysOfTrenings">
+      <div className="changeParams">
         {' '}
         <div>
+          {' '}
           <p>Дней в тренировках</p>
+          {' '}
         </div>
         <div>
           {' '}
           <p>20</p>
+          {' '}
         </div>
       </div>
       <form onSubmit={createUserData}>
         <div className="changeParams">
           <div className="changeVol">
-            <div>Текущий вес </div>
+            <div className="changeVol">
+              Текущий вес
+              {' '}
+
+            </div>
             <div>
               <input
+                className="value"
                 value={inputs.currentWeight}
                 onChange={formHandler}
                 type="text"
@@ -86,11 +94,12 @@ export default function Statistic() {
           <div>
             <h4>Изменение объемов</h4>
           </div>
-          <div>
+          <div className="inputform">
             <div className="changeVol">
               <div>Бёдра </div>
               <div>
                 <input
+                  className="value"
                   value={inputs.hipGirth}
                   onChange={formHandler}
                   type="text"
@@ -100,8 +109,9 @@ export default function Statistic() {
             </div>
             <div className="changeVol">
               <div>Ягодицы </div>
-              <div>
+              <div className="value">
                 <input
+                  className="value"
                   value={inputs.buttocksGirth}
                   onChange={formHandler}
                   type="text"
@@ -111,8 +121,9 @@ export default function Statistic() {
             </div>
             <div className="changeVol">
               <div>Талия </div>
-              <div>
+              <div className="value">
                 <input
+                  className="value"
                   value={inputs.waistGirth}
                   onChange={formHandler}
                   type="text"
@@ -122,8 +133,9 @@ export default function Statistic() {
             </div>
             <div className="changeVol">
               <div>Грудь </div>
-              <div>
+              <div className="value">
                 <input
+                  className="value"
                   value={inputs.breastGirth}
                   onChange={formHandler}
                   type="text"
@@ -133,8 +145,9 @@ export default function Statistic() {
             </div>
             <div className="changeVol">
               <div>Бицепс </div>
-              <div>
+              <div className="value">
                 <input
+                  className="value"
                   value={inputs.bicepsGirth}
                   onChange={formHandler}
                   type="text"
