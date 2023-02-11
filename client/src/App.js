@@ -21,6 +21,9 @@ import Slider from './components/Slider/Slider';
 
 import './App.css';
 import WSChat from './components/WSChat/WSChat';
+import AdminMain from './components/AdminMain/AdminMain';
+import AdminNavigation from './components/AdminNavigation/AdminNavigation';
+import AdminProtectedRoute from './components/AdminProtectedRoute/AdminProtectedRoute';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -64,6 +67,16 @@ function App() {
 
         {!isLoading && (
         <Routes>
+          {/* у админа своя навигация ??? */}
+
+          <Route path="admin" element={<AdminProtectedRoute userLogin={user.userLogin} redirectPath="/" />}>
+            <Route path="" element={<AdminNavigation />}>
+              <Route path="" element={<AdminMain />} />
+              <Route path="cabinet" element={<Cabinet />} />
+              <Route path="settings" element={<Settings />} />
+              <Route path="wschat" element={<WSChat />} />
+            </Route>
+          </Route>
 
           <Route path="/" element={<Navigation />}>
             <Route element={<ProtectedRoute user={user.userLogin} redirectPath="auth/login" />}>

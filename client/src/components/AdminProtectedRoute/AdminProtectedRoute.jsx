@@ -1,12 +1,9 @@
 import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 
-export default function ProtectedRoute({ user, redirectPath }) {
-  if (!user) {
+export default function AdminProtectedRoute({ userLogin, redirectPath }) {
+  if (userLogin !== 'admin') {
     return <Navigate to={redirectPath} replace />;
-  }
-  if (user === 'admin') {
-    return <Navigate to="admin" replace />;
   }
   return <Outlet />;
 }
