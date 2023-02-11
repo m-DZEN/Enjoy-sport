@@ -35,7 +35,9 @@ footer{
   margin: 0;
   padding: 0;
 }
-
+.navbar {
+  font-family: 'Times New Roman', Times, serif;
+}
 .block-non {
   display: flex;
   flex-direction: row;

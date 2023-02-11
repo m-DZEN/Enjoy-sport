@@ -53,10 +53,7 @@ export default function Navigation() {
               <Nav.Link onClick={() => setExpanded(false)} as={Link} to="/statistic">Статистика</Nav.Link>
               <Nav.Link onClick={() => setExpanded(false)} as={Link} to="/cabinet">Личный кабинет</Nav.Link>
               <Nav.Link onClick={() => setExpanded(false)} as={Link} to="/settings">Настройки</Nav.Link>
-              <Navbar.Brand as={Link}>
-                <div onClick={handleLogout}>Выход</div>
-                <Link to="/" />
-              </Navbar.Brand>
+              <Nav.Link onClick={handleLogout} as={Link} to="/"> Выход</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

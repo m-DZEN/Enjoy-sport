@@ -45,17 +45,13 @@ export default function AdminNavigation() {
 
       <Navbar expanded={expanded} bg="dark" expand="lg" variant="dark">
         <Container>
-          <Navbar.Brand as={Link} to="">Enjoy Sport</Navbar.Brand>
+          <Navbar.Brand as={Link} to="/">Enjoy Sport</Navbar.Brand>
           <Navbar.Toggle onClick={() => setExpanded(expanded ? false : 'expanded')} aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mr-auto">
-              <Nav.Link onClick={() => setExpanded(false)} as={Link} to="wschat">Чат с тренером</Nav.Link>
-              <Nav.Link onClick={() => setExpanded(false)} as={Link} to="cabinet">Личный кабинет</Nav.Link>
+            <Nav className="ml-auto">
+              <Nav.Link onClick={() => setExpanded(false)} as={Link} to="wschat">Чат</Nav.Link>
               <Nav.Link onClick={() => setExpanded(false)} as={Link} to="settings">Настройки</Nav.Link>
-              <Navbar.Brand as={Link}>
-                <div onClick={handleLogout}>Выход</div>
-                <Link to="/" />
-              </Navbar.Brand>
+              <Nav.Link onClick={handleLogout} as={Link} to="/"> Выход</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
