@@ -1,4 +1,6 @@
-import React from 'react';
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
@@ -36,50 +38,29 @@ export default function Navigation() {
     }());
   };
 
+  const [expanded, setExpanded] = useState(false);
+
   return (
     <>
 
-      <Navbar bg="light" expand="lg">
+      <Navbar expanded={expanded} bg="dark" expand="lg" variant="dark">
         <Container>
-          <Navbar.Brand>
-            <Link to="/">Enjoy Sport</Link>
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="dark-navbar-nav" />
+          <Navbar.Brand as={Link} to="/">Enjoy Sport</Navbar.Brand>
+          <Navbar.Toggle onClick={() => setExpanded(expanded ? false : 'expanded')} aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link>
-                <Link to="/statistic">Статистика</Link>
-              </Nav.Link>
-              <Nav.Link>
-                <Link to="/cabinet">Личный кабинет</Link>
-              </Nav.Link>
-              <Nav.Link>
-                <Link to="/settings">Настройки</Link>
-              </Nav.Link>
-              <Nav.Link>
-                <Link to="/wschat">Чат с тренером</Link>
-              </Nav.Link>
+            <Nav className="mr-auto">
+              <Nav.Link onClick={() => setExpanded(false)} as={Link} to="/wschat">Чат с тренером</Nav.Link>
+              <Nav.Link onClick={() => setExpanded(false)} as={Link} to="/statistic">Статистика</Nav.Link>
+              <Nav.Link onClick={() => setExpanded(false)} as={Link} to="/cabinet">Личный кабинет</Nav.Link>
+              <Nav.Link onClick={() => setExpanded(false)} as={Link} to="/settings">Настройки</Nav.Link>
+              <Navbar.Brand as={Link}>
+                <div onClick={handleLogout}>Выход</div>
+                <Link to="/" />
+              </Navbar.Brand>
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
-
-      <Link to="/">
-        <button type="button">My Day</button>
-      </Link>
-      <Link to="/wschat">
-        <button type="button">WSChat</button>
-      </Link>
-      <Link to="/statistic">
-        <button type="button">Statistic</button>
-      </Link>
-      <Link to="/cabinet">
-        <button type="button">Cabinet</button>
-      </Link>
-      <Link to="/settings">
-        <button type="button">Setting</button>
-      </Link>
-      <button type="button" onClick={handleLogout}>Logout</button>
       <Outlet />
     </>
   );
