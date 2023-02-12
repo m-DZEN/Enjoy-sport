@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-
 import { setUserInfoAction, clearUserInfoAction } from './redux/reducers/userReducer';
 import AuthContextProvider from './context/Auth.context';
-
 import Navigation from './components/Navigation/Navigation';
 import Statistic from './components/Statistic/Statistic';
 import Cabinet from './components/Cabinet/Cabinet';
@@ -18,9 +16,11 @@ import NotFoundPage from './components/NotFoundPage/NotFoundPage';
 import TrainingNutrition from './components/Training/TrainingNutrition/TrainingNutrition';
 import TrainingWorkout from './components/Training/TrainingWorkout/TrainingWorkout';
 import Slider from './components/Slider/Slider';
-
 import './App.css';
 import WSChat from './components/WSChat/WSChat';
+import AdminMain from './components/AdminMain/AdminMain';
+import AdminNavigation from './components/AdminNavigation/AdminNavigation';
+import AdminProtectedRoute from './components/AdminProtectedRoute/AdminProtectedRoute';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -52,7 +52,6 @@ function App() {
       }
     }());
   }, []);
-
   return (
     <>
       <div className="App">
@@ -60,10 +59,17 @@ function App() {
         {isLoading && (
         <h3>Loading...</h3>
         )}
-
         {!isLoading && (
         <Routes>
-
+          {/* у админа своя навигация ??? */}
+          <Route path="admin" element={<AdminProtectedRoute userLogin={user.userLogin} redirectPath="/" />}>
+            <Route path="" element={<AdminNavigation />}>
+              <Route path="" element={<AdminMain />} />
+              <Route path="cabinet" element={<Cabinet />} />
+              <Route path="settings" element={<Settings />} />
+              <Route path="wschat" element={<WSChat />} />
+            </Route>
+          </Route>
           <Route path="/" element={<Navigation />}>
             <Route element={<ProtectedRoute user={user.userLogin} redirectPath="auth/login" />}>
               <Route path="/" element={<Training />} />
@@ -75,7 +81,6 @@ function App() {
               <Route path="/wschat" element={<WSChat />} />
             </Route>
           </Route>
-
           <Route element={<ProtectedRoute user={!user.userLogin} redirectPath="/" />}>
             <Route
               path="auth"
@@ -90,13 +95,10 @@ function App() {
               <Route path="register" element={<RegisterForm />} />
             </Route>
           </Route>
-
           <Route path="*" element={<NotFoundPage />} />
-
         </Routes>
         )}
       </div>
-
       <footer>
         <p className="footerinfo">информация о тренере</p>
         <p className="footerinfo">информация о разработчиках</p>
@@ -104,5 +106,4 @@ function App() {
     </>
   );
 }
-
 export default App;

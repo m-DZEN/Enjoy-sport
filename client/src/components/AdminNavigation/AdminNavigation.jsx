@@ -10,7 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { clearUserInfoAction } from '../../redux/reducers/userReducer';
 
-export default function Navigation() {
+export default function AdminNavigation() {
   const user = useSelector((store) => store.userStore);
   console.log('user ===>', user);
 
@@ -48,11 +48,9 @@ export default function Navigation() {
           <Navbar.Brand as={Link} to="/">Enjoy Sport</Navbar.Brand>
           <Navbar.Toggle onClick={() => setExpanded(expanded ? false : 'expanded')} aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mr-auto">
-              <Nav.Link onClick={() => setExpanded(false)} as={Link} to="/wschat">Чат с тренером</Nav.Link>
-              <Nav.Link onClick={() => setExpanded(false)} as={Link} to="/statistic">Статистика</Nav.Link>
-              <Nav.Link onClick={() => setExpanded(false)} as={Link} to="/cabinet">Личный кабинет</Nav.Link>
-              <Nav.Link onClick={() => setExpanded(false)} as={Link} to="/settings">Настройки</Nav.Link>
+            <Nav className="ml-auto">
+              <Nav.Link onClick={() => setExpanded(false)} as={Link} to="wschat">Чат</Nav.Link>
+              <Nav.Link onClick={() => setExpanded(false)} as={Link} to="settings">Настройки</Nav.Link>
               <Nav.Link onClick={handleLogout} as={Link} to="/"> Выход</Nav.Link>
             </Nav>
           </Navbar.Collapse>

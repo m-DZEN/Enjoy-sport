@@ -21,7 +21,7 @@ export default function Training() {
           <div className="block-none">
             {/* Сделать бы параметрический запрос
             <Link className="linkButton" to={`/workout/${el.id}`}> Тренировки</Link> */}
-            <Link className="linkButton" to="/workout"> Тренировки</Link>
+            <Link className="linkButton" to="/workout">Тренировки</Link>
             <Link className="linkButton" to="/nutrition">Питание</Link>
           </div>
         </div>

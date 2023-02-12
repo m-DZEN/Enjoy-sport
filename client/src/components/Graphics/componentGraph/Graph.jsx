@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React, { memo } from 'react';
 import {
   AreaChart, // !!! Родительский элемент
@@ -50,11 +51,14 @@ const maxWeightY = ((Math.round(maxWeight / 5) * 5) + 5);
 
 const tickQuantity = ((maxWeightY - minWeightY) / 5) + 1;
 // console.log({ tickQuantity });
+const pageWidth = document.documentElement.scrollWidth;
+const winWidth = Math.floor(pageWidth * 0.8);
+console.log(winWidth);
 
 function Graph() {
   return (
     <AreaChart
-      width={550}
+      width={350}
       height={300}
       data={graphData}
       margin={{
