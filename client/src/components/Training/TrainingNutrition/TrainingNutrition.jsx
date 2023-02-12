@@ -49,8 +49,8 @@ const dailyRecipe = [
 export default function TrainingNutrition() {
   return (
     <div className="nutrition_container">
+      <caption>{days[0].title}</caption>
       <table>
-        <caption>{days[0].title}</caption>
         <tbody>
           {typeFood.map((el) => (
             <>
