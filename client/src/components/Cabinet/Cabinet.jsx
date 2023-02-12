@@ -32,7 +32,7 @@ export default function Cabinet() {
         credentials: 'include',
       });
       const data = await res.json();
-      console.log('data', data);
+      // console.log('data', data);
 
       setInputs((pre) => ({ ...pre, ...data }));
     }());

@@ -9,7 +9,7 @@ const setUserStatistic = async (req, res) => {
       order: [['createdAt', 'DESC']],
       raw: true,
     });
-    console.log('++++++++++', userData);
+    // console.log('++++++++++', userData);
     res.json(userData);
   } catch (error) {
     console.log(error);
