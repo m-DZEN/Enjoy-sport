@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-const { User } = require('../../db/models');
+const { User, Parametr } = require('../../db/models');
 
 const registerUser = async (req, res) => {
   // console.log('req.body ===>', req.body);
@@ -19,6 +19,11 @@ const registerUser = async (req, res) => {
     } else {
       const hashPassword = await bcrypt.hash(password, 9);
       const newUserData = await User.create({ login, email, password: hashPassword });
+      const today = (new Date()).toISOString().slice(0, 10);
+      await Parametr.create({
+        data: today,
+        user_id: newUserData.id,
+      });
       req.session.user = { userLogin: newUserData.login, userId: newUserData.id };
       console.log('req.session.user ===>', req.session.user);
       req.session.save(() => {
