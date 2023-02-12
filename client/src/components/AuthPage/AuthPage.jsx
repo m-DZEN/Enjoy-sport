@@ -7,15 +7,17 @@ import LoginForm from './AuthForms/LoginForm';
 
 import styles from './AuthPage.module.scss';
 
-import photo1 from '../../images/auth-photos/1.jpg';
-import photo2 from '../../images/auth-photos/2.jpg';
-import photo3 from '../../images/auth-photos/3.jpg';
+import photo1 from '../../images/auth-photos/auth-photos-001.jpg';
+import photo2 from '../../images/auth-photos/auth-photos-002.jpg';
+import photo3 from '../../images/auth-photos/auth-photos-003.jpg';
+import photo4 from '../../images/auth-photos/auth-photos-004.jpg';
+import photo5 from '../../images/auth-photos/auth-photos-005.jpg';
 
-const photos = [photo1, photo2, photo3];
+const photos = [photo1, photo2, photo3, photo4, photo5];
 
 export default function AuthPage() {
   const [photoIndex, setPhotoIndex] = useState(0);
-  const [formVisible, setFormVisible] = useState(true);
+  const [formVisible, setFormVisible] = useState(false);
   const [isAlreadyRegistered, setIsAlreadyRegistered] = useState(true);
 
   useEffect(() => {
@@ -67,21 +69,9 @@ export default function AuthPage() {
             appear
             classNames={{
               appear: styles.mainContentEnterActive,
-              appearActive: '',
-              appearDone: '',
-              enter: '',
               enterActive: styles.mainContentEnterActive,
-              enterDone: '',
-              exit: '',
               exitActive: styles.mainContentExitActive,
-              exitDone: '',
             }}
-            onEnter={() => console.log('onEnter')}
-            onEntering={() => console.log('onEntering')}
-            onEntered={() => console.log('onEntered')}
-            onExit={() => console.log('onExit')}
-            onExiting={() => console.log('onExiting')}
-            onExited={() => console.log('onExited')}
           >
             <>
               { formVisible

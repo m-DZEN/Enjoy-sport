@@ -1,32 +1,83 @@
-import React from 'react';
+import React, { useState, useEffect, memo } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+
+import { setErrorInfo, resetErrorInfo, resetAuthState } from '../../../redux/reducers/authSlice';
+import { fetchLoginThunk } from '../../../redux/asyncActions/fetchLoginThunk';
+
 import styles from './AuthForms.module.scss';
 
 import backImage1 from '../../../images/auth-backimage-001.svg';
 
-export default function LoginForm({ setIsAlreadyRegistered }) {
+const initialLoginFormState = {
+  userLogin: '',
+  userPassword: '',
+};
+
+function LoginForm({ setIsAlreadyRegistered }) {
+  const [loginFormInput, setLoginFormInput] = useState(initialLoginFormState);
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { isAuthDone, errorInfo } = useSelector((store) => store.authStore);
+  // console.log('===>', { isAuthDone, errorInfo });
+
+  useEffect(() => {
+    dispatch(resetErrorInfo());
+  }, [loginFormInput]);
+
+  useEffect(() => {
+    if (isAuthDone) {
+      navigate('/');
+    }
+    return () => {
+      dispatch(resetAuthState());
+      setLoginFormInput(initialLoginFormState);
+    };
+  }, [isAuthDone]);
+
+  const handleLoginFormInputChange = (event) => {
+    setLoginFormInput((prev) => ({ ...prev, [event.target.name]: event.target.value }));
+  };
+
+  const handleLoginFormSubmit = (event) => {
+    event.preventDefault();
+    const userLogin = loginFormInput.userLogin.trim();
+    const userPassword = loginFormInput.userPassword.trim();
+    if (userLogin && userPassword) {
+      dispatch(fetchLoginThunk({ userLogin, userPassword }));
+    } else {
+      setLoginFormInput((prev) => ({ ...prev, userLogin, userPassword }));
+      console.log('!!! Присутствует пустой INPUT !!!');
+      setTimeout(() => {
+        dispatch(setErrorInfo(['Заполните все поля формы!']));
+      }, 100);
+    }
+  };
+
   return (
     <div className={styles.form}>
       <h3 className={styles.formLogo}>Вход</h3>
 
       <form
         className={styles.formBlock}
-        onSubmit={() => console.log('SUBMIT')}
+        onSubmit={handleLoginFormSubmit}
       >
         <input
           className={styles.formBlockInput}
           type="text"
-          name="login"
-          // value={authFormInput.login}
-          // onChange={handleAuthFormInputChange}
+          name="userLogin"
+          value={loginFormInput.userLogin}
+          onChange={handleLoginFormInputChange}
           placeholder="Ваш логин..."
           required
         />
         <input
           className={styles.formBlockInput}
           type="password"
-          name="password"
-          // value={authFormInput.password}
-          // onChange={handleAuthFormInputChange}
+          name="userPassword"
+          value={loginFormInput.userPassword}
+          onChange={handleLoginFormInputChange}
           placeholder="Ваш пароль..."
           required
         />
@@ -39,11 +90,7 @@ export default function LoginForm({ setIsAlreadyRegistered }) {
       </form>
 
       <div className={styles.errorBlock}>
-        {/* <p>Пользователя с указанным логином</p> */}
-        {/* <p>не существует!</p> */}
-        {/* <p>Введён неверный пароль!</p> */}
-        <p>Ошибка на сервере...</p>
-        <p>Пожалуйста, повторите попытку!</p>
+        {errorInfo && errorInfo.map((el) => (<p key={el}>{el}</p>))}
       </div>
 
       <div className={styles.fillBlock} />
@@ -60,3 +107,5 @@ export default function LoginForm({ setIsAlreadyRegistered }) {
     </div>
   );
 }
+
+export default memo(LoginForm);

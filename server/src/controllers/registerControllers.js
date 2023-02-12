@@ -1,24 +1,26 @@
-const bcrypt = require('bcrypt'); // !!! Поключаем "bcrypt" для хеширования пароля
+const bcrypt = require('bcrypt');
 const { User } = require('../../db/models');
 
 const registerUser = async (req, res) => {
   // console.log('req.body ===>', req.body);
   try {
-    const { login, password } = req.body;
-    // console.log('===>', { login, password });
-    const userData = await User.findOne({ where: { login } });
-    if (userData) {
+    const login = req.body.userLogin;
+    const email = req.body.userEmail;
+    const password = req.body.userPassword;
+    // console.log('===>', { login, email, password });
+    const checkLogin = await User.findOne({ where: { login } });
+    const checkEmail = await User.findOne({ where: { email } });
+    if (checkLogin) {
       console.log('===> NEED-NEW-LOGIN');
       res.json({ backendResult: 'NEED-NEW-LOGIN' });
+    } else if (checkEmail) {
+      console.log('===> NEED-NEW-EMAIL');
+      res.json({ backendResult: 'NEED-NEW-EMAIL' });
     } else {
-      // !!! Хеширование пароля перед записью в БД ('9' - кол-во циклов хеширования)
       const hashPassword = await bcrypt.hash(password, 9);
-      const newUserData = await User.create({ login, password: hashPassword });
+      const newUserData = await User.create({ login, email, password: hashPassword });
       req.session.user = { userLogin: newUserData.login, userId: newUserData.id };
       console.log('req.session.user ===>', req.session.user);
-
-      // !!! Перед отправкой ответа на "фронт" необходимо дождаться записи файла
-      // в "sessions" при помощи следующей конструкции:
       req.session.save(() => {
         console.log('===> REGISTER-OK');
         res.json({ backendResult: 'REGISTER-OK', userInfo: req.session.user });
