@@ -2,6 +2,8 @@ import React from 'react';
 import './TrainingWorkout.css';
 
 export default function TrainingWorkout() {
+
+  
   const days = [
     { id: 1, title: 'Понедельник' },
     { id: 2, title: 'Вторник' },
