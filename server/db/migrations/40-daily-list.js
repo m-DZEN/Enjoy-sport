@@ -31,12 +31,10 @@ module.exports = {
           key: 'id',
         },
       },
-      day_id: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'Days',
-          key: 'id',
-        },
+      date: {
+        defaultValue: Sequelize.fn('now'),
+        allowNull: false,
+        type: Sequelize.DATEONLY,
       },
       createdAt: {
         defaultValue: Sequelize.fn('now'),

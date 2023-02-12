@@ -5,13 +5,10 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class DailyList extends Model {
     static associate({
-      User, Day, DailyTrain, DailyRecipe,
+      User, DailyTrain, DailyRecipe,
     }) {
       this.belongsTo(User, {
         foreignKey: 'user_id',
-      });
-      this.belongsTo(Day, {
-        foreignKey: 'day_id',
       });
       this.belongsTo(DailyTrain, {
         foreignKey: 'dailyTrain_id',
@@ -25,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     user_id: DataTypes.INTEGER,
     dailyTrain_id: DataTypes.INTEGER,
     dailyRecipe_id: DataTypes.INTEGER,
-    day_id: DataTypes.INTEGER,
+    date: DataTypes.DATEONLY,
   }, {
     sequelize,
     modelName: 'DailyList',
