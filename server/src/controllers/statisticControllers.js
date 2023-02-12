@@ -31,7 +31,7 @@ const createUserStatistic = async (req, res) => {
     });
     // console.log('------------>creationDate', creationDate.data);
     const today = (new Date()).toISOString().slice(0, 10);
-    // console.log('------------>today', today);
+    console.log('------------>today', today);
 
     if (creationDate.data !== today) {
       const userData = await Parametr.create({
