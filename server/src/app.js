@@ -25,7 +25,11 @@ const logoutRoutes = require('./routes/logoutRoutes');
 const cabinetRoutes = require('./routes/cabinetRoutes');
 const settingsRoutes = require('./routes/settingsRoutes');
 const statisticRoures = require('./routes/statisticRoures');
+
 const adminRoutes = require('./routes/adminListRoutes');
+
+const quoteRoutes = require('./routes/quoteRoutes');
+
 
 app.use(cors({
   origin: ['http://localhost:3000'], // !!! Список адресов, с которых разрешены запросы на данный сервер
@@ -52,6 +56,10 @@ const sessionConfig = {
 const sessionParser = session(sessionConfig);
 app.use(sessionParser);
 
+// app.get('/test', (req, res) => {
+//   res.redirect('https://zenquotes.io/api/random');
+// });
+
 app.use('/', indexRoutes);
 app.use('/register', registerRoutes);
 app.use('/login', loginRoutes);
@@ -59,7 +67,11 @@ app.use('/logout', logoutRoutes);
 app.use('/cabinet', cabinetRoutes);
 app.use('/settings', settingsRoutes);
 app.use('/statistic', statisticRoures);
+
 app.use('/admin', adminRoutes);
+
+app.use('/quote', quoteRoutes);
+
 
 const server = httpServer.createServer(app);
 server.on('upgrade', (req, socket, head) => {
