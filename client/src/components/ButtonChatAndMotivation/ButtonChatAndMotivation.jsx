@@ -17,9 +17,18 @@ export default function ButtonChatAndMotivation() {
   // }), []);
 
   const [show, setShow] = useState(false);
+  const [quote, setQuote] = useState({ text: '' });
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleShow = () => {
+    setShow(true);
+    (async function () {
+      const res = await fetch('http://localhost:3001/quote');
+      const data = await res.json();
+      console.log('data====quote', data);
+      setQuote((pre) => ({ ...pre, ...data }));
+    }());
+  };
 
   return (
     <>
@@ -30,7 +39,10 @@ export default function ButtonChatAndMotivation() {
         <Modal.Header closeButton>
           <Modal.Title>твоя доза мотивашки</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Если нет ветра - беритесь за весла!</Modal.Body>
+        <Modal.Body>
+          <p>{quote.text}</p>
+        </Modal.Body>
+
         <Modal.Footer>
           <Button variant="outline-danger" onClick={handleClose}>
             иду работать на собой
@@ -41,9 +53,11 @@ export default function ButtonChatAndMotivation() {
       <div>
         <button type="button"> Чат с тренером </button>
       </div>
+      {/* <form onSubmit={getQuote}> */}
       <Button variant="outline-secondary" onClick={handleShow}>
         мотивашка
       </Button>
+      {/* </form> */}
       {/* <div>
         <button type="button">Получить мотивацию</button>
       </div> */}
