@@ -9,7 +9,7 @@ export default function Training() {
   // const tomorrow = new Date(today.getTime() + (24 * 60 * 60 * 1000));
   // const dayAfterTomorrow = new Date(today.getTime() + (2 * (24 * 60 * 60 * 1000)));
   // console.log('today', today);
-  for (let i = 0; i < 3; i += 1) {
+  for (let i = -2; i < 5; i += 1) {
     const dayX = new Date(today.getTime() + i * (24 * 60 * 60 * 1000));
 
     const dayOfTheWeek = dayX.getDay();
@@ -63,7 +63,7 @@ export default function Training() {
             {/* Сделать бы параметрический запрос
             <Link className="linkButton" to={`/workout/${el.id}`}> Тренировки</Link> */}
             <Link className="linkButton" to={`/workout/${el.dateEn}`}>Тренировки</Link>
-            <Link className="linkButton" to="/nutrition">Питание</Link>
+            <Link className="linkButton" to={`/nutrition/${el.dateEn}`}>Питание</Link>
           </div>
         </div>
       ))}

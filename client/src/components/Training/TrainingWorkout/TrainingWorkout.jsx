@@ -1,9 +1,51 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './TrainingWorkout.css';
+import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+// import { useState } from 'react';
 
 export default function TrainingWorkout() {
+  const user = useSelector((store) => store.userStore);
+  const { day } = useParams();
 
-  
+  console.log('user', user);
+  console.log('day', day);
+
+  // const [training, setTraining] = useState([]);
+
+  // const getTraing = async () => {
+  //   const res = await fetch(`http://localhost:3001/training/${day}`, {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify(day),
+  //     credentials: 'include',
+  //   });
+
+  //   const data = await res.json();
+  //   console.log('dataStatistic', data);
+
+  //   // setInputs(inputs);
+  // };
+
+  useEffect(() => {
+    (async function () {
+      const res = await fetch(`http://localhost:3001/training/${day}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ user }),
+        credentials: 'include',
+      });
+
+      const data = await res.json();
+      console.log('dataStatistic', data);
+
+    // setInputs(inputs);
+    }());
+  }, []);
   const days = [
     { id: 1, title: 'Понедельник' },
     { id: 2, title: 'Вторник' },
