@@ -26,3 +26,6 @@
   border: solid rgb(217, 167, 236);
   border-radius: 20px;
 }
+.adminInputs {
+  max-width: 50px;
+}

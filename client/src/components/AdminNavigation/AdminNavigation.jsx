@@ -37,7 +37,6 @@ export default function AdminNavigation() {
           <Navbar.Toggle onClick={() => setExpanded(expanded ? false : 'expanded')} aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
-              <Nav.Link onClick={() => setExpanded(false)} as={Link} to="wschat">Чат</Nav.Link>
               <Nav.Link onClick={() => setExpanded(false)} as={Link} to="settings">Настройки</Nav.Link>
               <Nav.Link onClick={handleLogout} as={Link} to="/"> Выход</Nav.Link>
             </Nav>

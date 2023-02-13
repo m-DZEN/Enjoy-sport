@@ -69,6 +69,35 @@ export default function TrainingWorkout() {
                 <option value="-">-</option>
               </select>
             </td>
+            <td>
+              <input
+                className="adminInputs"
+                name="training_weight"
+              />
+            </td>
+            <td>
+              <input
+                className="adminInputs"
+                name="training_sets"
+              />
+            </td>
+            <td>
+              <input
+                className="adminInputs"
+                name="training_rep"
+              />
+            </td>
+            <td>
+              <input
+                className="adminInputs"
+                name="training_rest"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td colSpan="5">
+              <button className="workout_btn" type="submit">Добавить</button>
+            </td>
           </tr>
         </table>
       </div>
