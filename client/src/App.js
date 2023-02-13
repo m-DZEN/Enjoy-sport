@@ -72,8 +72,8 @@ function App() {
           <Route path="/" element={<Navigation />}>
             <Route element={<ProtectedRoute user={user.userLogin} redirectPath="auth" />}>
               <Route path="/" element={<Training />} />
-              <Route path="/nutrition" element={<TrainingNutrition />} />
-              <Route path="/workout" element={<TrainingWorkout />} />
+              <Route path="/nutrition/:day" element={<TrainingNutrition />} />
+              <Route path="/workout/:day" element={<TrainingWorkout />} />
               <Route path="/statistic" element={<Statistic />} />
               <Route path="/cabinet" element={<Cabinet />} />
               <Route path="/settings" element={<Settings />} />
