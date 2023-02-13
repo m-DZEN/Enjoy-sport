@@ -25,6 +25,26 @@
   }
 }
 
+.formBlockInputContainer {
+  position: relative;
+  width: 100%;
+}
+
+.formBlockInputLabel {
+  position: absolute;
+  left: 32px;
+  color: $color5;
+  height: 11px;
+  line-height: 9px;
+  font-size: 8.5px;
+  font-weight: 500;
+  background-color: $color7;
+  border: 1px solid $color4;
+  border-radius: 4px;
+  padding: 0 5px;
+  z-index: 1;
+}
+
 .formBlockInput {
   color: $color5;
   width: 85%;
@@ -45,6 +65,34 @@
     outline: 0;
     outline-offset: 0;
     box-shadow: 0 0 7px $color5;
+  }
+
+  &.password {
+    padding-right: 28px;
+  }
+}
+
+.formBlockPasswordButton {
+  position: absolute;
+  right: 30px;
+  color: $color4;
+  font-size: 16px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  opacity: 0.4;
+  cursor: pointer;
+  outline: none;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:active {
+    opacity: 0.7;
+    transform: scale(0.9);
   }
 }
 
