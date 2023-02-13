@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { setUserInfoAction, clearUserInfoAction } from './redux/reducers/userReducer';
+import { fetchUserInfoThunk } from './redux/asyncActions/fetchUserInfoThunk';
 
 import Navigation from './components/Navigation/Navigation';
 import Statistic from './components/Statistic/Statistic';
@@ -22,42 +22,20 @@ import AuthPage from './components/AuthPage/AuthPage';
 import './App.css';
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
-  const user = useSelector((store) => store.userStore);
   const dispatch = useDispatch();
+  const user = useSelector((store) => store.userStore);
 
   useEffect(() => {
-    (async function () {
-      try {
-        const res = await fetch('http://localhost:3001', { credentials: 'include' });
-        // console.log('res.status ===>', res.status);
-        if (res.status === 200) {
-          const data = await res.json();
-          if (data.backendResult === 'SESSION-OK') {
-            console.log('SESSION-OK', data.userInfo);
-            dispatch(setUserInfoAction(data.userInfo));
-            setIsLoading(false);
-          }
-          if (data.backendResult === 'NEED-LOGIN') {
-            console.log('NEED-LOGIN');
-            dispatch(clearUserInfoAction());
-            setIsLoading(false);
-          }
-        } else {
-          console.log(`Ошибка ${res.status} на сервере!`);
-        }
-      } catch (error) {
-        console.log('ERROR:', error.message);
-      }
-    }());
+    dispatch(fetchUserInfoThunk());
   }, []);
+
   return (
     <>
       <div className="App">
-        {isLoading && (
-        <h3>Loading...</h3>
+        {user.isUserInfoLoading && (
+        <h3 style={{ backgroundColor: 'white' }}>Loading...</h3>
         )}
-        {!isLoading && (
+        {!user.isUserInfoLoading && (
         <Routes>
           {/* у админа своя навигация ??? */}
           <Route path="admin" element={<AdminProtectedRoute userLogin={user.userLogin} redirectPath="/" />}>
