@@ -67,6 +67,7 @@ app.use('/quote', quoteRoutes);
 app.use('/training', trainingRoutes);
 app.use('/nutrition', nutritionRoutes);
 
+
 const server = httpServer.createServer(app);
 server.on('upgrade', (req, socket, head) => {
   sessionParser(req, {}, () => {

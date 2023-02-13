@@ -18,6 +18,9 @@ import AdminMain from './components/AdminMain/AdminMain';
 import AdminNavigation from './components/AdminNavigation/AdminNavigation';
 import AdminProtectedRoute from './components/AdminProtectedRoute/AdminProtectedRoute';
 import AuthPage from './components/AuthPage/AuthPage';
+import AdminTraining from './components/AdminTraining/AdminTraining';
+import AdminTrainingWorkout from './components/AdminTraining/TrainingWorkout/AdminTrainingWorkout';
+import AdminWSChat from './components/AdminWSChat/AdminWSChat';
 
 import './App.css';
 
@@ -37,13 +40,16 @@ function App() {
         )}
         {!user.isUserInfoLoading && (
         <Routes>
-          {/* у админа своя навигация ??? */}
+          {/* у админа своя навигация */}
           <Route path="admin" element={<AdminProtectedRoute userLogin={user.userLogin} redirectPath="/" />}>
             <Route path="" element={<AdminNavigation />}>
               <Route path="" element={<AdminMain />} />
               <Route path="cabinet" element={<Cabinet />} />
               <Route path="settings" element={<Settings />} />
-              <Route path="wschat" element={<WSChat />} />
+              <Route path="wschat/:userId" element={<AdminWSChat />} />
+              <Route path="training/:id" element={<AdminTraining />} />
+              <Route path="nutrition/:day" element={<AdminTraining />} />
+              <Route path="workout/:id/:day" element={<AdminTrainingWorkout />} />
             </Route>
           </Route>
 
