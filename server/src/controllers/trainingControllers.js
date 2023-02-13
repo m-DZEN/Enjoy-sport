@@ -3,8 +3,8 @@ const { DailyList, DailyTrain, Training } = require('../../db/models');
 const getDayTraining = async (req, res) => {
   const { user } = req.body;
   const { day } = req.params;
-  console.log('user=========>', user);
-  console.log('day=========>', day);
+  // console.log('user=========>', user);
+  // console.log('day=========>', day);
 
   try {
     const dayTrain = await DailyList.findAll({
@@ -18,7 +18,7 @@ const getDayTraining = async (req, res) => {
       }],
       raw: true,
     });
-    console.log('dayTrain', dayTrain);
+    // console.log('dayTrain', dayTrain);
     res.json(dayTrain);
   } catch (error) {
     console.log(error);

@@ -44,7 +44,7 @@ export default function Training() {
 
     days.push(date);
   }
-  console.log('days', days);
+  // console.log('days', days);
 
   return (
     <div className="workout_container">
