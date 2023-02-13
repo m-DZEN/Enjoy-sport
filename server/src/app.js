@@ -65,7 +65,6 @@ app.use('/admin', adminRoutes);
 app.use('/quote', quoteRoutes);
 app.use('/training', trainingRoutes);
 
-
 const server = httpServer.createServer(app);
 server.on('upgrade', (req, socket, head) => {
   sessionParser(req, {}, () => {
