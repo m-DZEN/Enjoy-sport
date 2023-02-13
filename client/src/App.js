@@ -18,6 +18,7 @@ import AdminMain from './components/AdminMain/AdminMain';
 import AdminNavigation from './components/AdminNavigation/AdminNavigation';
 import AdminProtectedRoute from './components/AdminProtectedRoute/AdminProtectedRoute';
 import AuthPage from './components/AuthPage/AuthPage';
+import Recipe from './components/Recipe/Recipe';
 import AdminTraining from './components/AdminTraining/AdminTraining';
 import AdminTrainingWorkout from './components/AdminTraining/TrainingWorkout/AdminTrainingWorkout';
 import AdminWSChat from './components/AdminWSChat/AdminWSChat';
@@ -58,6 +59,7 @@ function App() {
               <Route path="/" element={<Training />} />
               <Route path="/nutrition/:day" element={<TrainingNutrition />} />
               <Route path="/workout/:day" element={<TrainingWorkout />} />
+              <Route path="/recipe/:id" element={<Recipe />} />
               <Route path="/statistic" element={<Statistic />} />
               <Route path="/cabinet" element={<Cabinet />} />
               <Route path="/settings" element={<Settings />} />

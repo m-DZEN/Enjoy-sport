@@ -45,9 +45,6 @@ export default function Training() {
     days.push(date);
   }
   console.log('days', days);
-  // const dayOfTheWeek = today.getDay();
-
-  // const date = { title: '', date: today.toISOString().slice(0, 10) };
 
   return (
     <div className="workout_container">
@@ -60,8 +57,6 @@ export default function Training() {
             {el.dateRus}
           </div>
           <div className="block-none">
-            {/* Сделать бы параметрический запрос
-            <Link className="linkButton" to={`/workout/${el.id}`}> Тренировки</Link> */}
             <Link className="linkButton" to={`/workout/${el.dateEn}`}>Тренировки</Link>
             <Link className="linkButton" to={`/nutrition/${el.dateEn}`}>Питание</Link>
           </div>
