@@ -24,13 +24,13 @@ export default function Recipe() {
       });
 
       const data = await res.json();
-      console.log('data---------->', data);
+      // console.log('data---------->', data);
 
       getRecipe(data);
     }());
   }, []);
 
-  console.log('recipe---------->', recipe);
+  // console.log('recipe---------->', recipe);
 
   return (
     <>
