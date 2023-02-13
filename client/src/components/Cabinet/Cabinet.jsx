@@ -153,7 +153,7 @@ export default function Cabinet() {
                   <select
                     value={inputs.type_program}
                     onChange={formHandler}
-                    name="typeProgram"
+                    name="type_program"
                   >
                     <option value="loseWeight">похудеть</option>
                     <option value="gainWeight">набрать вес</option>

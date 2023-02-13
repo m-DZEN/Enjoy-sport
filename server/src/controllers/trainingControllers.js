@@ -1,4 +1,4 @@
-const { DailyList } = require('../../db/models');
+const { DailyList, DailyTrain, Training } = require('../../db/models');
 
 const getDayTraining = async (req, res) => {
   const { user } = req.body;
@@ -10,11 +10,16 @@ const getDayTraining = async (req, res) => {
     const dayTrain = await DailyList.findAll({
       where: {
         user_id: user.userId,
-        // data: day,
+        date: day,
       },
+      include: [{
+        model: DailyTrain,
+        include: [{ model: Training }],
+      }],
+      raw: true,
     });
     console.log('dayTrain', dayTrain);
-    res.send('ok');
+    res.json(dayTrain);
   } catch (error) {
     console.log(error);
   }
