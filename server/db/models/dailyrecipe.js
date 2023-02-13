@@ -9,12 +9,13 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'dailyRecipe_id',
       });
       this.belongsTo(Recipe, {
-        foreignKey: 'dailyTrain_id',
+        foreignKey: 'recipe_id',
       });
     }
   }
   DailyRecipe.init({
     recipe_id: DataTypes.INTEGER,
+    mass: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'DailyRecipe',

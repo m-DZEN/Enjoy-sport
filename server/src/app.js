@@ -28,6 +28,7 @@ const statisticRoures = require('./routes/statisticRoures');
 const adminRoutes = require('./routes/adminListRoutes');
 const quoteRoutes = require('./routes/quoteRoutes');
 const trainingRoutes = require('./routes/traingRoutes');
+const nutritionRoutes = require('./routes/nutritionRoutes');
 
 app.use(cors({
   origin: ['http://localhost:3000'], // !!! Список адресов, с которых разрешены запросы на данный сервер
@@ -64,7 +65,7 @@ app.use('/statistic', statisticRoures);
 app.use('/admin', adminRoutes);
 app.use('/quote', quoteRoutes);
 app.use('/training', trainingRoutes);
-
+app.use('/nutrition', nutritionRoutes);
 
 const server = httpServer.createServer(app);
 server.on('upgrade', (req, socket, head) => {
