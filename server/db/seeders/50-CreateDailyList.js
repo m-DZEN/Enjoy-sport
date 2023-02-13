@@ -13,12 +13,38 @@ module.exports = {
         dailyTrain_id: 3,
         dailyRecipe_id: 2,
         date: '2023-02-13',
+
       },
       {
         user_id: 2,
         dailyTrain_id: 2,
         dailyRecipe_id: 1,
         date: '2023-02-14',
+
+      },
+      {
+        user_id: 2,
+        dailyTrain_id: 2,
+        dailyRecipe_id: 2,
+        date: '2023-02-13',
+      },
+      {
+        user_id: 2,
+        dailyTrain_id: 1,
+        dailyRecipe_id: 1,
+        date: '2023-02-14',
+      },
+      {
+        user_id: 2,
+        dailyTrain_id: 1,
+        dailyRecipe_id: 2,
+        date: '2023-02-14',
+      },
+      {
+        user_id: 2,
+        dailyTrain_id: 2,
+        dailyRecipe_id: 1,
+        date: '2023-02-15',
       },
       {
         user_id: 2,

@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { setUserInfoAction, clearUserInfoAction } from './redux/reducers/userReducer';
+import { fetchUserInfoThunk } from './redux/asyncActions/fetchUserInfoThunk';
 
 import Navigation from './components/Navigation/Navigation';
 import Statistic from './components/Statistic/Statistic';
@@ -19,54 +19,38 @@ import AdminNavigation from './components/AdminNavigation/AdminNavigation';
 import AdminProtectedRoute from './components/AdminProtectedRoute/AdminProtectedRoute';
 import AuthPage from './components/AuthPage/AuthPage';
 import Recipe from './components/Recipe/Recipe';
+import AdminTraining from './components/AdminTraining/AdminTraining';
+import AdminTrainingWorkout from './components/AdminTraining/TrainingWorkout/AdminTrainingWorkout';
+import AdminWSChat from './components/AdminWSChat/AdminWSChat';
 
 import './App.css';
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
-  const user = useSelector((store) => store.userStore);
   const dispatch = useDispatch();
+  const user = useSelector((store) => store.userStore);
 
   useEffect(() => {
-    (async function () {
-      try {
-        const res = await fetch('http://localhost:3001', { credentials: 'include' });
-        // console.log('res.status ===>', res.status);
-        if (res.status === 200) {
-          const data = await res.json();
-          if (data.backendResult === 'SESSION-OK') {
-            console.log('SESSION-OK', data.userInfo);
-            dispatch(setUserInfoAction(data.userInfo));
-            setIsLoading(false);
-          }
-          if (data.backendResult === 'NEED-LOGIN') {
-            console.log('NEED-LOGIN');
-            dispatch(clearUserInfoAction());
-            setIsLoading(false);
-          }
-        } else {
-          console.log(`Ошибка ${res.status} на сервере!`);
-        }
-      } catch (error) {
-        console.log('ERROR:', error.message);
-      }
-    }());
+    dispatch(fetchUserInfoThunk());
   }, []);
+
   return (
     <>
       <div className="App">
-        {isLoading && (
-        <h3>Loading...</h3>
+        {user.isUserInfoLoading && (
+        <h3 style={{ backgroundColor: 'white' }}>Loading...</h3>
         )}
-        {!isLoading && (
+        {!user.isUserInfoLoading && (
         <Routes>
-          {/* у админа своя навигация ??? */}
+          {/* у админа своя навигация */}
           <Route path="admin" element={<AdminProtectedRoute userLogin={user.userLogin} redirectPath="/" />}>
             <Route path="" element={<AdminNavigation />}>
               <Route path="" element={<AdminMain />} />
               <Route path="cabinet" element={<Cabinet />} />
               <Route path="settings" element={<Settings />} />
-              <Route path="wschat" element={<WSChat />} />
+              <Route path="wschat/:userId" element={<AdminWSChat />} />
+              <Route path="training/:id" element={<AdminTraining />} />
+              <Route path="nutrition/:day" element={<AdminTraining />} />
+              <Route path="workout/:id/:day" element={<AdminTrainingWorkout />} />
             </Route>
           </Route>
 

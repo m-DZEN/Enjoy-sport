@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { setUserInfoAction } from '../reducers/userReducer';
+import { setUserInfo } from '../reducers/userReducer';
 import { setIsAuthDone, setErrorInfo } from '../reducers/authSlice';
 
 export const fetchLoginThunk = createAsyncThunk(
@@ -21,7 +21,7 @@ export const fetchLoginThunk = createAsyncThunk(
         switch (data.backendResult) {
           case 'LOGIN-OK':
             console.log(data.backendResult);
-            dispatch(setUserInfoAction(data.userInfo));
+            dispatch(setUserInfo(data.userInfo));
             dispatch(setIsAuthDone(true));
             break;
           case 'BAD-LOGIN':

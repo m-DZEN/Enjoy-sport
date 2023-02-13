@@ -1,11 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { setUserInfoAction } from '../reducers/userReducer';
+import { setUserInfo } from '../reducers/userReducer';
 import { setIsAuthDone, setErrorInfo } from '../reducers/authSlice';
 
 export const fetchRegisterThunk = createAsyncThunk(
   'auth/fetchRegister',
   async (userData, { dispatch }) => {
-    console.log('fetchRegister ===>', { userData });
+    // console.log('fetchRegister ===>', { userData });
     try {
       const response = await fetch('http://localhost:3001/register', {
         method: 'POST',
@@ -21,7 +21,7 @@ export const fetchRegisterThunk = createAsyncThunk(
         switch (data.backendResult) {
           case 'REGISTER-OK':
             console.log(data.backendResult);
-            dispatch(setUserInfoAction(data.userInfo));
+            dispatch(setUserInfo(data.userInfo));
             dispatch(setIsAuthDone(true));
             break;
           case 'NEED-NEW-LOGIN':
