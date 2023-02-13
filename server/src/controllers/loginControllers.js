@@ -14,7 +14,11 @@ const loginUser = async (req, res) => {
     } else {
       const passCheck = await bcrypt.compare(password, userData.password);
       if (passCheck) {
-        req.session.user = { userLogin: userData.login, userId: userData.id };
+        req.session.user = {
+          userLogin: userData.login,
+          userId: userData.id,
+          userName: userData.name,
+        };
         console.log('req.session.user ===>', req.session.user);
         req.session.save(() => {
           console.log('===> LOGIN-OK');

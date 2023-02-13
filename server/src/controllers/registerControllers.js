@@ -24,7 +24,11 @@ const registerUser = async (req, res) => {
         data: today,
         user_id: newUserData.id,
       });
-      req.session.user = { userLogin: newUserData.login, userId: newUserData.id };
+      req.session.user = {
+        userLogin: newUserData.login,
+        userId: newUserData.id,
+        userName: newUserData.name,
+      };
       console.log('req.session.user ===>', req.session.user);
       req.session.save(() => {
         console.log('===> REGISTER-OK');
