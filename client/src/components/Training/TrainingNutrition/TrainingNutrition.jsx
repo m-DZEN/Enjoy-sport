@@ -29,12 +29,12 @@ export default function TrainingNutrition() {
       });
 
       const data = await res.json();
-      console.log('data', data);
+      // console.log('data', data);
 
       setNutrition((pre) => ([...pre, ...data]));
     }());
   }, []);
-  console.log('nutrition', nutrition);
+  // console.log('nutrition', nutrition);
 
   return (
     <div className="nutrition_container">
