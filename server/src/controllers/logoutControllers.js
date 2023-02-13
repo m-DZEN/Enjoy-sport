@@ -1,6 +1,5 @@
 const logoutUser = async (req, res) => {
   try {
-    // !!! Перед уничтожениеием "куки" и "редиректом" необходимо дождаться удаления файла из "sessions" при помощи следующей конструкции:
     req.session.destroy(() => {
       res.clearCookie('myCookie');
       console.log('===> LOGOUT-OK');

@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
@@ -8,34 +8,22 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { clearUserInfoAction } from '../../redux/reducers/userReducer';
+import { fetchLogoutThunk } from '../../redux/asyncActions/fetchLogoutThunk';
 
 export default function Navigation() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const user = useSelector((store) => store.userStore);
   console.log('user ===>', user);
 
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+  useEffect(() => {
+    if (!user.userLogin && !user.isUserInfoLoading) {
+      navigate('/');
+    }
+  }, [user]);
 
   const handleLogout = () => {
-    (async function () {
-      try {
-        const res = await fetch('http://localhost:3001/logout', { credentials: 'include' });
-        // console.log('res.status ===>', res.status);
-        if (res.status === 200) {
-          const { backendResult } = await res.json();
-          if (backendResult === 'LOGOUT-OK') {
-            console.log('LOGOUT-OK');
-            dispatch(clearUserInfoAction());
-            navigate('/');
-          }
-        } else {
-          console.log(`Ошибка ${res.status} на сервере!`);
-        }
-      } catch (error) {
-        console.log('ERROR:', error.message);
-      }
-    }());
+    dispatch(fetchLogoutThunk());
   };
 
   const [expanded, setExpanded] = useState(false);

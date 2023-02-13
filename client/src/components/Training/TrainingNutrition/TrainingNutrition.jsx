@@ -1,15 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './TrainingNutrition.modules.css';
-
-const days = [
-  { id: 1, title: 'Понедельник' },
-  { id: 2, title: 'Вторник' },
-  { id: 3, title: 'Среда' },
-  { id: 2, title: 'Четверг' },
-  { id: 2, title: 'Пятница' },
-  { id: 2, title: 'Суббота' },
-  { id: 2, title: 'Воскресенье' },
-];
+import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
 const typeFood = [
   { id: 1, title: 'Завтрак' },
@@ -47,9 +39,33 @@ const dailyRecipe = [
 ];
 
 export default function TrainingNutrition() {
+  const user = useSelector((store) => store.userStore);
+  const { day } = useParams();
+
+  const [nutrition, setNutrition] = useState([]);
+
+  useEffect(() => {
+    (async function () {
+      const res = await fetch(`http://localhost:3001/nutrition/${day}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ user }),
+        credentials: 'include',
+      });
+
+      const data = await res.json();
+      console.log('data', data);
+
+      setNutrition((pre) => ([...pre, ...data]));
+    }());
+  }, []);
+  console.log('nutrition', nutrition);
+
   return (
     <div className="nutrition_container">
-      <caption>{days[0].title}</caption>
+      <caption>{day}</caption>
       <table>
         <tbody>
           {typeFood.map((el) => (
@@ -57,12 +73,11 @@ export default function TrainingNutrition() {
               <tr>
                 <th colSpan="5">{el.title}</th>
               </tr>
-              {dailyRecipe.filter((e) => (e.type_id === el.id)).map((e) => (
+              {nutrition.filter((e) => (e['DailyRecipe.Recipe.TypeFood.id'] === el.id)).map((e) => (
                 <tr>
-                  <th>{e.title}</th>
+                  <th>{e['DailyRecipe.Recipe.title']}</th>
                   <td>
-                    {e.mass}
-                    {' '}
+                    {e['DailyRecipe.mass']}
                     гр.
                   </td>
                 </tr>

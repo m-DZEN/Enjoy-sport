@@ -1,6 +1,6 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up(queryInterface, Sequelize) {
+  async up(queryInterface) {
     await queryInterface.bulkInsert('DailyLists', [
       {
         user_id: 2,
@@ -10,15 +10,17 @@ module.exports = {
       },
       {
         user_id: 2,
-        dailyTrain_id: 1,
+        dailyTrain_id: 3,
         dailyRecipe_id: 2,
-        date: '2023-02-12',
+        date: '2023-02-13',
+
       },
       {
         user_id: 2,
         dailyTrain_id: 2,
         dailyRecipe_id: 1,
-        date: '2023-02-13',
+        date: '2023-02-14',
+
       },
       {
         user_id: 2,
@@ -53,7 +55,7 @@ module.exports = {
     ], {});
   },
 
-  async down(queryInterface, Sequelize) {
+  async down(queryInterface) {
     await queryInterface.bulkDelete('DailyLists', null, {});
   },
 };
