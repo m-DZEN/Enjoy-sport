@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './TrainingNutrition.modules.css';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
 const typeFood = [
   { id: 1, title: 'Завтрак' },
@@ -9,33 +9,6 @@ const typeFood = [
   { id: 3, title: 'Обед' },
   { id: 4, title: 'Перекус 2' },
   { id: 5, title: 'Ужин' },
-];
-const dailyRecipe = [
-  {
-    id: 1, type_id: 1, title: 'Блюдо 1', mass: 50,
-  },
-  {
-    id: 2, type_id: 1, title: 'Блюдо 2', mass: 100,
-  },
-  {
-    id: 2, type_id: 2, title: 'Блюдо 3', mass: 120,
-  },
-  {
-    id: 3, type_id: 2, title: 'Блюдо 4', mass: 200,
-  },
-  {
-    id: 4, type_id: 3, title: 'Блюдо 5', mass: 150,
-  },
-  {
-    id: 5, type_id: 3, title: 'Блюдо 6', mass: 50,
-  },
-  {
-    id: 5, type_id: 4, title: 'Блюдо 7', mass: 80,
-  },
-  {
-    id: 5, type_id: 5, title: 'Блюдо 8', mass: 180,
-  },
-
 ];
 
 export default function TrainingNutrition() {
@@ -75,7 +48,11 @@ export default function TrainingNutrition() {
               </tr>
               {nutrition.filter((e) => (e['DailyRecipe.Recipe.TypeFood.id'] === el.id)).map((e) => (
                 <tr>
-                  <th>{e['DailyRecipe.Recipe.title']}</th>
+                  <th>
+                    <Link className="linkButton" to={`/recipe/${e['DailyRecipe.Recipe.id']}`}>
+                      {e['DailyRecipe.Recipe.title']}
+                    </Link>
+                  </th>
                   <td>
                     {e['DailyRecipe.mass']}
                     гр.
