@@ -48,61 +48,63 @@ export default function Settings() {
 
   return (
     <div>
-      <div>
-        <h3 className={styles.h3}>Введите свои данные</h3>
+      <div className={styles.inputDiv}>
+        <div>
+          <h2>Введите свои данные</h2>
+        </div>
+        <form onSubmit={createUserData}>
+          <div>
+
+            <div className={styles.middleDiv}>
+              <div className={styles.smallDiv}>
+                Имя
+              </div>
+              <div className={styles.smallDiv}>
+                <input
+                  className={styles.input}
+                  value={inputs.name}
+                  onChange={formHandler}
+                  type="text"
+                  name="name"
+                />
+              </div>
+            </div>
+
+            <div className={styles.middleDiv}>
+              <div className={styles.smallDiv}>
+                Login
+              </div>
+              <div className={styles.smallDiv}>
+                <input
+                  className={styles.input}
+                  value={inputs.login}
+                  onChange={formHandler}
+                  type="text"
+                  name="login"
+                />
+              </div>
+            </div>
+            <div className={styles.middleDiv}>
+              <div className={styles.smallDiv}>
+                email
+              </div>
+              <div className={styles.smallDiv}>
+                <input
+                  className={styles.input}
+                  value={inputs.email}
+                  onChange={formHandler}
+                  type="text"
+                  name="email"
+                />
+              </div>
+
+            </div>
+          </div>
+          <div>
+            <button className={styles.buttonStyle} type="submit">SAVE</button>
+          </div>
+        </form>
       </div>
-      <form onSubmit={createUserData}>
-        <div>
-
-          <div className={styles.middleDiv}>
-            <div className={styles.smallDiv}>
-              Имя
-            </div>
-            <div className={styles.smallDiv}>
-              <input
-                className={styles.input}
-                value={inputs.name}
-                onChange={formHandler}
-                type="text"
-                name="name"
-              />
-            </div>
-          </div>
-
-          <div className={styles.middleDiv}>
-            <div className={styles.smallDiv}>
-              Login
-            </div>
-            <div className={styles.smallDiv}>
-              <input
-                className={styles.input}
-                value={inputs.login}
-                onChange={formHandler}
-                type="text"
-                name="login"
-              />
-            </div>
-          </div>
-          <div className={styles.middleDiv}>
-            <div className={styles.smallDiv}>
-              email
-            </div>
-            <div className={styles.smallDiv}>
-              <input
-                className={styles.input}
-                value={inputs.email}
-                onChange={formHandler}
-                type="text"
-                name="email"
-              />
-            </div>
-
-          </div>
-        </div>
-        <div>
-          <button className={styles.buttonStyle} type="submit">SAVE</button>
-        </div>
-      </form>
       <ButtonChatAndMotivation />
     </div>
   );

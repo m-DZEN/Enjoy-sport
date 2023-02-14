@@ -65,7 +65,7 @@ export default function Cabinet() {
         </div>
         <form onSubmit={createUserData}>
 
-          <div className={styles.inputDiv}>
+          <div>
             <div className={styles.middleDiv}>
               <div className={styles.smallDiv}>
                 Дата рождения
