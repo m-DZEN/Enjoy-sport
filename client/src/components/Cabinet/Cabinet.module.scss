@@ -17,8 +17,8 @@ $mainHeight: 800px;
 
 .inputDiv {
   display: flex;
-flex-direction: column;
-margin: 2px;
+  flex-direction: column;
+  margin: 2px;
   margin-right: 15px;
   margin-left: 15px;
 }
@@ -26,9 +26,6 @@ margin: 2px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  // margin: 2px;
-  // margin-right: 15px;
-  // margin-left: 15px;
 }
 .textareaDiv {
   flex-direction: column;
@@ -70,9 +67,6 @@ margin: 2px;
   width: 320px;
   height: 70px;
   line-height: 1.2;
-  // margin: 2px;
-  // margin-right: 15px;
-  // margin-left: 15px;
 }
 
 .textH5 {
