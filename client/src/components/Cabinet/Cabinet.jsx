@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import ButtonChatAndMotivation from '../ButtonChatAndMotivation/ButtonChatAndMotivation';
-import './Cabinet.css';
+import styles from './Cabinet.module.scss';
 
 export default function Cabinet() {
   const user = useSelector((store) => store.userStore);
@@ -37,11 +37,6 @@ export default function Cabinet() {
       setInputs((pre) => ({ ...pre, ...data }));
     }());
   }, []);
-  // console.log('els===>useEff', inputs);
-
-  // useEffect(() => {
-  //   setInputs(els);
-  // }, [els]);
 
   const formHandler = (e) => {
     // console.log(e.target.name, e.target.value);
@@ -64,28 +59,36 @@ export default function Cabinet() {
   };
   return (
     <div>
-      <div className="inputDiv">
+      <div className={styles.inputDiv}>
         <div>
-          <h2 style={{ color: 'blue' }}>введите свои данные</h2>
+          <h2>Введите свои данные</h2>
         </div>
         <form onSubmit={createUserData}>
-          <div className="inputDiv">
-            <div>
-              <label>
-                дата рождения
+
+          <div className={styles.inputDiv}>
+            <div className={styles.middleDiv}>
+              <div className={styles.smallDiv}>
+                Дата рождения
+              </div>
+              <div className={styles.smallDiv}>
                 <input
+                  className={styles.input}
                   value={inputs.birthday}
                   required
                   onChange={formHandler}
                   type="date"
                   name="birthday"
                 />
-              </label>
+              </div>
             </div>
-            <div>
-              <label>
-                рост
+
+            <div className={styles.middleDiv}>
+              <div className={styles.smallDiv}>
+                Рост
+              </div>
+              <div className={styles.smallDiv}>
                 <input
+                  className={styles.input}
                   value={inputs.height}
                   required
                   onChange={formHandler}
@@ -94,12 +97,16 @@ export default function Cabinet() {
                   type="number"
                   name="height"
                 />
-              </label>
+              </div>
             </div>
-            <div>
-              <label>
-                вес
+
+            <div className={styles.middleDiv}>
+              <div className={styles.smallDiv}>
+                Вес
+              </div>
+              <div className={styles.smallDiv}>
                 <input
+                  className={styles.input}
                   value={inputs.weight}
                   required
                   onChange={formHandler}
@@ -108,12 +115,16 @@ export default function Cabinet() {
                   type="number"
                   name="weight"
                 />
-              </label>
+              </div>
             </div>
-            <div>
-              <label>
-                пол
+
+            <div className={styles.middleDiv}>
+              <div className={styles.smallDiv}>
+                Пол
+              </div>
+              <div className={styles.smallDiv}>
                 <select
+                  className={styles.input}
                   value={inputs.gender}
                   required
                   onChange={formHandler}
@@ -122,12 +133,16 @@ export default function Cabinet() {
                   <option value="female">женский</option>
                   <option value="male">мужской</option>
                 </select>
-              </label>
+              </div>
             </div>
-            <div>
-              <label>
-                телосложение
+
+            <div className={styles.middleDiv}>
+              <div className={styles.smallDiv}>
+                Телосложение
+              </div>
+              <div className={styles.smallDiv}>
                 <select
+                  className={styles.input}
                   value={inputs.body_type}
                   required
                   onChange={formHandler}
@@ -136,83 +151,101 @@ export default function Cabinet() {
                   <option value="full">полное</option>
                   <option value="thin">худощавое</option>
                 </select>
-              </label>
-            </div>
-          </div>
-          <div className="mainTrain">
-            <div>
-              <h3 style={{ color: 'blue' }}>выберите программу тренировок</h3>
-            </div>
-            <div>
-              <div>
-                <label>
-                  цель
-                  <select
-                    value={inputs.type_program}
-                    onChange={formHandler}
-                    name="type_program"
-                  >
-                    <option value="loseWeight">похудеть</option>
-                    <option value="gainWeight">набрать вес</option>
-                    <option value="holdWeight">удержать вес</option>
-                  </select>
-                </label>
-                {/* <input /> */}
-              </div>
-              <div>
-                <label>
-                  желаемый вес
-                  <input
-                    value={inputs.final_weight}
-                    required
-                    type="number"
-                    onChange={formHandler}
-                    name="final_weight"
-                  />
-                </label>
               </div>
             </div>
-          </div>
 
-          <h3 style={{ color: 'blue' }}>Список продуктов</h3>
-          <div className="products">
-            <div className="ol">
-              <p>готов отказаться</p>
-              <textarea
-                value={inputs.ready}
-                onChange={formHandler}
-                name="ready"
-              />
+            <div className={styles.textH5}>
+              <h5>Программа тренировок</h5>
             </div>
-            <div className="ol">
-              <p>не готов отказаться</p>
-              <textarea
-                value={inputs.notready}
-                onChange={formHandler}
-                name="notready"
-              />
+
+            <div className={styles.middleDiv}>
+              <div className={styles.smallDiv}>
+                Цель
+              </div>
+              <div className={styles.smallDiv}>
+                <select
+                  className={styles.input}
+                  value={inputs.type_program}
+                  onChange={formHandler}
+                  name="type_program"
+                >
+                  <option value="loseWeight">похудеть</option>
+                  <option value="gainWeight">набрать вес</option>
+                  <option value="holdWeight">удержать вес</option>
+                </select>
+              </div>
             </div>
+            <div className={styles.middleDiv}>
+              <div className={styles.smallDiv}>
+                Желаемый вес
+              </div>
+              <div className={styles.smallDiv}>
+                <input
+                  className={styles.input}
+                  value={inputs.final_weight}
+                  required
+                  type="number"
+                  onChange={formHandler}
+                  name="final_weight"
+                />
+              </div>
+            </div>
+
+            <div className={styles.textH5}>
+              <h5>Список продуктов</h5>
+            </div>
+
+            <div className={styles.textareaDiv}>
+              <div className={styles.smallDiv}>
+                Готов отказаться
+              </div>
+              <div className={styles.smallDiv}>
+                <textarea
+                  className={styles.inputTextArea}
+                  value={inputs.ready}
+                  onChange={formHandler}
+                  name="ready"
+                />
+              </div>
+            </div>
+
+            <div className={styles.textareaDiv}>
+              <div className={styles.smallDiv}>
+                Не готов отказаться
+              </div>
+              <div className={styles.smallDiv}>
+                <textarea
+                  className={styles.inputTextArea}
+                  value={inputs.notready}
+                  onChange={formHandler}
+                  name="notready"
+                />
+              </div>
+            </div>
+
+            <div className={styles.textareaDiv}>
+              <div className={styles.smallDiv}>
+                Противопоказания
+              </div>
+              <div className={styles.smallDiv}>
+                <textarea
+                  className={styles.inputTextArea}
+                  value={inputs.contra}
+                  required
+                  onChange={formHandler}
+                  name="contra"
+                />
+              </div>
+            </div>
+
           </div>
           <div>
-            <div>
-              <p>Противопоказания</p>
-              <textarea
-                value={inputs.contra}
-                required
-                onChange={formHandler}
-                name="contra"
-              />
-              {' '}
-            </div>
-          </div>
-          <div>
-            <button type="submit" style={{ color: 'red' }}>
+            <button className={styles.buttonStyle} type="submit">
               Сохранить
             </button>
           </div>
         </form>
       </div>
-
       <ButtonChatAndMotivation />
     </div>
   );

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import styles from './Settings.module.scss';
+import ButtonChatAndMotivation from '../ButtonChatAndMotivation/ButtonChatAndMotivation';
 
 export default function Settings() {
   const user = useSelector((store) => store.userStore);
@@ -7,14 +9,11 @@ export default function Settings() {
   const [inputs, setInputs] = useState({
     name: ' ',
     login: ' ',
-    // password: ' ',
     email: ' ',
   });
 
   useEffect(() => {
-    // eslint-disable-next-line func-names
     (async function () {
-      // console.log('user.userId useEffect', user);
       const res = await fetch('http://localhost:3001/settings', {
         method: 'POST',
         headers: {
@@ -24,15 +23,12 @@ export default function Settings() {
         credentials: 'include',
       });
       const data = await res.json();
-      console.log('data==========>', data);
 
       setInputs((pre) => ({ ...pre, ...data }));
     }());
   }, []);
-  console.log('inputs===>useEff', inputs);
 
   const formHandler = (e) => {
-    // console.log(e.target.name, e.target.value);
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
@@ -47,66 +43,67 @@ export default function Settings() {
       credentials: 'include',
     });
     await res.json();
-    // console.log('data=====createUserData', data);
     setInputs(inputs);
   };
 
   return (
     <div>
       <div>
-        <h3 style={{ color: 'red' }}>Введите свои данные</h3>
+        <h3 className={styles.h3}>Введите свои данные</h3>
       </div>
       <form onSubmit={createUserData}>
         <div>
-          <div>
-            <label>
+
+          <div className={styles.middleDiv}>
+            <div className={styles.smallDiv}>
               Имя
+            </div>
+            <div className={styles.smallDiv}>
               <input
+                className={styles.input}
                 value={inputs.name}
                 onChange={formHandler}
                 type="text"
                 name="name"
               />
-            </label>
+            </div>
           </div>
-          <div>
-            <label>
+
+          <div className={styles.middleDiv}>
+            <div className={styles.smallDiv}>
               Login
+            </div>
+            <div className={styles.smallDiv}>
               <input
+                className={styles.input}
                 value={inputs.login}
                 onChange={formHandler}
                 type="text"
                 name="login"
               />
-            </label>
+            </div>
           </div>
-          {/* <div>
-            <label>
-              password
-              <input
-                value={inputs.password}
-                onChange={formHandler}
-                type="text"
-                name="password"
-              />
-            </label>
-          </div> */}
-          <div>
-            <label>
+          <div className={styles.middleDiv}>
+            <div className={styles.smallDiv}>
               email
+            </div>
+            <div className={styles.smallDiv}>
               <input
+                className={styles.input}
                 value={inputs.email}
                 onChange={formHandler}
                 type="text"
                 name="email"
               />
-            </label>
+            </div>
+
           </div>
         </div>
         <div>
-          <button type="submit">SAVE</button>
+          <button className={styles.buttonStyle} type="submit">SAVE</button>
         </div>
       </form>
+      <ButtonChatAndMotivation />
     </div>
   );
 }
