@@ -1,4 +1,6 @@
-const { User } = require('../../db/models');
+const {
+  User, DailyTrain, DailyList, Training,
+} = require('../../db/models');
 
 const setUserList = async (req, res) => {
   try {
@@ -28,7 +30,49 @@ const deleteUser = async (req, res) => {
   }
 };
 
+const addTrain = async (req, res) => {
+  try {
+    const { inputs, user, day } = req.body;
+    console.log('==============', day, inputs, user);
+    const newTrain = await DailyTrain.create({
+      training_id: Number(inputs.training_id),
+      weight: Number(inputs.weight),
+      sets: Number(inputs.sets),
+      rep: Number(inputs.rep),
+      rest: Number(inputs.rest),
+    });
+    // console.log('++++++', newTrain);
+    const newday = await DailyList.create(
+      {
+        user_id: Number(user.userId),
+        dailyTrain_id: newTrain.id,
+        date: day,
+      },
+    );
+    // console.log('-------', newday);
+
+    const dayTrain = await DailyList.findAll({
+      where: {
+        user_id: user.userId,
+        date: day,
+      },
+      include: [{
+        model: DailyTrain,
+        include: [{ model: Training }],
+      }],
+      raw: true,
+    });
+    const trainList = await Training.findAll({ raw: true });
+    // console.log('======', trainList);
+    // res.sendStatus(200);
+    res.json([dayTrain, trainList]);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 module.exports = {
   setUserList,
   deleteUser,
+  addTrain,
 };
