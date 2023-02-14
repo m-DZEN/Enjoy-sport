@@ -1,31 +1,43 @@
-import React from 'react';
-import './TrainingWorkout.css';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import styles from './TrainingWorkout.scss';
 
 export default function TrainingWorkout() {
-  const days = [
-    { id: 1, title: 'Понедельник' },
-    { id: 2, title: 'Вторник' },
-    { id: 3, title: 'Среда' },
-    { id: 2, title: 'Четверг' },
-    { id: 2, title: 'Пятница' },
-    { id: 2, title: 'Суббота' },
-    { id: 2, title: 'Воскресенье' },
-  ];
-  const dailyTrains = [
-    {
-      id: 1, title: 'Жим штанги лёжа', weight: 50, sets: 3, rep: 10, rest: 90,
-    },
-    {
-      id: 3, title: 'Жим гантелей лежа', weight: 10, sets: 4, rep: 8, rest: 90,
-    },
-    {
-      id: 5, title: 'Отжимания от пола', weight: 0, sets: 3, rep: 10, rest: 90,
-    },
-  ];
+  const user = useSelector((store) => store.userStore);
+  const { day } = useParams();
+  // const today = new Date();
+  // const weekDay = today.getDay();
+
+  // console.log('user', user);
+  // console.log('day', day);
+
+  const [training, setTraining] = useState([]);
+
+  useEffect(() => {
+    (async function () {
+      const res = await fetch(`http://localhost:3001/training/${day}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ user }),
+        credentials: 'include',
+      });
+
+      const data = await res.json();
+      // console.log('data', data);
+
+      setTraining((pre) => ([...pre, ...data]));
+    }());
+  }, []);
+  // console.log('training', training);
   return (
     <>
-      <div className="workout_container">
-        <caption>{days[0].title}</caption>
+      <div className={styles.workout_container}>
+        <caption>
+          {day}
+        </caption>
         <div className="dailyTrain">
           <table>
             <tr>
@@ -35,13 +47,13 @@ export default function TrainingWorkout() {
               <th>Повторения</th>
               <th>Отдых</th>
             </tr>
-            {dailyTrains.map((el) => (
+            {training.map((el) => (
               <tr>
-                <td>{el.title}</td>
-                <td>{el.weight}</td>
-                <td>{el.sets}</td>
-                <td>{el.rep}</td>
-                <td>{el.rest}</td>
+                <td>{el['DailyTrain.Training.title']}</td>
+                <td>{el['DailyTrain.weight']}</td>
+                <td>{el['DailyTrain.sets']}</td>
+                <td>{el['DailyTrain.rep']}</td>
+                <td>{el['DailyTrain.rest']}</td>
               </tr>
             ))}
           </table>

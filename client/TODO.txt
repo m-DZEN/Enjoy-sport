@@ -4,3 +4,9 @@ npm i react-redux redux @reduxjs/toolkit
 npm install @mui/material @emotion/react @emotion/styled
 npm i -S @mui/material
 npm install @mui/x-data-grid
+
+npm i react-transition-group
+npm i react-icons
+npm i sass
+
+npm i email-validator

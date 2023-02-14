@@ -64,9 +64,6 @@ export default function Cabinet() {
   };
   return (
     <div>
-      <div>
-        <h2 style={{ color: 'red' }}>введите свои данные</h2>
-      </div>
       <div className="inputDiv">
         <div>
           <h2 style={{ color: 'blue' }}>введите свои данные</h2>
@@ -153,7 +150,7 @@ export default function Cabinet() {
                   <select
                     value={inputs.type_program}
                     onChange={formHandler}
-                    name="typeProgram"
+                    name="type_program"
                   >
                     <option value="loseWeight">похудеть</option>
                     <option value="gainWeight">набрать вес</option>

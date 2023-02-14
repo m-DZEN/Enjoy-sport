@@ -4,10 +4,10 @@ const {
 
 module.exports = (sequelize, DataTypes) => {
   class Food extends Model {
-    static associate({ Recipe }) {
-      this.hasMany(Recipe, {
-        foreignKey: 'food_id',
-      });
+    static associate() {
+      // this.hasMany(Recipe, {
+      //   foreignKey: 'food_id',
+      // });
     }
   }
   Food.init({
