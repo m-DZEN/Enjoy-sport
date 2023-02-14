@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import './TrainingWorkout.css';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import styles from './TrainingWorkout.scss';
 
 export default function TrainingWorkout() {
   const user = useSelector((store) => store.userStore);
   const { day } = useParams();
+  // const today = new Date();
+  // const weekDay = today.getDay();
 
   // console.log('user', user);
   // console.log('day', day);
@@ -24,16 +26,18 @@ export default function TrainingWorkout() {
       });
 
       const data = await res.json();
-      console.log('data', data);
+      // console.log('data', data);
 
       setTraining((pre) => ([...pre, ...data]));
     }());
   }, []);
-  console.log('training', training);
+  // console.log('training', training);
   return (
     <>
-      <div className="workout_container">
-        <caption>{day}</caption>
+      <div className={styles.workout_container}>
+        <caption>
+          {day}
+        </caption>
         <div className="dailyTrain">
           <table>
             <tr>
