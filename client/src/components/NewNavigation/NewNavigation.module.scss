@@ -15,7 +15,7 @@ $color8: #f8e6e6;
 $mainWidth: 350px;
 $mainHeight: 800px;
 
-.navigationBlock {
+.container {
   width: $mainWidth;
   min-width: $mainWidth;
   height: $mainHeight;
@@ -30,11 +30,82 @@ $mainHeight: 800px;
   flex-direction: column;
   background-color: $color8;
   border-radius: 20px;
+  // overflow: hidden;
+}
+
+.content {
+  height: $mainHeight - 30px;
   overflow: hidden;
 }
 
 .navbar {
-  width: 50%;
-  background: $color5;
-  border-radius: 10px;
+  width: 70%;
+  height: 30px;
+  font-family: $appLogoFont;
+  margin-bottom: 10px;
+  z-index: 5;
+  // border: 2px solid white;
+
 }
+
+.navbarContent {
+  overflow: hidden;
+  color: $color5;
+  text-shadow: 0px 0px 3px $color2;
+  width: 100%;
+  background: #ffb9b9;
+  font-weight: 700;
+  font-size: 20px;
+  font-family: $appLogoFont;
+  // border: 1px solid $color6;
+  border-radius: 0 0 15px 15px;
+  box-shadow: inset 0px 0px 50px $color6, 0px 0px 10px $color3;
+
+  &Full {
+    height: 130px;
+  }
+
+  &Slim {
+    height: 30px;
+  }
+}
+
+.navbarButton {
+  width: 25px;
+  height: 20px;
+  // background-color: rgba(90, 0, 5, 0.115);
+  background-color: transparent;
+  border: 1px solid $color6;
+  border-radius: 5px;
+  line-height: 16px;
+  font-size: 16px;
+  padding: 0;
+  margin: 0;
+  vertical-align: middle;
+  color: $color6;
+  box-shadow:  0px 0px 3px $color2;
+
+
+
+  // &Icon {
+  //   font-size: 8px;
+  //   width: 20px;
+  //   height: 20px;
+  // }
+}
+
+
+// .navbar {
+//   color: $color5;
+//   text-shadow: 0px 0px 3px $color2;
+//   width: 70%;
+//   height: 150px;
+//   background: #ffb9b9;
+//   font-weight: 700;
+//   font-size: 18px;
+//   font-family: $appLogoFont;
+//   // border: 1px solid $color6;
+//   border-radius: 0 0 15px 15px;
+//   box-shadow: inset 0px 0px 50px $color6, 0px 0px 10px $color3;
+
+// }
