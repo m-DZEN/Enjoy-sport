@@ -47,15 +47,16 @@ export default function TrainingWorkout() {
               <th>Повторения</th>
               <th>Отдых</th>
             </tr>
-            {training.map((el) => (
-              <tr>
-                <td>{el['DailyTrain.Training.title']}</td>
-                <td>{el['DailyTrain.weight']}</td>
-                <td>{el['DailyTrain.sets']}</td>
-                <td>{el['DailyTrain.rep']}</td>
-                <td>{el['DailyTrain.rest']}</td>
-              </tr>
-            ))}
+            {training.length > 0 && (
+              training[0].map((el) => (
+                <tr>
+                  <td>{el['DailyTrain.Training.title']}</td>
+                  <td>{el['DailyTrain.weight']}</td>
+                  <td>{el['DailyTrain.sets']}</td>
+                  <td>{el['DailyTrain.rep']}</td>
+                  <td>{el['DailyTrain.rest']}</td>
+                </tr>
+              )))}
           </table>
         </div>
       </div>
