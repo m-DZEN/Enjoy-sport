@@ -15,8 +15,10 @@ const getDayTraining = async (req, res) => {
       }],
       raw: true,
     });
+
     const trainList = await Training.findAll({ raw: true });
     res.json([dayTrain, trainList]);
+
   } catch (error) {
     console.log(error);
   }

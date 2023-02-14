@@ -1,6 +1,8 @@
 import React, { useState, useEffect, memo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { BsEye, BsEyeSlash } from 'react-icons/bs';
+import validator from 'email-validator';
 
 import { setErrorInfo, resetErrorInfo, resetAuthState } from '../../../redux/reducers/authSlice';
 import { fetchRegisterThunk } from '../../../redux/asyncActions/fetchRegisterThunk';
@@ -18,6 +20,8 @@ const initialRegisterFormState = {
 
 function RegisterForm({ setIsAlreadyRegistered }) {
   const [registerFormInput, setRegisterFormInput] = useState(initialRegisterFormState);
+  const [userPasswordVisible, setUserPasswordVisible] = useState(false);
+  const [repeatedUserPasswordVisible, setRepeatedUserPasswordVisible] = useState(false);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -49,10 +53,14 @@ function RegisterForm({ setIsAlreadyRegistered }) {
     const userPassword = registerFormInput.userPassword.trim();
     const repeatedUserPassword = registerFormInput.repeatedUserPassword.trim();
     if (userLogin && userEmail && userPassword && repeatedUserPassword) {
-      if (userPassword === repeatedUserPassword) {
-        dispatch(fetchRegisterThunk({ userLogin, userEmail, userPassword }));
+      if (validator.validate(userEmail)) {
+        if (userPassword === repeatedUserPassword) {
+          dispatch(fetchRegisterThunk({ userLogin, userEmail, userPassword }));
+        } else {
+          dispatch(setErrorInfo(['Введённые пароли не совпадают!']));
+        }
       } else {
-        dispatch(setErrorInfo(['Введённые пароли не совпадают!']));
+        dispatch(setErrorInfo(['Email указан в неверном формате!']));
       }
     } else {
       setRegisterFormInput((prev) => ({
@@ -73,42 +81,98 @@ function RegisterForm({ setIsAlreadyRegistered }) {
         className={styles.formBlock}
         onSubmit={handleRegisterFormSubmit}
       >
-        <input
-          className={styles.formBlockInput}
-          type="text"
-          name="userLogin"
-          value={registerFormInput.userLogin}
-          onChange={handleRegisterFormInputChange}
-          placeholder="Ваш логин..."
-          required
-        />
-        <input
-          className={styles.formBlockInput}
-          type="email"
-          name="userEmail"
-          value={registerFormInput.userEmail}
-          onChange={handleRegisterFormInputChange}
-          placeholder="Ваш email..."
-          required
-        />
-        <input
-          className={styles.formBlockInput}
-          type="password"
-          name="userPassword"
-          value={registerFormInput.userPassword}
-          onChange={handleRegisterFormInputChange}
-          placeholder="Ваш пароль..."
-          required
-        />
-        <input
-          className={styles.formBlockInput}
-          type="password"
-          name="repeatedUserPassword"
-          value={registerFormInput.repeatedUserPassword}
-          onChange={handleRegisterFormInputChange}
-          placeholder="Повторите пароль..."
-          required
-        />
+        <div className={styles.formBlockInputContainer}>
+          <label
+            className={styles.formBlockInputLabel}
+            htmlFor="userLogin"
+            hidden={!registerFormInput.userLogin}
+          >
+            Логин
+          </label>
+          <input
+            className={styles.formBlockInput}
+            type="text"
+            name="userLogin"
+            value={registerFormInput.userLogin}
+            onChange={handleRegisterFormInputChange}
+            placeholder="Ваш логин..."
+            required
+          />
+        </div>
+
+        <div className={styles.formBlockInputContainer}>
+          <label
+            className={styles.formBlockInputLabel}
+            htmlFor="userEmail"
+            hidden={!registerFormInput.userEmail}
+          >
+            Email
+          </label>
+          <input
+            className={styles.formBlockInput}
+            type="text"
+            name="userEmail"
+            value={registerFormInput.userEmail}
+            onChange={handleRegisterFormInputChange}
+            placeholder="Ваш email..."
+            required
+          />
+        </div>
+
+        <div className={styles.formBlockInputContainer}>
+          <label
+            className={styles.formBlockInputLabel}
+            htmlFor="userPassword"
+            hidden={!registerFormInput.userPassword}
+          >
+            Пароль
+          </label>
+          <input
+            className={`${styles.formBlockInput} ${styles.password}`}
+            type={userPasswordVisible ? 'text' : 'password'}
+            name="userPassword"
+            value={registerFormInput.userPassword}
+            onChange={handleRegisterFormInputChange}
+            placeholder="Ваш пароль..."
+            required
+          />
+          <button
+            className={styles.formBlockPasswordButton}
+            type="button"
+            hidden={!registerFormInput.userPassword}
+            onClick={() => setUserPasswordVisible((prev) => !prev)}
+          >
+            {userPasswordVisible ? (<BsEyeSlash />) : (<BsEye />)}
+          </button>
+        </div>
+
+        <div className={styles.formBlockInputContainer}>
+          <label
+            className={styles.formBlockInputLabel}
+            htmlFor="repeatedUserPassword"
+            hidden={!registerFormInput.repeatedUserPassword}
+          >
+            Пароль повторно
+          </label>
+          <input
+            className={`${styles.formBlockInput} ${styles.password}`}
+            type={repeatedUserPasswordVisible ? 'text' : 'password'}
+            name="repeatedUserPassword"
+            value={registerFormInput.repeatedUserPassword}
+            onChange={handleRegisterFormInputChange}
+            placeholder="Повторите пароль..."
+            required
+          />
+          <button
+            className={styles.formBlockPasswordButton}
+            type="button"
+            hidden={!registerFormInput.repeatedUserPassword}
+            onClick={() => setRepeatedUserPasswordVisible((prev) => !prev)}
+          >
+            {repeatedUserPasswordVisible ? (<BsEyeSlash />) : (<BsEye />)}
+          </button>
+        </div>
+
         <button
           className={styles.formBlockButton}
           type="submit"

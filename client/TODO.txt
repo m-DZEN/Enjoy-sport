@@ -8,3 +8,5 @@ npm install @mui/x-data-grid
 npm i react-transition-group
 npm i react-icons
 npm i sass
+
+npm i email-validator

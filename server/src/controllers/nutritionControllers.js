@@ -5,8 +5,8 @@ const {
 const getNutrition = async (req, res) => {
   const { user } = req.body;
   const { day } = req.params;
-  console.log('user=========>', user);
-  console.log('day=========>', day);
+  // console.log('user=========>', user);
+  // console.log('day=========>', day);
 
   try {
     const daylyFood = await DailyList.findAll({
@@ -25,7 +25,7 @@ const getNutrition = async (req, res) => {
       }],
       raw: true,
     });
-    console.log('daylyFood', daylyFood);
+    // console.log('daylyFood', daylyFood);
     res.json(daylyFood);
   } catch (error) {
     console.log(error);

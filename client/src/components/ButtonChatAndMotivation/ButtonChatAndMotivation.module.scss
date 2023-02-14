@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Kurale&display=swap');
-
+// @import "AuthStyles.scss";
 $appLogoFont: 'Cinzel', serif;
 $ordinaryFont: 'Kurale', serif;
 
@@ -14,13 +13,21 @@ $color7: #4b1a1a;
 $mainWidth: 350px;
 $mainHeight: 800px;
 
-%myButtonStyle {
+.mainModal {
+  background-image: url('../../images//modalPhoto/1.jpeg');
+  color: $color5;
+  font-family: $ordinaryFont;
+  border: 2px solid $color4;
+  border-radius: 10px;
+}
+
+.buttonStyle {
   height: 30px;
   color: $color5;
   font-size: 15px;
   font-weight: 700;
   font-family: $ordinaryFont;
-  background-color: $color7;
+  background-color: $color3;
   border: 2px solid $color4;
   border-radius: 10px;
   cursor: pointer;

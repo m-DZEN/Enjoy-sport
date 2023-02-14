@@ -1,6 +1,7 @@
 import React, { useState, useEffect, memo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { BsEye, BsEyeSlash } from 'react-icons/bs';
 
 import { setErrorInfo, resetErrorInfo, resetAuthState } from '../../../redux/reducers/authSlice';
 import { fetchLoginThunk } from '../../../redux/asyncActions/fetchLoginThunk';
@@ -16,6 +17,7 @@ const initialLoginFormState = {
 
 function LoginForm({ setIsAlreadyRegistered }) {
   const [loginFormInput, setLoginFormInput] = useState(initialLoginFormState);
+  const [passwordVisible, setPasswordVisible] = useState(false);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -63,24 +65,52 @@ function LoginForm({ setIsAlreadyRegistered }) {
         className={styles.formBlock}
         onSubmit={handleLoginFormSubmit}
       >
-        <input
-          className={styles.formBlockInput}
-          type="text"
-          name="userLogin"
-          value={loginFormInput.userLogin}
-          onChange={handleLoginFormInputChange}
-          placeholder="Ваш логин..."
-          required
-        />
-        <input
-          className={styles.formBlockInput}
-          type="password"
-          name="userPassword"
-          value={loginFormInput.userPassword}
-          onChange={handleLoginFormInputChange}
-          placeholder="Ваш пароль..."
-          required
-        />
+        <div className={styles.formBlockInputContainer}>
+          <label
+            className={styles.formBlockInputLabel}
+            htmlFor="userLogin"
+            hidden={!loginFormInput.userLogin}
+          >
+            Логин
+          </label>
+          <input
+            className={styles.formBlockInput}
+            type="text"
+            name="userLogin"
+            value={loginFormInput.userLogin}
+            onChange={handleLoginFormInputChange}
+            placeholder="Ваш логин..."
+            required
+          />
+        </div>
+
+        <div className={styles.formBlockInputContainer}>
+          <label
+            className={styles.formBlockInputLabel}
+            htmlFor="userPassword"
+            hidden={!loginFormInput.userPassword}
+          >
+            Пароль
+          </label>
+          <input
+            className={`${styles.formBlockInput} ${styles.password}`}
+            type={passwordVisible ? 'text' : 'password'}
+            name="userPassword"
+            value={loginFormInput.userPassword}
+            onChange={handleLoginFormInputChange}
+            placeholder="Ваш пароль..."
+            required
+          />
+          <button
+            className={styles.formBlockPasswordButton}
+            type="button"
+            hidden={!loginFormInput.userPassword}
+            onClick={() => setPasswordVisible((prev) => !prev)}
+          >
+            {passwordVisible ? (<BsEyeSlash />) : (<BsEye />)}
+          </button>
+        </div>
+
         <button
           className={styles.formBlockButton}
           type="submit"
