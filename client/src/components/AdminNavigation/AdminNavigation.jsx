@@ -1,16 +1,17 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { CgMenu } from 'react-icons/cg';
 
 import { fetchLogoutThunk } from '../../redux/asyncActions/fetchLogoutThunk';
 
+import styles from './AdminNavigation.module.scss';
+
 export default function AdminNavigation() {
+  const [isFirstRender, setIsFirstRender] = useState(true);
+  const [fullNavbarVisible, setFullNavbarVisible] = useState(false);
+  const [extraClassName, setExtraClassName] = useState('');
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((store) => store.userStore);
@@ -22,28 +23,73 @@ export default function AdminNavigation() {
     }
   }, [user]);
 
+  useEffect(() => {
+    if (!isFirstRender && fullNavbarVisible) {
+      setExtraClassName(` ${styles.navbarContentFull}`);
+    } else if (!isFirstRender && !fullNavbarVisible) {
+      setExtraClassName(` ${styles.navbarContentSlim}`);
+    } else {
+      setExtraClassName('');
+    }
+  }, [isFirstRender, fullNavbarVisible]);
+
+  const handleExtraLinkClick = () => {
+    setIsFirstRender(false);
+    setFullNavbarVisible(false);
+  };
+
   const handleLogout = () => {
     dispatch(fetchLogoutThunk());
   };
 
-  const [expanded, setExpanded] = useState(false);
-
   return (
-    <>
+    <div className={styles.container}>
 
-      <Navbar expanded={expanded} bg="dark" expand="lg" variant="dark">
-        <Container>
-          <Navbar.Brand as={Link} to="/">Enjoy Sport</Navbar.Brand>
-          <Navbar.Toggle onClick={() => setExpanded(expanded ? false : 'expanded')} aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ml-auto">
-              <Nav.Link onClick={() => setExpanded(false)} as={Link} to="settings">Настройки</Nav.Link>
-              <Nav.Link onClick={handleLogout} as={Link} to="/"> Выход</Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-      <Outlet />
-    </>
+      <div className={styles.navbar}>
+        <div className={`${styles.navbarContent}${extraClassName}`}>
+
+          <div className={styles.navbarMain}>
+            <Link className={styles.navbarMainLink} to="/admin">
+              Enjoy Sport
+            </Link>
+
+            <button
+              type="button"
+              className={styles.navbarMainButton}
+              onClick={() => {
+                setIsFirstRender(false);
+                setFullNavbarVisible((prev) => !prev);
+              }}
+            >
+              <CgMenu />
+            </button>
+          </div>
+
+          <div className={styles.navbarExtra}>
+            <Link to="map" className={styles.navbarExtraLink} onClick={handleExtraLinkClick}>
+              Фитнес рядом
+            </Link>
+
+            <Link to="settings" className={styles.navbarExtraLink} onClick={handleExtraLinkClick}>
+              Настройки
+            </Link>
+
+            <button
+              type="button"
+              className={styles.navbarExtraLink}
+              onClick={handleLogout}
+            >
+              Выход
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <div className={styles.content}>
+        <Outlet />
+      </div>
+
+    </div>
   );
 }

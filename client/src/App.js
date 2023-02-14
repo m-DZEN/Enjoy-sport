@@ -41,11 +41,10 @@ function App() {
         )}
         {!user.isUserInfoLoading && (
         <Routes>
-          {/* у админа своя навигация */}
-          <Route path="admin" element={<AdminProtectedRoute userLogin={user.userLogin} redirectPath="/" />}>
-            <Route path="" element={<AdminNavigation />}>
+          <Route path="admin" element={<AdminNavigation />}>
+            <Route element={<AdminProtectedRoute userLogin={user.userLogin} redirectPath="/" />}>
               <Route path="" element={<AdminMain />} />
-              <Route path="cabinet" element={<Cabinet />} />
+              <Route path="map" element={<div>map</div>} />
               <Route path="settings" element={<Settings />} />
               <Route path="wschat/:userId" element={<AdminWSChat />} />
               <Route path="training/:id" element={<AdminTraining />} />
@@ -57,6 +56,7 @@ function App() {
           <Route path="/" element={<Navigation />}>
             <Route element={<ProtectedRoute user={user.userLogin} redirectPath="auth" />}>
               <Route path="/" element={<Training />} />
+              <Route path="/map" element={<div>map</div>} />
               <Route path="/nutrition/:day" element={<TrainingNutrition />} />
               <Route path="/workout/:day" element={<TrainingWorkout />} />
               <Route path="/recipe/:id" element={<Recipe />} />

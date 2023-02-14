@@ -81,6 +81,7 @@ export default function Navigation() {
             <Link to="/statistic" className={styles.navbarExtraLink} onClick={handleExtraLinkClick}>
               Статистика
             </Link>
+
             <Link to="/settings" className={styles.navbarExtraLink} onClick={handleExtraLinkClick}>
               Настройки
             </Link>
