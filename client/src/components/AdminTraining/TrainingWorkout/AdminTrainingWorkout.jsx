@@ -2,14 +2,25 @@ import React, { useEffect, useState } from 'react';
 import './AdminTrainingWorkout.css';
 // import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import Table from 'react-bootstrap/Table';
+import Button from 'react-bootstrap/Button';
 
 export default function TrainingWorkout() {
   const { id, day } = useParams();
   const user = { userId: id };
-  // console.log('user', user);
-  // console.log('day', day);
 
   const [training, setTraining] = useState([]);
+
+  const [visible, setVisible] = useState('none');
+
+  // eslint-disable-next-line no-unused-vars
+  const [inputs, setInputs] = useState({
+    training_id: 0,
+    weight: 0,
+    sets: 0,
+    rep: 0,
+    rest: 90,
+  });
 
   useEffect(() => {
     (async function () {
@@ -29,78 +40,129 @@ export default function TrainingWorkout() {
     }());
   }, []);
   console.log('training', training);
+
+  const addTrain = async () => {
+    setVisible('');
+    console.log('добавление', visible);
+  };
+
+  const formHandler = (e) => {
+    // console.log(e.target.name, e.target.value);
+    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+  /*   useEffect(() => {
+    window.location.reload();
+  }, [training]);
+ */
+  const saveTrain = async () => {
+    setVisible('none');
+
+    const res = await fetch('http://localhost:3001/admin', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ inputs, user, day }),
+      credentials: 'include',
+    });
+    const respons = await res.json();
+    console.log('response', respons);
+    setTraining(respons);
+  };
+  console.log('+++++++', training);
   return (
-    <div className="workout_container">
-      <caption>{day}</caption>
-      <div className="dailyTrain">
-        <table>
+    <div className="admintrainlist">
+      <Table className="table" striped bordered hover variant="dark">
+        <thead>
           <tr>
             <th>Упражнение</th>
             <th>Вес</th>
-            <th>Подходы</th>
-            <th>Повторения</th>
-            <th>Отдых</th>
+            <th>Подходы/Повторения</th>
+            <th> </th>
           </tr>
-          {training.map((el) => (
-            <tr>
-              <td>{el['DailyTrain.Training.title']}</td>
-              <td>{el['DailyTrain.weight']}</td>
-              <td>{el['DailyTrain.sets']}</td>
-              <td>{el['DailyTrain.rep']}</td>
-              <td>{el['DailyTrain.rest']}</td>
+        </thead>
+        <tbody>
+
+          { training.length > 0 && (
+
+            training[0].map((el) => (
+              <tr>
+                <td>{el['DailyTrain.Training.title']}</td>
+                <td>{el['DailyTrain.weight']}</td>
+                <td>
+                  {el['DailyTrain.sets']}
+                  /
+                  {' '}
+                  {el['DailyTrain.rep']}
+                </td>
+
+                <td>
+                  <Button className="adminlink" variant="dark">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash3" viewBox="0 0 16 16">
+                      <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
+                    </svg>
+                  </Button>
+                </td>
+              </tr>
+            ))
+
+          )}
+          { training.length > 0 && (
+
+            <tr className="addForm" style={{ display: visible }}>
+              <th>
+                <select
+                  className="selectform"
+                  onChange={formHandler}
+                  name="training_id"
+                >
+                  {training[1].map((el) => (
+                    <option className="optionsTrain" value={el.id}>{el.title}</option>
+                  ))}
+                </select>
+              </th>
+              <th>
+                <input
+                  type="number"
+                  className="inputform"
+                  onChange={formHandler}
+                  name="weight"
+                />
+              </th>
+              <th>
+                <div className="setrep">
+                  <input
+                    className="inputform"
+                    onChange={formHandler}
+                    name="sets"
+                  />
+                  <input
+                    className="inputform"
+                    onChange={formHandler}
+                    name="rep"
+                  />
+                </div>
+
+              </th>
+              <td>
+                <Button className="adminlink" variant="dark" onClick={saveTrain}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-save" viewBox="0 0 16 16">
+                    <path d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v7.293l2.646-2.647a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L7.5 9.293V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1H2z" />
+                  </svg>
+                </Button>
+              </td>
             </tr>
-          ))}
-          <tr>
-            <td colSpan="5">
-              <button className="workout_btn" type="submit">Сохранить</button>
-            </td>
-          </tr>
-          <tr>
-            <td colSpan="5">
-              Добавить новую тренировку
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <select
-                name="training_title"
-              >
-                <option value="-">-</option>
-                <option value="-">-</option>
-              </select>
-            </td>
-            <td>
-              <input
-                className="adminInputs"
-                name="training_weight"
-              />
-            </td>
-            <td>
-              <input
-                className="adminInputs"
-                name="training_sets"
-              />
-            </td>
-            <td>
-              <input
-                className="adminInputs"
-                name="training_rep"
-              />
-            </td>
-            <td>
-              <input
-                className="adminInputs"
-                name="training_rest"
-              />
-            </td>
-          </tr>
-          <tr>
-            <td colSpan="5">
-              <button className="workout_btn" type="submit">Добавить</button>
-            </td>
-          </tr>
-        </table>
-      </div>
+          )}
+
+        </tbody>
+
+      </Table>
+      <Button className="adminlink" variant="dark" onClick={addTrain}>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-plus-lg" viewBox="0 0 16 16">
+          <path fillRule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
+        </svg>
+      </Button>
+
     </div>
   );
 }

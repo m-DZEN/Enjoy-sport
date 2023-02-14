@@ -29,3 +29,55 @@
 .adminInputs {
   max-width: 50px;
 }
+.table {
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 700px;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+ 
+}
+.admintrainlist {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+}
+thead {
+  font-size: 12px;
+  vertical-align: middle;
+  align-items: center;
+  justify-content: center;
+}
+td {
+  font-size: 10px;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+.addForm{
+  font-size: 10px;
+}
+.inputform {
+  width: 40px;
+}
+
+.setrep {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+.selectform{
+  width: 80px;
+
+}
+.optionsTrain {
+  word-wrap:break-word;
+  scroll-behavior: smooth;
+  overflow: auto;
+}
