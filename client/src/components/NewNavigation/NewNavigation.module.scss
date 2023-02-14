@@ -11,9 +11,13 @@ $color5: #ffb9b9;
 $color6: #5a0004;
 $color7: #4b1a1a;
 $color8: #f8e6e6;
+$color9: #fdd4d4;
 
 $mainWidth: 350px;
 $mainHeight: 800px;
+
+$slimNavbarHeight: 30px;
+$fullNavbarHeight: 190px;
 
 .container {
   width: $mainWidth;
@@ -23,89 +27,204 @@ $mainHeight: 800px;
   border: 3px solid $color6;
   box-shadow: inset 0px 0px 70px $color6, 0px 0px 200px $color3;
   margin: 0 auto;
-  margin-top: 10px;
+  margin-top: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   background-color: $color8;
   border-radius: 20px;
-  // overflow: hidden;
+  overflow: hidden;
 }
 
 .content {
-  height: $mainHeight - 30px;
+  height: $mainHeight - $slimNavbarHeight;
   overflow: hidden;
 }
 
 .navbar {
   width: 70%;
-  height: 30px;
-  font-family: $appLogoFont;
+  height: $slimNavbarHeight;
   margin-bottom: 10px;
-  z-index: 5;
-  // border: 2px solid white;
-
+  z-index: 1;
 }
 
-.navbarContent {
-  overflow: hidden;
-  color: $color5;
-  text-shadow: 0px 0px 3px $color2;
+.navbarContent {  
   width: 100%;
-  background: #ffb9b9;
-  font-weight: 700;
-  font-size: 20px;
-  font-family: $appLogoFont;
-  // border: 1px solid $color6;
+  height: $slimNavbarHeight;
+  background: $color5;
   border-radius: 0 0 15px 15px;
-  box-shadow: inset 0px 0px 50px $color6, 0px 0px 10px $color3;
-
-  &Full {
-    height: 130px;
-  }
+  box-shadow: inset 0px 0px 50px $color6, 0px 0px 7px $color6;
+  overflow: hidden;
 
   &Slim {
-    height: 30px;
+    height: $slimNavbarHeight;
+    animation: navbar-close-animate 0.5s linear;
+
+    & .navbarMainButton {
+      animation: navbarMainButton-close-animate 0.5s linear;
+    }
+  }
+
+  &Full {
+    height: $fullNavbarHeight;
+    animation: navbar-open-animate 0.5s linear;
+
+    & .navbarMainButton {
+      animation: navbarMainButton-open-animate 0.5s linear;
+    }
   }
 }
 
-.navbarButton {
-  width: 25px;
-  height: 20px;
-  // background-color: rgba(90, 0, 5, 0.115);
-  background-color: transparent;
-  border: 1px solid $color6;
-  border-radius: 5px;
-  line-height: 16px;
-  font-size: 16px;
-  padding: 0;
-  margin: 0;
-  vertical-align: middle;
-  color: $color6;
-  box-shadow:  0px 0px 3px $color2;
+.navbarMain {
+  height: $slimNavbarHeight;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 7px;
 
+  &Link {
+    color: $color5;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: $appLogoFont;
+    text-shadow: 0px 0px 5px $color2;
+    text-decoration: none;
+  
+    &:hover,
+    &:active {
+      color: $color2;
+    }
+  
+    &:active {
+      transform: scale(0.9);
+    }
+  }
 
+  &Button {
+    width: 22px;
+    height: 22px;
+    color: $color9;
+    font-size: 15px;
+    border-radius: 11px;
+    border: 1px solid $color5;
+    background-color: transparent;
+    box-shadow:  0px 0px 3px $color2;
+    margin: 0 0 0 10px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    
+    &:hover,
+    &:active {
+      color: $color2;
+      box-shadow:  0px 0px 10px $color5, inset 0px 0px 3px $color5;
+    }
+  
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+}
 
-  // &Icon {
-  //   font-size: 8px;
-  //   width: 20px;
-  //   height: 20px;
-  // }
+.navbarExtra {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  &Link {
+    color: $color9;
+    border: none;
+    border-radius: 7px;
+    background-color: transparent;
+    padding: 0 10px;
+    margin: 0 auto;
+    margin-bottom: 5px;
+    line-height: 1.2em;
+    font-size: 15px;
+    font-weight: 500;
+    font-family: $ordinaryFont;
+    text-shadow: 0px 0px 3px $color2;
+    text-decoration: none;
+    cursor: pointer;
+    outline: none;
+  
+    &:hover,
+    &:active {
+      color: $color2;
+    }
+  
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+
+  .navbarContentSlim > & {
+    opacity: 0;
+    animation: links-close-animate 0.3s linear;
+  }
+
+  .navbarContentFull > & {
+    opacity: 1;
+    animation: links-open-animate 1s linear;
+  }
 }
 
 
-// .navbar {
-//   color: $color5;
-//   text-shadow: 0px 0px 3px $color2;
-//   width: 70%;
-//   height: 150px;
-//   background: #ffb9b9;
-//   font-weight: 700;
-//   font-size: 18px;
-//   font-family: $appLogoFont;
-//   // border: 1px solid $color6;
-//   border-radius: 0 0 15px 15px;
-//   box-shadow: inset 0px 0px 50px $color6, 0px 0px 10px $color3;
 
-// }
+@keyframes navbar-open-animate {
+  from {
+    height: $slimNavbarHeight;
+  }
+  to {
+    height: $fullNavbarHeight;
+  }
+}
+
+@keyframes navbar-close-animate {
+  from {
+    height: $fullNavbarHeight;
+  }
+  to {
+    height: $slimNavbarHeight;
+  }
+}
+
+@keyframes navbarMainButton-open-animate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(180deg);
+  }
+}
+
+@keyframes navbarMainButton-close-animate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-180deg);
+  }
+}
+
+@keyframes links-open-animate {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes links-close-animate {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

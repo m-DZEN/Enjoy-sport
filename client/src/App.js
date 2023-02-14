@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { fetchUserInfoThunk } from './redux/asyncActions/fetchUserInfoThunk';
 
-import Navigation from './components/Navigation/Navigation';
+// import Navigation from './components/Navigation/Navigation';
 import Statistic from './components/Statistic/Statistic';
 import Cabinet from './components/Cabinet/Cabinet';
 import Training from './components/Training/Training';
@@ -55,20 +55,20 @@ function App() {
             </Route>
           </Route>
 
-          <Route path="/" element={<Navigation />}>
-            <Route path="/" element={<NewNavigation />}>
-              <Route element={<ProtectedRoute user={user.userLogin} redirectPath="auth" />}>
-                <Route path="/" element={<Training />} />
-                <Route path="/nutrition/:day" element={<TrainingNutrition />} />
-                <Route path="/workout/:day" element={<TrainingWorkout />} />
-                <Route path="/recipe/:id" element={<Recipe />} />
-                <Route path="/statistic" element={<Statistic />} />
-                <Route path="/cabinet" element={<Cabinet />} />
-                <Route path="/settings" element={<Settings />} />
-                <Route path="/wschat" element={<WSChat />} />
-              </Route>
+          {/* <Route path="/" element={<Navigation />}> */}
+          <Route path="/" element={<NewNavigation />}>
+            <Route element={<ProtectedRoute user={user.userLogin} redirectPath="auth" />}>
+              <Route path="/" element={<Training />} />
+              <Route path="/nutrition/:day" element={<TrainingNutrition />} />
+              <Route path="/workout/:day" element={<TrainingWorkout />} />
+              <Route path="/recipe/:id" element={<Recipe />} />
+              <Route path="/statistic" element={<Statistic />} />
+              <Route path="/cabinet" element={<Cabinet />} />
+              <Route path="/settings" element={<Settings />} />
+              <Route path="/wschat" element={<WSChat />} />
             </Route>
           </Route>
+          {/* </Route> */}
 
           <Route element={<ProtectedRoute user={!user.userLogin} redirectPath="/" />}>
             <Route path="auth" element={<AuthPage />} />
