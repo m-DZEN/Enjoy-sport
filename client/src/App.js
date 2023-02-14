@@ -24,7 +24,6 @@ import AdminTrainingWorkout from './components/AdminTraining/TrainingWorkout/Adm
 import AdminWSChat from './components/AdminWSChat/AdminWSChat';
 
 import './App.css';
-import NewNavigation from './components/NewNavigation/NewNavigation';
 
 function App() {
   const dispatch = useDispatch();
@@ -56,17 +55,15 @@ function App() {
           </Route>
 
           <Route path="/" element={<Navigation />}>
-            <Route path="/" element={<NewNavigation />}>
-              <Route element={<ProtectedRoute user={user.userLogin} redirectPath="auth" />}>
-                <Route path="/" element={<Training />} />
-                <Route path="/nutrition/:day" element={<TrainingNutrition />} />
-                <Route path="/workout/:day" element={<TrainingWorkout />} />
-                <Route path="/recipe/:id" element={<Recipe />} />
-                <Route path="/statistic" element={<Statistic />} />
-                <Route path="/cabinet" element={<Cabinet />} />
-                <Route path="/settings" element={<Settings />} />
-                <Route path="/wschat" element={<WSChat />} />
-              </Route>
+            <Route element={<ProtectedRoute user={user.userLogin} redirectPath="auth" />}>
+              <Route path="/" element={<Training />} />
+              <Route path="/nutrition/:day" element={<TrainingNutrition />} />
+              <Route path="/workout/:day" element={<TrainingWorkout />} />
+              <Route path="/recipe/:id" element={<Recipe />} />
+              <Route path="/statistic" element={<Statistic />} />
+              <Route path="/cabinet" element={<Cabinet />} />
+              <Route path="/settings" element={<Settings />} />
+              <Route path="/wschat" element={<WSChat />} />
             </Route>
           </Route>
 
