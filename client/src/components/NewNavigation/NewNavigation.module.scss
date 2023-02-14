@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Kurale&display=swap');
+
+$appLogoFont: 'Cinzel', serif;
+$ordinaryFont: 'Kurale', serif;
+
+$color1: #360000;
+$color2: #6c0202;
+$color3: #a31919;
+$color4: #ee7272;
+$color5: #ffb9b9;
+$color6: #5a0004;
+$color7: #4b1a1a;
+$color8: #f8e6e6;
+
+$mainWidth: 350px;
+$mainHeight: 800px;
+
+.navigationBlock {
+  width: $mainWidth;
+  min-width: $mainWidth;
+  height: $mainHeight;
+  min-height: $mainHeight;
+  border: 3px solid $color6;
+  box-shadow: inset 0px 0px 70px $color6, 0px 0px 200px $color3;
+  margin: 0 auto;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: $color8;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.navbar {
+  width: 50%;
+  background: $color5;
+  border-radius: 10px;
+}
