@@ -95,6 +95,7 @@ $fullNavbarHeight: 120px;
     &:hover,
     &:active {
       color: $color2;
+      text-shadow: 0px 0px 3px $color5;
     }
   
     &:active {

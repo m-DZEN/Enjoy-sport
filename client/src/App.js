@@ -22,6 +22,7 @@ import Recipe from './components/Recipe/Recipe';
 import AdminTraining from './components/AdminTraining/AdminTraining';
 import AdminTrainingWorkout from './components/AdminTraining/TrainingWorkout/AdminTrainingWorkout';
 import AdminWSChat from './components/AdminWSChat/AdminWSChat';
+import Loading from './components/Loading/Loading';
 
 import './App.css';
 
@@ -36,9 +37,9 @@ function App() {
   return (
     <>
       <div className="App">
-        {user.isUserInfoLoading && (
-        <h3 style={{ backgroundColor: 'white' }}>Loading...</h3>
-        )}
+
+        {user.isUserInfoLoading && <Loading />}
+
         {!user.isUserInfoLoading && (
         <Routes>
           <Route path="admin" element={<AdminNavigation />}>
@@ -74,6 +75,7 @@ function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
         )}
+
       </div>
 
       {/* <footer>

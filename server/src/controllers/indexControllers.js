@@ -8,7 +8,7 @@ const getUserInfo = (req, res) => {
       console.log('===> NEED-LOGIN');
       res.json({ backendResult: 'NEED-LOGIN' });
     }
-  }, 700);
+  }, 2500);
 };
 
 module.exports = { getUserInfo };

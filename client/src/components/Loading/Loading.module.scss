@@ -1,0 +1,28 @@
+.loading {
+  margin: 0 auto;
+  color: #6c0202;
+  font-size: 200px;
+  width: 300px;
+  min-width: 300px;
+  height: 600px;
+  min-height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: loading-animate infinite 4s linear;
+}
+
+@keyframes loading-animate {
+  0% {
+    opacity: 0.3;
+    transform: rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: rotate(180deg);
+  }
+  100% {
+    opacity: 0.3;
+    transform: rotate(360deg);
+  }
+}
