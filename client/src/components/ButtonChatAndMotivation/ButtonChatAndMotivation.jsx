@@ -24,20 +24,20 @@ export default function ButtonChatAndMotivation() {
       <Modal show={show} onHide={handleClose}>
         <div className={styles.mainModal}>
           <Modal.Header closeButton>
-            <Modal.Title>твоя доза мотивашки</Modal.Title>
+            <Modal.Title>Твоя доза мотивашки</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <p>{quote.text}</p>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="outline-danger" className={styles.buttonStyle} onClick={handleClose}>
-              иду работать на собой
+              Иду работать на собой
             </Button>
           </Modal.Footer>
         </div>
       </Modal>
-      <Button variant="secondary" onClick={handleShow}>
-        поднять дух
+      <Button className={styles.buttonStyle} variant="secondary" onClick={handleShow}>
+        Поднять дух
       </Button>
     </>
   );

@@ -61,7 +61,6 @@ export default function TrainingWorkout() {
         </div>
       </div>
       <button className="workout_btn" type="submit">Завершить</button>
-
     </>
   );
 }
