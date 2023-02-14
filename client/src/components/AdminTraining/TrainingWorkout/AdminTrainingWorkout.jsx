@@ -10,7 +10,10 @@ export default function TrainingWorkout() {
   const user = { userId: id };
 
   const [training, setTraining] = useState([]);
+  const [trainList, setTrainList] = useState([]);
 
+  console.log('======== training', training);
+  console.log('=======LIST', trainList);
   const [visible, setVisible] = useState('none');
 
   // eslint-disable-next-line no-unused-vars
@@ -21,7 +24,7 @@ export default function TrainingWorkout() {
     rep: 0,
     rest: 90,
   });
-
+  // отображение списка всех тренировок
   useEffect(() => {
     (async function () {
       const res = await fetch(`http://localhost:3001/training/${day}`, {
@@ -32,28 +35,22 @@ export default function TrainingWorkout() {
         body: JSON.stringify({ user }),
         credentials: 'include',
       });
-
       const data = await res.json();
-      console.log('data', data);
-
-      setTraining((pre) => ([...pre, ...data]));
+      setTraining((pre) => ([...pre, ...data[0]]));
+      setTrainList((pre) => ([...pre, ...data[1]]));
     }());
   }, []);
-  console.log('training', training);
 
+  // кнопка отображения формы добавления новой задачи
   const addTrain = async () => {
     setVisible('');
-    console.log('добавление', visible);
   };
-
+  // управляемая форма инпутов
   const formHandler = (e) => {
-    // console.log(e.target.name, e.target.value);
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
-  /*   useEffect(() => {
-    window.location.reload();
-  }, [training]);
- */
+
+  // сохрание новой тренировки
   const saveTrain = async () => {
     setVisible('none');
 
@@ -66,10 +63,33 @@ export default function TrainingWorkout() {
       credentials: 'include',
     });
     const respons = await res.json();
-    console.log('response', respons);
+
     setTraining(respons);
   };
-  console.log('+++++++', training);
+  // удаление тренировки по ID
+  const delTrain = async (x) => {
+    console.log('training======del train', training);
+    console.log('element ID=====', x);
+    try {
+      const response = await fetch('http://localhost:3001/admin/deltrain', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ x }),
+        credentials: 'include',
+      });
+      if (response.ok) {
+        // setTraining((pre) => (pre.filter((el) => el.id !== x)));
+        setTraining((pre) => pre.filter((el) => el.id !== x));
+      } else {
+        throw new Error();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="admintrainlist">
       <Table className="table" striped bordered hover variant="dark">
@@ -85,8 +105,8 @@ export default function TrainingWorkout() {
 
           { training.length > 0 && (
 
-            training[0].map((el) => (
-              <tr>
+            training.map((el) => (
+              <tr key={el.id}>
                 <td>{el['DailyTrain.Training.title']}</td>
                 <td>{el['DailyTrain.weight']}</td>
                 <td>
@@ -97,7 +117,7 @@ export default function TrainingWorkout() {
                 </td>
 
                 <td>
-                  <Button className="adminlink" variant="dark">
+                  <Button className="adminlink" variant="dark" onClick={() => { delTrain(el.id); }}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash3" viewBox="0 0 16 16">
                       <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
                     </svg>
@@ -107,7 +127,7 @@ export default function TrainingWorkout() {
             ))
 
           )}
-          { training.length > 0 && (
+          { trainList.length > 0 && (
 
             <tr className="addForm" style={{ display: visible }}>
               <th>
@@ -116,8 +136,8 @@ export default function TrainingWorkout() {
                   onChange={formHandler}
                   name="training_id"
                 >
-                  {training[1].map((el) => (
-                    <option className="optionsTrain" value={el.id}>{el.title}</option>
+                  {trainList.map((el) => (
+                    <option key={el.id} className="optionsTrain" value={el.id}>{el.title}</option>
                   ))}
                 </select>
               </th>

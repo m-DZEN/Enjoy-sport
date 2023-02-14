@@ -25,7 +25,20 @@ const deleteUser = async (req, res) => {
     console.log('=> SUCCESS USER DELETED');
     res.end();
   } catch (error) {
-    res.sent(400);
+    res.send(400);
+    console.log(error);
+  }
+};
+
+const delTrain = async (req, res) => {
+  try {
+    const { x } = req.body;
+    console.log('id train ======', x);
+    await DailyList.destroy({ where: { id: x } });
+    console.log('=> SUCCESS TRAIN DELETED');
+    res.end();
+  } catch (error) {
+    res.send(400);
     console.log(error);
   }
 };
@@ -41,7 +54,7 @@ const addTrain = async (req, res) => {
       rep: Number(inputs.rep),
       rest: Number(inputs.rest),
     });
-    // console.log('++++++', newTrain);
+    console.log('++++++', newTrain);
     const newday = await DailyList.create(
       {
         user_id: Number(user.userId),
@@ -49,7 +62,7 @@ const addTrain = async (req, res) => {
         date: day,
       },
     );
-    // console.log('-------', newday);
+    console.log('-------', newday);
 
     const dayTrain = await DailyList.findAll({
       where: {
@@ -62,10 +75,8 @@ const addTrain = async (req, res) => {
       }],
       raw: true,
     });
-    const trainList = await Training.findAll({ raw: true });
-    // console.log('======', trainList);
-    // res.sendStatus(200);
-    res.json([dayTrain, trainList]);
+    console.log('=====', dayTrain);
+    res.json(dayTrain);
   } catch (error) {
     console.log(error);
   }
@@ -75,4 +86,5 @@ module.exports = {
   setUserList,
   deleteUser,
   addTrain,
+  delTrain,
 };
