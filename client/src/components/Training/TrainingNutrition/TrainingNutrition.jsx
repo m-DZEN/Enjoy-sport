@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import './TrainingNutrition.modules.css';
 import { useSelector } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
+import styles from './TrainingNutrition.module.scss';
 
 const typeFood = [
   { id: 1, title: 'Завтрак' },
@@ -37,7 +37,7 @@ export default function TrainingNutrition() {
   // console.log('nutrition', nutrition);
 
   return (
-    <div className="nutrition_container">
+    <div className={styles.nutrition_container}>
       <caption>{day}</caption>
       <table>
         <tbody>
@@ -49,11 +49,11 @@ export default function TrainingNutrition() {
               {nutrition.filter((e) => (e['DailyRecipe.Recipe.TypeFood.id'] === el.id)).map((e) => (
                 <tr key={el.id}>
                   <th>
-                    <Link className="linkButton" to={`/recipe/${e['DailyRecipe.Recipe.id']}`}>
+                    <Link className={styles.linkButton} to={`/recipe/${e['DailyRecipe.Recipe.id']}`}>
                       {e['DailyRecipe.Recipe.title']}
                     </Link>
                   </th>
-                  <td>
+                  <td className={styles.td}>
                     {e['DailyRecipe.mass']}
                     гр.
                   </td>

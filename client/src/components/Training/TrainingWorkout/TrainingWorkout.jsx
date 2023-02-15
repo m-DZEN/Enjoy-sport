@@ -1,16 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import styles from './TrainingWorkout.scss';
+import styles from './TrainingWorkout.module.scss';
 
 export default function TrainingWorkout() {
   const user = useSelector((store) => store.userStore);
   const { day } = useParams();
-  // const today = new Date();
-  // const weekDay = today.getDay();
-
-  // console.log('user', user);
-  // console.log('day', day);
 
   const [training, setTraining] = useState([]);
 
@@ -26,41 +21,43 @@ export default function TrainingWorkout() {
       });
 
       const data = await res.json();
-      // console.log('data', data);
 
       setTraining((pre) => ([...pre, ...data]));
     }());
   }, []);
-  // console.log('training', training);
+
   return (
-    <>
+    <div>
       <div className={styles.workout_container}>
-        <caption>
-          {day}
-        </caption>
-        <div className="dailyTrain">
+        <div className={styles.dailyTrain}>
+          <caption>
+            {day}
+          </caption>
           <table>
             <tr>
-              <th>Упражнение</th>
-              <th>Вес</th>
-              <th>Подходы</th>
-              <th>Повторения</th>
-              <th>Отдых</th>
+              <th className={styles.th}>Упражнение</th>
+              <th className={styles.th}>Вес</th>
+              <th className={styles.th}>Повторения/Подходы</th>
+              {/* <th>Подходы</th> */}
+              <th className={styles.th}>Отдых</th>
             </tr>
             {training.length > 0 && (
               training[0].map((el) => (
                 <tr>
-                  <td>{el['DailyTrain.Training.title']}</td>
-                  <td>{el['DailyTrain.weight']}</td>
-                  <td>{el['DailyTrain.sets']}</td>
-                  <td>{el['DailyTrain.rep']}</td>
-                  <td>{el['DailyTrain.rest']}</td>
+                  <td className={styles.td}>{el['DailyTrain.Training.title']}</td>
+                  <td className={styles.td}>{el['DailyTrain.weight']}</td>
+                  <td className={styles.td}>
+                    {el['DailyTrain.rep']}
+                    /
+                    {el['DailyTrain.sets']}
+                  </td>
+                  {/* <td>{el['DailyTrain.sets']}</td> */}
+                  <td className={styles.td}>{el['DailyTrain.rest']}</td>
                 </tr>
               )))}
           </table>
         </div>
       </div>
-      <button className="workout_btn" type="submit">Завершить</button>
-    </>
+    </div>
   );
 }
