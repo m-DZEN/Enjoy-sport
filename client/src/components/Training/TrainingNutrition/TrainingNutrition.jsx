@@ -44,7 +44,7 @@ export default function TrainingNutrition() {
           {typeFood.map((el) => (
             <div key={el.id}>
               <tr>
-                <th colSpan="5">{el.title}</th>
+                <th className={styles.th} colSpan="5">{el.title}</th>
               </tr>
               {nutrition.filter((e) => (e['DailyRecipe.Recipe.TypeFood.id'] === el.id)).map((e) => (
                 <tr key={el.id}>
