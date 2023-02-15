@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './AdminTrainingWorkout.css';
 // import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import Table from 'react-bootstrap/Table';
+// import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 
 export default function TrainingWorkout() {
@@ -12,8 +12,6 @@ export default function TrainingWorkout() {
   const [training, setTraining] = useState([]);
   const [trainList, setTrainList] = useState([]);
 
-  console.log('======== training', training);
-  console.log('=======LIST', trainList);
   const [visible, setVisible] = useState('none');
 
   // eslint-disable-next-line no-unused-vars
@@ -24,6 +22,10 @@ export default function TrainingWorkout() {
     rep: 0,
     rest: 90,
   });
+    // управляемая форма инпутов
+  const formHandler = (e) => {
+    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
   // отображение списка всех тренировок
   useEffect(() => {
     (async function () {
@@ -45,10 +47,6 @@ export default function TrainingWorkout() {
   const addTrain = async () => {
     setVisible('');
   };
-  // управляемая форма инпутов
-  const formHandler = (e) => {
-    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
 
   // сохрание новой тренировки
   const saveTrain = async () => {
@@ -63,7 +61,6 @@ export default function TrainingWorkout() {
       credentials: 'include',
     });
     const respons = await res.json();
-
     setTraining(respons);
   };
   // удаление тренировки по ID
@@ -92,7 +89,7 @@ export default function TrainingWorkout() {
 
   return (
     <div className="admintrainlist">
-      <Table className="table" striped bordered hover variant="dark">
+      <table className="table">
         <thead>
           <tr>
             <th>Упражнение</th>
@@ -102,9 +99,7 @@ export default function TrainingWorkout() {
           </tr>
         </thead>
         <tbody>
-
           { training.length > 0 && (
-
             training.map((el) => (
               <tr key={el.id}>
                 <td>{el['DailyTrain.Training.title']}</td>
@@ -117,7 +112,7 @@ export default function TrainingWorkout() {
                 </td>
 
                 <td>
-                  <Button className="adminlink" variant="dark" onClick={() => { delTrain(el.id); }}>
+                  <Button className="adminlink" variant="danger" onClick={() => { delTrain(el.id); }}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash3" viewBox="0 0 16 16">
                       <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
                     </svg>
@@ -125,59 +120,60 @@ export default function TrainingWorkout() {
                 </td>
               </tr>
             ))
-
           )}
+        </tbody>
+      </table>
+      <table className="table">
+        <tbody>
           { trainList.length > 0 && (
 
-            <tr className="addForm" style={{ display: visible }}>
-              <th>
-                <select
-                  className="selectform"
-                  onChange={formHandler}
-                  name="training_id"
-                >
-                  {trainList.map((el) => (
-                    <option key={el.id} className="optionsTrain" value={el.id}>{el.title}</option>
-                  ))}
-                </select>
-              </th>
-              <th>
+          <tr className="addForm" style={{ display: visible }}>
+            <th>
+              <select
+                className="selectform"
+                onChange={formHandler}
+                name="training_id"
+              >
+                {trainList.map((el) => (
+                  <option key={el.id} className="optionsTrain" value={el.id}>{el.title}</option>
+                ))}
+              </select>
+            </th>
+            <th>
+              <input
+                type="number"
+                className="inputform"
+                onChange={formHandler}
+                name="weight"
+              />
+            </th>
+            <th>
+              <div className="setrep">
                 <input
-                  type="number"
                   className="inputform"
                   onChange={formHandler}
-                  name="weight"
+                  name="sets"
                 />
-              </th>
-              <th>
-                <div className="setrep">
-                  <input
-                    className="inputform"
-                    onChange={formHandler}
-                    name="sets"
-                  />
-                  <input
-                    className="inputform"
-                    onChange={formHandler}
-                    name="rep"
-                  />
-                </div>
+                <input
+                  className="inputform"
+                  onChange={formHandler}
+                  name="rep"
+                />
+              </div>
 
-              </th>
-              <td>
-                <Button className="adminlink" variant="dark" onClick={saveTrain}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-save" viewBox="0 0 16 16">
-                    <path d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v7.293l2.646-2.647a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L7.5 9.293V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1H2z" />
-                  </svg>
-                </Button>
-              </td>
-            </tr>
+            </th>
+            <td>
+              <Button className="adminlink" variant="danger" onClick={saveTrain}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-save" viewBox="0 0 16 16">
+                  <path d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v7.293l2.646-2.647a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L7.5 9.293V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1H2z" />
+                </svg>
+              </Button>
+            </td>
+          </tr>
           )}
-
         </tbody>
-
-      </Table>
-      <Button className="adminlink" variant="dark" onClick={addTrain}>
+      </table>
+      <Button className="adminlink" variant="danger" onClick={addTrain}>
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-plus-lg" viewBox="0 0 16 16">
           <path fillRule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
         </svg>

@@ -21,6 +21,7 @@ import AuthPage from './components/AuthPage/AuthPage';
 import Recipe from './components/Recipe/Recipe';
 import AdminTraining from './components/AdminTraining/AdminTraining';
 import AdminTrainingWorkout from './components/AdminTraining/TrainingWorkout/AdminTrainingWorkout';
+import AdminTrainingNutrition from './components/AdminTraining/TrainingNutrition/AdminTrainingNutrition';
 import AdminWSChat from './components/AdminWSChat/AdminWSChat';
 import Loading from './components/Loading/Loading';
 
@@ -49,7 +50,7 @@ function App() {
               <Route path="settings" element={<Settings />} />
               <Route path="wschat/:userId" element={<AdminWSChat />} />
               <Route path="training/:id" element={<AdminTraining />} />
-              <Route path="nutrition/:day" element={<AdminTraining />} />
+              <Route path="nutrition/:id/:day" element={<AdminTrainingNutrition />} />
               <Route path="workout/:id/:day" element={<AdminTrainingWorkout />} />
             </Route>
           </Route>

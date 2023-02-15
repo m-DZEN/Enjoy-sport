@@ -1,5 +1,5 @@
 const {
-  User, DailyTrain, DailyList, Training,
+  User, DailyTrain, DailyList, Training, DailyRecipe, Recipe,
 } = require('../../db/models');
 
 const setUserList = async (req, res) => {
@@ -14,7 +14,6 @@ const setUserList = async (req, res) => {
     res.json(list);
   } catch (error) {
     console.log(error);
-    // res.sendStatus(400);
   }
 };
 
@@ -36,6 +35,18 @@ const delTrain = async (req, res) => {
     console.log('id train ======', x);
     await DailyList.destroy({ where: { id: x } });
     console.log('=> SUCCESS TRAIN DELETED');
+    res.end();
+  } catch (error) {
+    res.send(400);
+    console.log(error);
+  }
+};
+const delFood = async (req, res) => {
+  try {
+    const { x } = req.body;
+    console.log('id food ======', x);
+    await DailyList.destroy({ where: { id: x } });
+    console.log('=> SUCCESS FOOD DELETED');
     res.end();
   } catch (error) {
     res.send(400);
@@ -82,9 +93,49 @@ const addTrain = async (req, res) => {
   }
 };
 
+const addNutrition = async (req, res) => {
+  try {
+    const { inputs, user, day } = req.body;
+    const newDailyRecipe = await DailyRecipe.create({
+      recipe_id: Number(inputs.type_id),
+      mass: Number(inputs.mass),
+    });
+
+    console.log('==============', newDailyRecipe);
+
+    const newday = await DailyList.create(
+      {
+        user_id: Number(user.userId),
+        dailyRecipe_id: newDailyRecipe.id,
+        date: day,
+      },
+    );
+    console.log('-----------------', newday);
+
+    const dayFood = await DailyList.findAll({
+      where: {
+        user_id: user.userId,
+        date: day,
+      },
+      include: [{
+        model: DailyRecipe,
+        include: [{ model: Recipe }],
+      }],
+      raw: true,
+    });
+    console.log('=====', dayFood);
+    // res.send('ok');
+    res.json(dayFood);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 module.exports = {
   setUserList,
   deleteUser,
   addTrain,
   delTrain,
+  addNutrition,
+  delFood,
 };

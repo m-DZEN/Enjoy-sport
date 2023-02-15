@@ -5,9 +5,6 @@ const {
 const getNutrition = async (req, res) => {
   const { user } = req.body;
   const { day } = req.params;
-  // console.log('user=========>', user);
-  // console.log('day=========>', day);
-
   try {
     const daylyFood = await DailyList.findAll({
       where: {
@@ -25,11 +22,12 @@ const getNutrition = async (req, res) => {
       }],
       raw: true,
     });
-    // console.log('daylyFood', daylyFood);
-    res.json(daylyFood);
+    const foodList = await Recipe.findAll({ raw: true });
+    console.log('daylyFood================', daylyFood);
+    res.json([daylyFood, foodList]);
   } catch (error) {
     console.log(error);
   }
 };
 
-module.exports = getNutrition;
+module.exports = { getNutrition };
