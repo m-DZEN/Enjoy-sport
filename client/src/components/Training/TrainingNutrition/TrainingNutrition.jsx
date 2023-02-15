@@ -31,7 +31,7 @@ export default function TrainingNutrition() {
       const data = await res.json();
       // console.log('data', data);
 
-      setNutrition((pre) => ([...pre, ...data]));
+      setNutrition((pre) => ([...pre, ...data[0]]));
     }());
   }, []);
   // console.log('nutrition', nutrition);

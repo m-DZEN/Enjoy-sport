@@ -17,6 +17,8 @@ module.exports = {
           model: 'TypeTrains',
           key: 'id',
         },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
       },
       createdAt: {
         defaultValue: Sequelize.fn('now'),
