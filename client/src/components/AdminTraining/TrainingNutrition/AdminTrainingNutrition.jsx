@@ -92,7 +92,6 @@ export default function TrainingNutrition() {
       console.log(error);
     }
   };
-  // какой то комент
   return (
     <div className="nutrition_container">
       <caption>{day}</caption>
