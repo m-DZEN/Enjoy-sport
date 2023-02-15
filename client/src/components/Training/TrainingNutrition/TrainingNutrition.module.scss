@@ -19,7 +19,7 @@ $mainHeight: 800px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 caption {
@@ -32,10 +32,10 @@ caption {
 
 .linkButton{
   color: $color3;
-  font-size: small;
+  font-size:medium;
   text-decoration: none;
   &:hover {
-    color: $color1;
+    color: $color4;
   }
 }
 
@@ -43,7 +43,7 @@ caption {
   border-left: 1px solid black;
   color: $color3;
   font-size: small;
-  line-height: 1.2;
+  line-height: 1;
 
 }
 
@@ -55,6 +55,7 @@ tr {
   // line-height: 2;
 }
 
-th {
+.th {
   line-height: 1.5;
+  color:$color1;
 }
