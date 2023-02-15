@@ -47,7 +47,7 @@ function App() {
           <Route path="admin" element={<AdminNavigation />}>
             <Route element={<AdminProtectedRoute userLogin={user.userLogin} redirectPath="/" />}>
               <Route path="" element={<AdminMain />} />
-              <Route path="map" element={<div>map</div>} />
+              <Route path="map" element={<MapYandex />} />
               <Route path="settings" element={<Settings />} />
               <Route path="wschat/:userId" element={<AdminWSChat />} />
               <Route path="training/:id" element={<AdminTraining />} />
