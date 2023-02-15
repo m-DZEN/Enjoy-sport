@@ -23,6 +23,7 @@ import AdminTraining from './components/AdminTraining/AdminTraining';
 import AdminTrainingWorkout from './components/AdminTraining/TrainingWorkout/AdminTrainingWorkout';
 import AdminWSChat from './components/AdminWSChat/AdminWSChat';
 import Loading from './components/Loading/Loading';
+import MapYandex from './components/MapYandex/MapYandex';
 
 import './App.css';
 
@@ -57,7 +58,7 @@ function App() {
           <Route path="/" element={<Navigation />}>
             <Route element={<ProtectedRoute user={user.userLogin} redirectPath="auth" />}>
               <Route path="/" element={<Training />} />
-              <Route path="/map" element={<div>map</div>} />
+              <Route path="/map" element={<MapYandex />} />
               <Route path="/nutrition/:day" element={<TrainingNutrition />} />
               <Route path="/workout/:day" element={<TrainingWorkout />} />
               <Route path="/recipe/:id" element={<Recipe />} />
