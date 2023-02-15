@@ -4,8 +4,8 @@ import {
 } from '@pbe/react-yandex-maps';
 
 const style = {
-  width: '800px',
-  height: '500px',
+  width: '350px',
+  height: '800px',
 };
 
 export default function MapYandexFinal() {
@@ -28,7 +28,7 @@ export default function MapYandexFinal() {
         style={style}
         defaultState={{
           center: [57.871648, 35.005739],
-          zoom: 12,
+          zoom: 10,
           controls: [],
         }}
       >
