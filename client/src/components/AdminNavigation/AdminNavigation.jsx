@@ -38,6 +38,13 @@ export default function AdminNavigation() {
     setFullNavbarVisible(false);
   };
 
+  const handleMainLinkClick = () => {
+    if (fullNavbarVisible) {
+      setIsFirstRender(false);
+      setFullNavbarVisible(false);
+    }
+  };
+
   const handleLogout = () => {
     dispatch(fetchLogoutThunk());
   };
@@ -49,7 +56,7 @@ export default function AdminNavigation() {
         <div className={`${styles.navbarContent}${extraClassName}`}>
 
           <div className={styles.navbarMain}>
-            <Link className={styles.navbarMainLink} to="/admin">
+            <Link to="/admin" className={styles.navbarMainLink} onClick={handleMainLinkClick}>
               Enjoy Sport
             </Link>
 
