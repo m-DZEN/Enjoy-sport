@@ -42,12 +42,12 @@ export default function TrainingNutrition() {
       <table>
         <tbody>
           {typeFood.map((el) => (
-            <>
+            <div key={el.id}>
               <tr>
                 <th colSpan="5">{el.title}</th>
               </tr>
               {nutrition.filter((e) => (e['DailyRecipe.Recipe.TypeFood.id'] === el.id)).map((e) => (
-                <tr>
+                <tr key={el.id}>
                   <th>
                     <Link className={styles.linkButton} to={`/recipe/${e['DailyRecipe.Recipe.id']}`}>
                       {e['DailyRecipe.Recipe.title']}
@@ -59,7 +59,7 @@ export default function TrainingNutrition() {
                   </td>
                 </tr>
               ))}
-            </>
+            </div>
           ))}
         </tbody>
       </table>

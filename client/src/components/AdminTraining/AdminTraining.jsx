@@ -63,7 +63,7 @@ export default function AdminTraining() {
             {/* Сделать бы параметрический запрос
             <Link className="linkButton" to={`/workout/${el.id}`}> Тренировки</Link> */}
             <Link className="linkButton" to={`/admin/workout/${id}/${el.dateEn}`}>Тренировки</Link>
-            <Link className="linkButton" to={`/admin/nutrition/${el.dateEn}`}>Питание</Link>
+            <Link className="linkButton" to={`/admin/nutrition/${id}/${el.dateEn}`}>Питание</Link>
           </div>
         </div>
       ))}
