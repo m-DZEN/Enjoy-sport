@@ -1,0 +1,75 @@
+// @import "AuthStyles.scss";
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Kurale&display=swap');
+
+$appLogoFont: 'Cinzel', serif;
+$ordinaryFont: 'Kurale', serif;
+
+$color1: #360000;
+$color2: #6c0202;
+$color3: #a31919;
+$color4: #ee7272;
+$color5: #ffb9b9;
+$color6: #5a0004;
+$color7: #4b1a1a;
+
+$mainWidth: 350px;
+$mainHeight: 800px;
+
+.inputDiv {
+  display: flex;
+  flex-direction: column;
+  margin: 2px;
+  margin-right: 15px;
+  margin-left: 15px;
+}
+.middleDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.textareaDiv {
+  flex-direction: column;
+  margin: 0px;
+}
+.buttonStyle {
+  height: 30px;
+  color: $color5;
+  width: 200px;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: $ordinaryFont;
+  background-color: $color3;
+  border: 2px solid $color4;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  &:hover {
+    box-shadow: 0px 0px 5px $color5, inset 0px 0px 5px $color5;
+  }
+  &:active {
+    box-shadow: 0px 0px 5px $color5, inset 0px 0px 5px $color5;
+    transform: scale(0.9);
+  }
+}
+
+.input {
+  border-radius: 5px;
+  border: 2px solid $color4;
+  color: $color1;
+  width: 180px;
+}
+
+.inputTextArea {
+  border-radius: 5px;
+  border: 2px solid $color4;
+  color: $color1;
+  width: 320px;
+  height: 70px;
+  line-height: 1.2;
+  
+}
+
+.textH5 {
+  color: #a31919;
+}

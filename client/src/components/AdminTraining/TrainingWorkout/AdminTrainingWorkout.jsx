@@ -86,7 +86,7 @@ export default function TrainingWorkout() {
       console.log(error);
     }
   };
-
+  console.log(training);
   return (
     <div className="admintrainlist">
       <table className="table">
@@ -100,7 +100,7 @@ export default function TrainingWorkout() {
         </thead>
         <tbody>
           { training.length > 0 && (
-            training.map((el) => (
+            training.filter((el) => el.dailyTrain_id !== null).map((el) => (
               <tr key={el.id}>
                 <td>{el['DailyTrain.Training.title']}</td>
                 <td>{el['DailyTrain.weight']}</td>

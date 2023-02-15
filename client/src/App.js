@@ -25,7 +25,8 @@ import AdminTrainingNutrition from './components/AdminTraining/TrainingNutrition
 import AdminWSChat from './components/AdminWSChat/AdminWSChat';
 import Loading from './components/Loading/Loading';
 import MapYandex from './components/MapYandex/MapYandex';
-
+import AdminStatistic from './components/AdminStatistic/AdminStatistic';
+import AdminParametrs from './components/AdminParametrs/AdminParametrs';
 import './App.css';
 
 function App() {
@@ -49,6 +50,8 @@ function App() {
               <Route path="" element={<AdminMain />} />
               <Route path="map" element={<MapYandex />} />
               <Route path="settings" element={<Settings />} />
+              <Route path="statistic/:id" element={<AdminStatistic />} />
+              <Route path="parametrs/:id" element={<AdminParametrs />} />
               <Route path="wschat/:userId" element={<AdminWSChat />} />
               <Route path="training/:id" element={<AdminTraining />} />
               <Route path="nutrition/:id/:day" element={<AdminTrainingNutrition />} />

@@ -42,7 +42,7 @@ export default function TrainingWorkout() {
               <th className={styles.th}>Отдых</th>
             </tr>
             {training.length > 0 && (
-              training[0].map((el) => (
+              training[0].filter((el) => el.dailyTrain_id !== null).map((el) => (
                 <tr>
                   <td className={styles.td}>{el['DailyTrain.Training.title']}</td>
                   <td className={styles.td}>{el['DailyTrain.weight']}</td>
