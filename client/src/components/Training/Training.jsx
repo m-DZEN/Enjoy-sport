@@ -1,6 +1,6 @@
 import React from 'react';
-import './Training.css';
 import { Link } from 'react-router-dom';
+import styles from './Training.module.scss';
 
 export default function Training() {
   const days = [];
@@ -47,18 +47,18 @@ export default function Training() {
   // console.log('days', days);
 
   return (
-    <div className="workout_container">
+    <div className={styles.workout_container}>
       {days.map((el) => (
-        <div className="block">
-          <div className="block-show">
+        <div className={styles.block}>
+          <div className={styles.blockShow}>
             {el.title}
             ,
             {' '}
             {el.dateRus}
           </div>
-          <div className="block-none">
-            <Link className="linkButton" to={`/workout/${el.dateEn}`}>Тренировки</Link>
-            <Link className="linkButton" to={`/nutrition/${el.dateEn}`}>Питание</Link>
+          <div className={styles.blockNone}>
+            <Link className={styles.linkButton} to={`/workout/${el.dateEn}`}>Тренировки</Link>
+            <Link className={styles.linkButton} to={`/nutrition/${el.dateEn}`}>Питание</Link>
           </div>
         </div>
       ))}

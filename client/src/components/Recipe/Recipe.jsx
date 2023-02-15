@@ -2,8 +2,8 @@ import React, {
   useState,
   useEffect,
 } from 'react';
-// import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import styles from './Recipe.module.scss';
 import ButtonChatAndMotivation from '../ButtonChatAndMotivation/ButtonChatAndMotivation';
 
 export default function Recipe() {
@@ -24,19 +24,21 @@ export default function Recipe() {
       });
 
       const data = await res.json();
-      // console.log('data---------->', data);
 
       getRecipe(data);
     }());
   }, []);
 
-  // console.log('recipe---------->', recipe);
-
   return (
     <>
-      <p>вторник</p>
-      <p>{recipe?.title}</p>
-      <p>{recipe?.description}</p>
+      <div className={styles.main}>
+        <div>
+          <p>{recipe?.title}</p>
+        </div>
+        <div>
+          <p>{recipe?.description}</p>
+        </div>
+      </div>
       <ButtonChatAndMotivation />
     </>
   );

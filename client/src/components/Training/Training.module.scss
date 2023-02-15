@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Kurale&display=swap');
+
+$appLogoFont: 'Cinzel', serif;
+$ordinaryFont: 'Kurale', serif;
+
+$color1: #360000;
+$color2: #6c0202;
+$color3: #a31919;
+$color4: #ee7272;
+$color5: #ffb9b9;
+$color6: #5a0004;
+$color7: #4b1a1a;
+
+$mainWidth: 350px;
+$mainHeight: 800px;
+
+.workout_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 30px;
+}
+
+ .blockShow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70px;
+  width: 270px;
+  border: solid rgb(244, 241, 245);
+  border-radius: 20px;
+  margin: 5px;
+  font-size: large;
+ }
+
+ .blockNone {
+  display: none;
+  justify-content: space-around;
+}
+
+ .block:hover .blockShow {
+  display: none;
+}
+
+ .block:hover .blockNone {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: #974d546c;
+
+  height: 70px;
+  width: 320px;
+  border: solid #d8b3b3;
+  border-radius: 20px;
+  margin: 5px;
+
+}  
+
+
+.linkButton {
+  text-decoration: none;
+  font-size: large;
+  display: flex;
+  color: #1a0d0d;
+   &:hover {
+    color: $color2;
+  }
+}
