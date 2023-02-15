@@ -14,6 +14,8 @@ module.exports = {
           model: 'Recipes',
           key: 'id',
         },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
       },
       mass: {
         type: Sequelize.INTEGER,

@@ -23,6 +23,8 @@ module.exports = {
           model: 'DailyTrains',
           key: 'id',
         },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
       },
       dailyRecipe_id: {
         type: Sequelize.INTEGER,
@@ -30,6 +32,8 @@ module.exports = {
           model: 'DailyRecipes',
           key: 'id',
         },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
       },
       date: {
         defaultValue: Sequelize.fn('now'),

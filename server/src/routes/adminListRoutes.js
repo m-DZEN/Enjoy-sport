@@ -14,4 +14,3 @@ module.exports = router.delete('/deltrain', delTrain);
 module.exports = router.delete('/delfood', delFood);
 module.exports = router.post('/', addTrain);
 module.exports = router.post('/add', addNutrition);
-

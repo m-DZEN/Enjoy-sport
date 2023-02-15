@@ -19,6 +19,7 @@ const setUserList = async (req, res) => {
 
 const deleteUser = async (req, res) => {
   try {
+    console.log(req.body);
     const { id } = req.body;
     await User.destroy({ where: { id } });
     console.log('=> SUCCESS USER DELETED');

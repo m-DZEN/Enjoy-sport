@@ -14,6 +14,8 @@ module.exports = {
           model: 'Trainings',
           key: 'id',
         },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
       },
       weight: {
         type: Sequelize.INTEGER,
