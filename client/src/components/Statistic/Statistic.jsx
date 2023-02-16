@@ -3,8 +3,7 @@ import { useSelector } from 'react-redux';
 import { CiDumbbell as Dumbbell } from 'react-icons/ci';
 import StatisticMainInfo from './StatisticMainInfo';
 import StatisticForm from './StatisticForm';
-
-// import Grafics from '../Graphics/Graphics';
+import Graph from './Graphs/Graph';
 
 import styles from './Statistic.module.scss';
 
@@ -23,6 +22,7 @@ export default function Statistic() {
   const [statisticDaysCounter, setStatisticDaysCounter] = useState(0);
   const [userStatisticList, setUserStatisticList] = useState([]);
   const [actualDate, setActualDate] = useState(null);
+  const [oneGraphName, setOneGraphName] = useState('currentWeight');
 
   const user = useSelector((store) => store.userStore);
   // console.log('user ===>', user);
@@ -156,10 +156,30 @@ export default function Statistic() {
           statisticFormInputs={statisticFormInputs}
           setStatisticFormInputs={setStatisticFormInputs}
           handleStatisticFormSubmit={handleStatisticFormSubmit}
+          setOneGraphName={setOneGraphName}
         />
       )}
 
-      {/* {!isStatisticLoading && <Grafics /> } */}
+      {!isStatisticLoading && (
+      <div className={styles.statisticGraph}>
+        statisticGraph
+        <div className={styles.statisticGraphOne}>
+
+          {userStatisticList.length >= 7 ? (
+            <Graph
+              userStatisticList={userStatisticList}
+              oneGraphName={oneGraphName}
+            />
+          ) : (
+            <div>
+              Недостаточно информации
+              <br />
+              для отображения графика!
+            </div>
+          )}
+        </div>
+      </div>
+      )}
     </div>
   );
 }
