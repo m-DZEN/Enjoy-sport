@@ -44,7 +44,7 @@ export default function StatisticForm({
               max="300"
                 // step="0.1"
               name="currentWeight"
-              value={statisticFormInputs.currentWeight}
+              value={statisticFormInputs.currentWeight / 1000}
               onChange={handleStatisticFormInputsChange}
               required
             />
@@ -88,7 +88,7 @@ export default function StatisticForm({
               min="1"
               max="300"
               name="hipGirth"
-              value={statisticFormInputs.hipGirth}
+              value={(statisticFormInputs.hipGirth)}
               onChange={handleStatisticFormInputsChange}
               required
             />

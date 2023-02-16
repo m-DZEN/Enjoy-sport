@@ -4,283 +4,499 @@ module.exports = {
     await queryInterface.bulkInsert('Parametrs', [
       {
         user_id: 2,
-        data: '2022-01-01',
-        currentWeight: 100,
-        hipGirth: 55,
-        buttocksGirth: 100,
-        waistGirth: 90,
-        breastGirth: 100,
-        bicepsGirth: 35,
+        data: '2023-01-01',
+        // вес
+        currentWeight: 100000,
+        // бёдра
+        hipGirth: 550,
+        // ягодицы
+        buttocksGirth: 1000,
+        // талия
+        waistGirth: 1000,
+        // грудь
+        breastGirth: 1100,
+        // бицепс
+        bicepsGirth: 350,
       },
       {
         user_id: 2,
-        data: '2022-01-02',
-        currentWeight: 100,
-        hipGirth: 55,
-        buttocksGirth: 100,
-        waistGirth: 90,
-        breastGirth: 100,
-        bicepsGirth: 35,
+        data: '2023-01-02',
+        // вес
+        currentWeight: 100000,
+        // бёдра
+        hipGirth: 550,
+        // ягодицы
+        buttocksGirth: 1000,
+        // талия
+        waistGirth: 1000,
+        // грудь
+        breastGirth: 1100,
+        // бицепс
+        bicepsGirth: 350,
       },
       {
         user_id: 2,
-        data: '2022-01-03',
-        currentWeight: 100,
-        hipGirth: 55,
-        buttocksGirth: 99,
-        waistGirth: 89,
-        breastGirth: 98,
-        bicepsGirth: 34,
+        data: '2023-01-03',
+        // вес
+        currentWeight: 99800,
+        // бёдра
+        hipGirth: 550,
+        // ягодицы
+        buttocksGirth: 990,
+        // талия
+        waistGirth: 990,
+        // грудь
+        breastGirth: 1100,
+        // бицепс
+        bicepsGirth: 355,
       },
       {
         user_id: 2,
-        data: '2022-01-04',
-        currentWeight: 99,
-        hipGirth: 54,
-        buttocksGirth: 99,
-        waistGirth: 89,
-        breastGirth: 98,
-        bicepsGirth: 34,
+        data: '2023-01-04',
+        // вес
+        currentWeight: 99800,
+        // бёдра
+        hipGirth: 545,
+        // ягодицы
+        buttocksGirth: 980,
+        // талия
+        waistGirth: 980,
+        // грудь
+        breastGirth: 1110,
+        // бицепс
+        bicepsGirth: 350,
       },
       {
         user_id: 2,
-        data: '2022-01-05',
-        currentWeight: 99,
-        hipGirth: 54,
-        buttocksGirth: 99,
-        waistGirth: 88,
-        breastGirth: 98,
-        bicepsGirth: 35,
+        data: '2023-01-05',
+        // вес
+        currentWeight: 99500,
+        // бёдра
+        hipGirth: 540,
+        // ягодицы
+        buttocksGirth: 975,
+        // талия
+        waistGirth: 975,
+        // грудь
+        breastGirth: 1110,
+        // бицепс
+        bicepsGirth: 350,
       },
       {
         user_id: 2,
-        data: '2022-01-06',
-        currentWeight: 99,
-        hipGirth: 54,
-        buttocksGirth: 98,
-        waistGirth: 88,
-        breastGirth: 97,
-        bicepsGirth: 35,
+        data: '2023-01-06',
+        // вес
+        currentWeight: 99500,
+        // бёдра
+        hipGirth: 540,
+        // ягодицы
+        buttocksGirth: 975,
+        // талия
+        waistGirth: 975,
+        // грудь
+        breastGirth: 1110,
+        // бицепс
+        bicepsGirth: 350,
       },
       {
         user_id: 2,
-        data: '2022-01-07',
-        currentWeight: 98,
-        hipGirth: 54,
-        buttocksGirth: 98,
-        waistGirth: 88,
-        breastGirth: 97,
-        bicepsGirth: 35,
+        data: '2023-01-07',
+        // вес
+        currentWeight: 99300,
+        // бёдра
+        hipGirth: 535,
+        // ягодицы
+        buttocksGirth: 960,
+        // талия
+        waistGirth: 960,
+        // грудь
+        breastGirth: 1100,
+        // бицепс
+        bicepsGirth: 355,
       },
       {
         user_id: 2,
-        data: '2022-01-08',
-        currentWeight: 98,
-        hipGirth: 53,
-        buttocksGirth: 98,
-        waistGirth: 87,
-        breastGirth: 97,
-        bicepsGirth: 35,
+        data: '2023-01-08',
+        // вес
+        currentWeight: 99100,
+        // бёдра
+        hipGirth: 530,
+        // ягодицы
+        buttocksGirth: 955,
+        // талия
+        waistGirth: 955,
+        // грудь
+        breastGirth: 1105,
+        // бицепс
+        bicepsGirth: 360,
       },
       {
         user_id: 2,
-        data: '2022-01-09',
-        currentWeight: 97,
-        hipGirth: 53,
-        buttocksGirth: 97,
-        waistGirth: 87,
-        breastGirth: 96,
-        bicepsGirth: 35,
+        data: '2023-01-09',
+        // вес
+        currentWeight: 98800,
+        // бёдра
+        hipGirth: 525,
+        // ягодицы
+        buttocksGirth: 945,
+        // талия
+        waistGirth: 950,
+        // грудь
+        breastGirth: 1115,
+        // бицепс
+        bicepsGirth: 363,
       },
       {
         user_id: 2,
-        data: '2022-01-10',
-        currentWeight: 97,
-        hipGirth: 52,
-        buttocksGirth: 97,
-        waistGirth: 86,
-        breastGirth: 96,
-        bicepsGirth: 35,
+        data: '2023-01-10',
+        // вес
+        currentWeight: 98500,
+        // бёдра
+        hipGirth: 520,
+        // ягодицы
+        buttocksGirth: 940,
+        // талия
+        waistGirth: 943,
+        // грудь
+        breastGirth: 1125,
+        // бицепс
+        bicepsGirth: 375,
       },
       {
         user_id: 2,
-        data: '2022-01-11',
-        currentWeight: 96,
-        hipGirth: 52,
-        buttocksGirth: 96,
-        waistGirth: 85,
-        breastGirth: 95,
-        bicepsGirth: 35,
+        data: '2023-01-11',
+        // вес
+        currentWeight: 98200,
+        // бёдра
+        hipGirth: 510,
+        // ягодицы
+        buttocksGirth: 910,
+        // талия
+        waistGirth: 920,
+        // грудь
+        breastGirth: 1125,
+        // бицепс
+        bicepsGirth: 380,
       },
       {
         user_id: 2,
-        data: '2022-01-12',
-        currentWeight: 96,
-        hipGirth: 52,
-        buttocksGirth: 96,
-        waistGirth: 85,
-        breastGirth: 95,
-        bicepsGirth: 35,
+        data: '2023-01-12',
+        // вес
+        currentWeight: 97800,
+        // бёдра
+        hipGirth: 500,
+        // ягодицы
+        buttocksGirth: 900,
+        // талия
+        waistGirth: 900,
+        // грудь
+        breastGirth: 1140,
+        // бицепс
+        bicepsGirth: 390,
       },
       {
         user_id: 2,
-        data: '2022-01-13',
-        currentWeight: 96,
-        hipGirth: 51,
-        buttocksGirth: 96,
-        waistGirth: 85,
-        breastGirth: 94,
-        bicepsGirth: 30,
+        data: '2023-01-13',
+        // вес
+        currentWeight: 97400,
+        // бёдра
+        hipGirth: 500,
+        // ягодицы
+        buttocksGirth: 900,
+        // талия
+        waistGirth: 900,
+        // грудь
+        breastGirth: 1140,
+        // бицепс
+        bicepsGirth: 390,
       },
       {
         user_id: 2,
-        data: '2022-01-14',
-        currentWeight: 95,
-        hipGirth: 51,
-        buttocksGirth: 95,
-        waistGirth: 84,
-        breastGirth: 93,
-        bicepsGirth: 30,
+        data: '2023-01-14',
+        // вес
+        currentWeight: 97400,
+        // бёдра
+        hipGirth: 500,
+        // ягодицы
+        buttocksGirth: 900,
+        // талия
+        waistGirth: 900,
+        // грудь
+        breastGirth: 1140,
+        // бицепс
+        bicepsGirth: 390,
       },
       {
-        user_id: 3,
-        data: '2022-01-01',
-        currentWeight: 45,
-        hipGirth: 25,
-        buttocksGirth: 60,
-        waistGirth: 50,
-        breastGirth: 65,
-        bicepsGirth: 20,
+        user_id: 2,
+        data: '2023-01-15',
+        // вес
+        currentWeight: 97200,
+        // бёдра
+        hipGirth: 490,
+        // ягодицы
+        buttocksGirth: 870,
+        // талия
+        waistGirth: 870,
+        // грудь
+        breastGirth: 1150,
+        // бицепс
+        bicepsGirth: 400,
       },
       {
-        user_id: 3,
-        data: '2022-01-02',
-        currentWeight: 45,
-        hipGirth: 25,
-        buttocksGirth: 60,
-        waistGirth: 50,
-        breastGirth: 65,
-        bicepsGirth: 20,
+        user_id: 2,
+        data: '2023-01-16',
+        // вес
+        currentWeight: 96800,
+        // бёдра
+        hipGirth: 485,
+        // ягодицы
+        buttocksGirth: 860,
+        // талия
+        waistGirth: 865,
+        // грудь
+        breastGirth: 1150,
+        // бицепс
+        bicepsGirth: 405,
       },
       {
-        user_id: 3,
-        data: '2022-01-03',
-        currentWeight: 45,
-        hipGirth: 25,
-        buttocksGirth: 60,
-        waistGirth: 50,
-        breastGirth: 65,
-        bicepsGirth: 20,
+        user_id: 2,
+        data: '2023-01-17',
+        // вес
+        currentWeight: 96500,
+        // бёдра
+        hipGirth: 475,
+        // ягодицы
+        buttocksGirth: 855,
+        // талия
+        waistGirth: 850,
+        // грудь
+        breastGirth: 1160,
+        // бицепс
+        bicepsGirth: 410,
       },
       {
-        user_id: 3,
-        data: '2022-01-04',
-        currentWeight: 46,
-        hipGirth: 26,
-        buttocksGirth: 61,
-        waistGirth: 51,
-        breastGirth: 66,
-        bicepsGirth: 20,
+        user_id: 2,
+        data: '2023-01-18',
+        // вес
+        currentWeight: 96100,
+        // бёдра
+        hipGirth: 450,
+        // ягодицы
+        buttocksGirth: 850,
+        // талия
+        waistGirth: 840,
+        // грудь
+        breastGirth: 1160,
+        // бицепс
+        bicepsGirth: 420,
       },
       {
-        user_id: 3,
-        data: '2022-01-05',
-        currentWeight: 46,
-        hipGirth: 26,
-        buttocksGirth: 61,
-        waistGirth: 51,
-        breastGirth: 66,
-        bicepsGirth: 20,
+        user_id: 2,
+        data: '2023-01-19',
+        // вес
+        currentWeight: 96000,
+        // бёдра
+        hipGirth: 445,
+        // ягодицы
+        buttocksGirth: 845,
+        // талия
+        waistGirth: 835,
+        // грудь
+        breastGirth: 1165,
+        // бицепс
+        bicepsGirth: 425,
       },
       {
-        user_id: 3,
-        data: '2022-01-06',
-        currentWeight: 46,
-        hipGirth: 26,
-        buttocksGirth: 61,
-        waistGirth: 51,
-        breastGirth: 66,
-        bicepsGirth: 20,
+        user_id: 2,
+        data: '2023-01-20',
+        // вес
+        currentWeight: 95750,
+        // бёдра
+        hipGirth: 435,
+        // ягодицы
+        buttocksGirth: 840,
+        // талия
+        waistGirth: 825,
+        // грудь
+        breastGirth: 1170,
+        // бицепс
+        bicepsGirth: 430,
       },
       {
-        user_id: 3,
-        data: '2022-01-07',
-        currentWeight: 47,
-        hipGirth: 27,
-        buttocksGirth: 62,
-        waistGirth: 52,
-        breastGirth: 67,
-        bicepsGirth: 21,
+        user_id: 2,
+        data: '2023-01-21',
+        // вес
+        currentWeight: 95500,
+        // бёдра
+        hipGirth: 420,
+        // ягодицы
+        buttocksGirth: 820,
+        // талия
+        waistGirth: 815,
+        // грудь
+        breastGirth: 1180,
+        // бицепс
+        bicepsGirth: 435,
       },
       {
-        user_id: 3,
-        data: '2022-01-08',
-        currentWeight: 47,
-        hipGirth: 27,
-        buttocksGirth: 62,
-        waistGirth: 52,
-        breastGirth: 67,
-        bicepsGirth: 21,
+        user_id: 2,
+        data: '2023-01-22',
+        // вес
+        currentWeight: 95400,
+        // бёдра
+        hipGirth: 410,
+        // ягодицы
+        buttocksGirth: 810,
+        // талия
+        waistGirth: 815,
+        // грудь
+        breastGirth: 1186,
+        // бицепс
+        bicepsGirth: 441,
       },
       {
-        user_id: 3,
-        data: '2022-01-09',
-        currentWeight: 47,
-        hipGirth: 28,
-        buttocksGirth: 63,
-        waistGirth: 53,
-        breastGirth: 68,
-        bicepsGirth: 21,
+        user_id: 2,
+        data: '2023-01-23',
+        // вес
+        currentWeight: 95200,
+        // бёдра
+        hipGirth: 405,
+        // ягодицы
+        buttocksGirth: 795,
+        // талия
+        waistGirth: 790,
+        // грудь
+        breastGirth: 1195,
+        // бицепс
+        bicepsGirth: 445,
       },
       {
-        user_id: 3,
-        data: '2022-01-10',
-        currentWeight: 48,
-        hipGirth: 28,
-        buttocksGirth: 63,
-        waistGirth: 53,
-        breastGirth: 68,
-        bicepsGirth: 21,
+        user_id: 2,
+        data: '2023-01-24',
+        // вес
+        currentWeight: 95000,
+        // бёдра
+        hipGirth: 395,
+        // ягодицы
+        buttocksGirth: 780,
+        // талия
+        waistGirth: 785,
+        // грудь
+        breastGirth: 1205,
+        // бицепс
+        bicepsGirth: 455,
       },
       {
-        user_id: 3,
-        data: '2022-01-11',
-        currentWeight: 48,
-        hipGirth: 28,
-        buttocksGirth: 63,
-        waistGirth: 53,
-        breastGirth: 68,
-        bicepsGirth: 21,
+        user_id: 2,
+        data: '2023-01-25',
+        // вес
+        currentWeight: 95000,
+        // бёдра
+        hipGirth: 395,
+        // ягодицы
+        buttocksGirth: 780,
+        // талия
+        waistGirth: 785,
+        // грудь
+        breastGirth: 1205,
+        // бицепс
+        bicepsGirth: 455,
       },
       {
-        user_id: 3,
-        data: '2022-01-12',
-        currentWeight: 48,
-        hipGirth: 29,
-        buttocksGirth: 64,
-        waistGirth: 54,
-        breastGirth: 68,
-        bicepsGirth: 22,
+        user_id: 2,
+        data: '2023-01-26',
+        // вес
+        currentWeight: 95000,
+        // бёдра
+        hipGirth: 395,
+        // ягодицы
+        buttocksGirth: 780,
+        // талия
+        waistGirth: 785,
+        // грудь
+        breastGirth: 1205,
+        // бицепс
+        bicepsGirth: 455,
       },
       {
-        user_id: 3,
-        data: '2022-01-13',
-        currentWeight: 49,
-        hipGirth: 29,
-        buttocksGirth: 64,
-        waistGirth: 54,
-        breastGirth: 69,
-        bicepsGirth: 22,
+        user_id: 2,
+        data: '2023-01-27',
+        // вес
+        currentWeight: 94800,
+        // бёдра
+        hipGirth: 380,
+        // ягодицы
+        buttocksGirth: 770,
+        // талия
+        waistGirth: 770,
+        // грудь
+        breastGirth: 1180,
+        // бицепс
+        bicepsGirth: 455,
       },
       {
-        user_id: 3,
-        data: '2022-01-14',
-        currentWeight: 49,
-        hipGirth: 29,
-        buttocksGirth: 65,
-        waistGirth: 65,
-        breastGirth: 69,
-        bicepsGirth: 22,
+        user_id: 2,
+        data: '2023-01-28',
+        // вес
+        currentWeight: 94700,
+        // бёдра
+        hipGirth: 375,
+        // ягодицы
+        buttocksGirth: 765,
+        // талия
+        waistGirth: 765,
+        // грудь
+        breastGirth: 1185,
+        // бицепс
+        bicepsGirth: 459,
+      },
+      {
+        user_id: 2,
+        data: '2023-01-29',
+        // вес
+        currentWeight: 94500,
+        // бёдра
+        hipGirth: 355,
+        // ягодицы
+        buttocksGirth: 755,
+        // талия
+        waistGirth: 750,
+        // грудь
+        breastGirth: 1185,
+        // бицепс
+        bicepsGirth: 459,
+      },
+      {
+        user_id: 2,
+        data: '2023-01-30',
+        // вес
+        currentWeight: 94400,
+        // бёдра
+        hipGirth: 350,
+        // ягодицы
+        buttocksGirth: 750,
+        // талия
+        waistGirth: 745,
+        // грудь
+        breastGirth: 1180,
+        // бицепс
+        bicepsGirth: 460,
+      },
+      {
+        user_id: 2,
+        data: '2023-01-31',
+        // вес
+        currentWeight: 94200,
+        // бёдра
+        hipGirth: 350,
+        // ягодицы
+        buttocksGirth: 750,
+        // талия
+        waistGirth: 740,
+        // грудь
+        breastGirth: 1185,
+        // бицепс
+        bicepsGirth: 461,
       },
     ], {});
   },
