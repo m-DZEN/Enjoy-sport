@@ -21,7 +21,10 @@ const deleteUser = async (req, res) => {
   try {
     console.log(req.body);
     const { id } = req.body;
+
+    await DailyList.destroy({ where: { user_id: id } });
     await User.destroy({ where: { id } });
+
     console.log('=> SUCCESS USER DELETED');
     res.end();
   } catch (error) {
