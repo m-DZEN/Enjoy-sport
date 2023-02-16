@@ -13,9 +13,9 @@ module.exports = {
         references: {
           model: 'Users',
           key: 'id',
-          onDelete: 'CASCADE',
-          onUpdate: 'CASCADE',
         },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
       },
       dailyTrain_id: {
         type: Sequelize.INTEGER,
