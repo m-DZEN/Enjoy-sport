@@ -1,170 +1,165 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import ButtonChatAndMotivation from '../ButtonChatAndMotivation/ButtonChatAndMotivation';
-import Grafics from '../Graphics/Graphics';
-import './Statistic.css';
+import { CiDumbbell as Dumbbell } from 'react-icons/ci';
+import StatisticMainInfo from './StatisticMainInfo';
+import StatisticForm from './StatisticForm';
+
+// import Grafics from '../Graphics/Graphics';
+
+import styles from './Statistic.module.scss';
+
+const initialStatisticFormState = {
+  currentWeight: '',
+  hipGirth: '',
+  buttocksGirth: '',
+  waistGirth: '',
+  breastGirth: '',
+  bicepsGirth: '',
+};
 
 export default function Statistic() {
-  const user = useSelector((store) => store.userStore);
+  const [isStatisticLoading, setIsStatisticLoading] = useState(true);
+  const [statisticFormInputs, setStatisticFormInputs] = useState(initialStatisticFormState);
+  const [statisticDaysCounter, setStatisticDaysCounter] = useState(0);
+  const [userStatisticList, setUserStatisticList] = useState([]);
+  const [actualDate, setActualDate] = useState(null);
 
-  const [inputs, setInputs] = useState({
-    currentWeight: '',
-    hipGirth: '',
-    buttocksGirth: '',
-    waistGirth: '',
-    breastGirth: '',
-    bicepsGirth: '',
+  const user = useSelector((store) => store.userStore);
+  // console.log('user ===>', user);
+
+  console.log('userStatisticList ===>', userStatisticList);
+  console.log('actualDate ===>', actualDate);
+
+  // !!! Получение актуальной даты (при каждом рендере компонента)
+  useEffect(() => {
+    if (actualDate !== (new Date()).toISOString().slice(0, 10)) {
+      setActualDate((new Date()).toISOString().slice(0, 10));
+    }
   });
 
+  // !!! Расчёт и обновление количества дней от начала ведения статистики
   useEffect(() => {
-    // eslint-disable-next-line func-names
-    (async function () {
-      // console.log('user.userId useEffect', user);
-      const res = await fetch('http://localhost:3001/statistic', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ user }),
-        credentials: 'include',
-      });
-      const data = await res.json();
-      console.log('data==useEffect===stat', data);
+    if (userStatisticList.length > 0 && actualDate) {
+      const lastDate = Date.parse(actualDate);
+      const firstDate = Date.parse((userStatisticList.slice(-1))[0].data);
+      // console.log({ lastDate, firstDate }, lastDate === firstDate);
+      if (lastDate === firstDate) {
+        setStatisticDaysCounter(1);
+      } else {
+        const daysCounter = (lastDate - firstDate) / (1000 * 60 * 60 * 24);
+        console.log('daysCounter ===>', daysCounter);
+        setStatisticDaysCounter(Math.round(daysCounter));
+      }
+    } else {
+      setStatisticDaysCounter(0);
+    }
+  }, [userStatisticList, actualDate]);
 
-      setInputs((pre) => ({ ...pre, ...data[0] }));
+  // !!! Запрос статистики пользователя с сервера (только при первом рендере компонента)
+  useEffect(() => {
+    (async function () {
+      setIsStatisticLoading(true);
+      try {
+        const response = await fetch(`http://localhost:3001/newstatistic/${user.userId}`, {
+          credentials: 'include',
+        });
+        // console.log('response.status ===>', response.status);
+        if (response.status === 200) {
+          const data = await response.json();
+          console.log(data.backendResult);
+          if (data.backendResult === 'STATISTIC-OK') {
+            const statisticData = data.statisticData.filter((el) => el.currentWeight !== null).sort().reverse();
+            console.log('statisticData ===>', statisticData);
+            setUserStatisticList(statisticData);
+            setIsStatisticLoading(false);
+          }
+        } else {
+          console.log('!!! Ошибка на сервере !!!');
+        }
+      } catch (error) {
+        console.log('ERROR:', error.message);
+      }
     }());
   }, []);
 
-  // console.log('inputs===>useEff', inputs);
+  // !!! Установка значений в "инпуты", если для текущего дня они уже были внесены в БД
+  useEffect(() => {
+    if (userStatisticList.length > 0 && actualDate === userStatisticList[0].data) {
+      const currentDayStatisticData = { ...userStatisticList[0] };
+      delete currentDayStatisticData.data;
+      setStatisticFormInputs((prev) => ({ ...prev, ...currentDayStatisticData }));
+    }
+  }, [userStatisticList]);
 
-  const formHandler = (e) => {
-    // console.log(e.target.name, e.target.value);
-    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  // !!! Установка в "инпуты" данных предыдущего дня
+  const setOldStatistic = () => {
+    const oldDayStatisticData = { ...userStatisticList[0] };
+    delete oldDayStatisticData.data;
+    setStatisticFormInputs((prev) => ({ ...prev, ...oldDayStatisticData }));
   };
 
-  const createUserData = async (e) => {
-    e.preventDefault();
-    const res = await fetch('http://localhost:3001/statistic', {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ inputs, user }),
-      credentials: 'include',
-    });
-    const data = await res.json();
-    console.log('dataStatistic', data);
-    setInputs(inputs);
+  // !!! Отправка и создание/перезапись данных статитстики пользователя на сервере и в "State" клиента
+  const handleStatisticFormSubmit = (event) => {
+    event.preventDefault();
+    // console.log('statisticFormInputs ===>', statisticFormInputs);
+    (async function () {
+      try {
+        const response = await fetch('http://localhost:3001/newstatistic', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ userId: user.userId, actualDate, statisticFormInputs }),
+          credentials: 'include',
+        });
+        // console.log('response.status ===>', response.status);
+        if (response.status === 200) {
+          const data = await response.json();
+          console.log(data.backendResult);
+          if (data.backendResult === 'STATISTIC-CREATE-OK') {
+            setUserStatisticList((prev) => [{ data: actualDate, ...statisticFormInputs }, ...prev]);
+          }
+          if (data.backendResult === 'STATISTIC-UPDATE-OK') {
+            setUserStatisticList((prev) => [{ data: actualDate, ...statisticFormInputs }, ...prev.slice(1)]);
+          }
+        } else {
+          console.log('!!! Ошибка на сервере !!!');
+        }
+      } catch (error) {
+        console.log('ERROR:', error.message);
+      }
+    }());
   };
 
   return (
+    <div className={styles.statistic}>
 
-    <>
-      <div className="changeParams">
-        {' '}
-        <div>
-          {' '}
-          <p>Дней в тренировках</p>
-          {' '}
-        </div>
-        <div>
-          {' '}
-          <p>20</p>
-          {' '}
-        </div>
+      {isStatisticLoading && (
+      <div className={styles.statisticLoading}>
+        <Dumbbell />
       </div>
-      <form onSubmit={createUserData}>
-        <div className="changeParams">
-          <div className="changeVol">
-            <div className="changeVol">
-              Текущий вес
-              {' '}
+      )}
 
-            </div>
-            <div>
-              <input
-                className="value"
-                value={inputs.currentWeight}
-                onChange={formHandler}
-                type="text"
-                name="currentWeight"
-              />
-            </div>
-          </div>
-          <div>
-            <h4>Изменение объемов</h4>
-          </div>
-          <div className="inputform">
-            <div className="changeVol">
-              <div>Бёдра </div>
-              <div>
-                <input
-                  className="value"
-                  value={inputs.hipGirth}
-                  onChange={formHandler}
-                  type="text"
-                  name="hipGirth"
-                />
-              </div>
-            </div>
-            <div className="changeVol">
-              <div>Ягодицы </div>
-              <div className="value">
-                <input
-                  className="value"
-                  value={inputs.buttocksGirth}
-                  onChange={formHandler}
-                  type="text"
-                  name="buttocksGirth"
-                />
-              </div>
-            </div>
-            <div className="changeVol">
-              <div>Талия </div>
-              <div className="value">
-                <input
-                  className="value"
-                  value={inputs.waistGirth}
-                  onChange={formHandler}
-                  type="text"
-                  name="waistGirth"
-                />
-              </div>
-            </div>
-            <div className="changeVol">
-              <div>Грудь </div>
-              <div className="value">
-                <input
-                  className="value"
-                  value={inputs.breastGirth}
-                  onChange={formHandler}
-                  type="text"
-                  name="breastGirth"
-                />
-              </div>
-            </div>
-            <div className="changeVol">
-              <div>Бицепс </div>
-              <div className="value">
-                <input
-                  className="value"
-                  value={inputs.bicepsGirth}
-                  onChange={formHandler}
-                  type="text"
-                  name="bicepsGirth"
-                />
-              </div>
-            </div>
-            <div>
-              <button type="submit">
-                Сохранить
-              </button>
-            </div>
-          </div>
-        </div>
-      </form>
-      <Grafics />
-      <ButtonChatAndMotivation />
-    </>
+      {!isStatisticLoading && (
+        <StatisticMainInfo
+          statisticDaysCounter={statisticDaysCounter}
+          userStatisticList={userStatisticList}
+          actualDate={actualDate}
+          setOldStatistic={setOldStatistic}
+        />
+      )}
+
+      {!isStatisticLoading && (
+        <StatisticForm
+          userStatisticList={userStatisticList}
+          actualDate={actualDate}
+          statisticFormInputs={statisticFormInputs}
+          setStatisticFormInputs={setStatisticFormInputs}
+          handleStatisticFormSubmit={handleStatisticFormSubmit}
+        />
+      )}
+
+      {/* {!isStatisticLoading && <Grafics /> } */}
+    </div>
   );
 }
