@@ -25,13 +25,15 @@ $mainHeight: 800px;
     justify-content: center;
     margin: 20px;
   }
-  .table {
+.table {
     border: transparent;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 300px;
     color: $color3;
+  border-left: 1px solid $color1;
+
 }
 .th {
   color:$color1;
