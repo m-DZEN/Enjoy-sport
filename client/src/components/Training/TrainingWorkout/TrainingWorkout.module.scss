@@ -17,11 +17,7 @@ $mainHeight: 800px;
 table {
   width: auto;
   border-spacing: 100px;
-  // border: 1px solid $color1;
-  // border-top: none;
-  // border-left: none;
 border-bottom: none;
-// border-right: none;
 }
 .th {
   color:$color1;
@@ -31,8 +27,6 @@ border-bottom: none;
   line-height: 1.2;
   border-bottom: 1px solid $color1;
   border-left: 1px solid $color1;
-
-// border-bottom: none;
 }
 
 .td {
@@ -42,7 +36,6 @@ border-bottom: none;
   font-size:small;
   line-height: 1.3;
   border-bottom: 1px solid $color1;
-  // border-top: none;
 }
 .workout_container {
   display:flex;

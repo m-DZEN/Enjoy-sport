@@ -36,7 +36,7 @@ $mainHeight: 800px;
 
  .blockNone {
   display: none;
-  justify-content: space-around;
+  // justify-content: space-around;
 }
 
  .block:hover .blockShow {
@@ -47,7 +47,7 @@ $mainHeight: 800px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  background-color: #974d546c;
+  background-color: #974d54af;
 
   height: 70px;
   width: 320px;
@@ -62,7 +62,9 @@ $mainHeight: 800px;
   font-size: large;
   display: flex;
   color: #1a0d0d;
-   &:hover {
+  &:hover {
     color: $color2;
+  text-decoration: none;
+
   }
 }
