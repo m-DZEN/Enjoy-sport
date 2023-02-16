@@ -1,6 +1,6 @@
 import React from 'react';
-import './AdminTraining.css';
 import { Link, useParams } from 'react-router-dom';
+import styles from './AdminTraining.module.scss';
 
 export default function AdminTraining() {
   const days = [];
@@ -50,20 +50,20 @@ export default function AdminTraining() {
   // const date = { title: '', date: today.toISOString().slice(0, 10) };
 
   return (
-    <div className="workout_container">
+    <div className={styles.workout_container}>
       {days.map((el) => (
-        <div className="block">
-          <div className="block-show">
+        <div className={styles.block}>
+          <div className={styles.blockShow}>
             {el.title}
             ,
             {' '}
             {el.dateRus}
           </div>
-          <div className="block-none">
+          <div className={styles.blockNone}>
             {/* Сделать бы параметрический запрос
             <Link className="linkButton" to={`/workout/${el.id}`}> Тренировки</Link> */}
-            <Link className="linkButton" to={`/admin/workout/${id}/${el.dateEn}`}>Тренировки</Link>
-            <Link className="linkButton" to={`/admin/nutrition/${id}/${el.dateEn}`}>Питание</Link>
+            <Link className={styles.linkButton} to={`/admin/workout/${id}/${el.dateEn}`}>Тренировки</Link>
+            <Link className={styles.linkButton} to={`/admin/nutrition/${id}/${el.dateEn}`}>Питание</Link>
           </div>
         </div>
       ))}
