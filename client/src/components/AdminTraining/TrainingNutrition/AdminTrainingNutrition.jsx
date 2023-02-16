@@ -94,7 +94,7 @@ export default function TrainingNutrition() {
   return (
     <div className={styles.nutrition_container}>
       <caption>{day}</caption>
-      <table>
+      <table className={styles.table1}>
         <tbody>
           {typeFood.map((el) => (
             <>
@@ -103,7 +103,7 @@ export default function TrainingNutrition() {
               </tr>
               {nutrition.filter((e) => (e['DailyRecipe.Recipe.type_id'] === el.id)).map((e) => (
                 <tr key={e.id}>
-                  <th>
+                  <th className={styles.title}>
                     <Link className={styles.linkButton} to={`/recipe/${e['DailyRecipe.Recipe.id']}`}>
                       {e['DailyRecipe.Recipe.title']}
                     </Link>
