@@ -251,9 +251,9 @@ export default function AdminParametrs() {
 
           </div>
           <div>
-
-            <Link className={styles.buttonStyle} to={`/admin/training/${id}`}>Создать программу</Link>
-
+            <button type="button" className={styles.buttonStyle}>
+              <Link className={styles.link} to={`/admin/training/${id}`}>Создать программу</Link>
+            </button>
           </div>
         </form>
       </div>
