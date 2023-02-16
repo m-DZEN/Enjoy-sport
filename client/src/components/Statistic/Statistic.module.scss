@@ -77,10 +77,11 @@ $mainHeight: 800px;
     margin: 0;
     padding: 0;
     margin-top: 10px;
-    color: $color3;
+    color: $color2;
     font-size: 16px;
     font-weight: 700;
     line-height: 1.2em;
+    opacity: 0.3;
     animation: dangerInfo-animate infinite 3s linear;
   }
 
@@ -102,7 +103,8 @@ $mainHeight: 800px;
     
     &:hover,
     &:active {
-      font-weight: 700;
+      // font-weight: 700;
+      text-shadow: 0 0 2px $color2;
     }
   
     &:active {
@@ -239,12 +241,39 @@ $mainHeight: 800px;
 
 @keyframes dangerInfo-animate {
   0% {
-    color: $color3;
+    color: $color2;
+    opacity: 0.3;
   }
-  50% {
+  40% {
     color: $color11;
+    opacity: 1;
+  }
+  60% {
+    color: $color11;
+    opacity: 1;
   }
   100% {
-    color: $color3;
+    color: $color2;
+    opacity: 0.3;
+  }
+}
+
+
+
+
+.statisticGraph {
+  width: 320px;
+  height: 450px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid black;
+
+  &One {
+    // transform: scale(0.6);
+    background-color: white;
   }
 }

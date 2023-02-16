@@ -8,6 +8,7 @@ export default function StatisticForm({
   statisticFormInputs,
   setStatisticFormInputs,
   handleStatisticFormSubmit,
+  setOneGraphName,
 }) {
   const handleStatisticFormInputsChange = (event) => {
     setStatisticFormInputs((prev) => ({ ...prev, [event.target.name]: +event.target.value }));
@@ -31,6 +32,7 @@ export default function StatisticForm({
               <button
                 type="button"
                 className={styles.statisticFormLabelButton}
+                onClick={() => setOneGraphName('currentWeight')}
               >
                 Вес, кг
               </button>
@@ -53,6 +55,7 @@ export default function StatisticForm({
               <button
                 type="button"
                 className={styles.statisticFormLabelButton}
+                onClick={() => setOneGraphName('waistGirth')}
               >
                 Талия, мм
               </button>
@@ -74,6 +77,7 @@ export default function StatisticForm({
               <button
                 type="button"
                 className={styles.statisticFormLabelButton}
+                onClick={() => setOneGraphName('hipGirth')}
               >
                 Бедро, мм
               </button>
@@ -99,6 +103,7 @@ export default function StatisticForm({
               <button
                 type="button"
                 className={styles.statisticFormLabelButton}
+                onClick={() => setOneGraphName('breastGirth')}
               >
                 Грудь, мм
               </button>
@@ -120,6 +125,7 @@ export default function StatisticForm({
               <button
                 type="button"
                 className={styles.statisticFormLabelButton}
+                onClick={() => setOneGraphName('bicepsGirth')}
               >
                 Бицепс, мм
               </button>
@@ -141,6 +147,7 @@ export default function StatisticForm({
               <button
                 type="button"
                 className={styles.statisticFormLabelButton}
+                onClick={() => setOneGraphName('buttocksGirth')}
               >
                 Ягодицы, мм
               </button>
