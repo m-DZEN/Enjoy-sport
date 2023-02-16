@@ -72,7 +72,7 @@ export default function Settings() {
 
             <div className={styles.middleDiv}>
               <div className={styles.smallDiv}>
-                Login
+                Логин
               </div>
               <div className={styles.smallDiv}>
                 <input
@@ -86,7 +86,7 @@ export default function Settings() {
             </div>
             <div className={styles.middleDiv}>
               <div className={styles.smallDiv}>
-                email
+                Почта
               </div>
               <div className={styles.smallDiv}>
                 <input
@@ -101,7 +101,7 @@ export default function Settings() {
             </div>
           </div>
           <div>
-            <button className={styles.buttonStyle} type="submit">SAVE</button>
+            <button className={styles.buttonStyle} type="submit">Сохранить</button>
           </div>
         </form>
       </div>

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from './ButtonChatAndMotivation.module.scss';
@@ -30,15 +29,15 @@ export default function ButtonChatAndMotivation() {
             <p>{quote.text}</p>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="outline-danger" className={styles.buttonStyle} onClick={handleClose}>
+            <button type="button" className={styles.buttonStyle} onClick={handleClose}>
               Иду работать на собой
-            </Button>
+            </button>
           </Modal.Footer>
         </div>
       </Modal>
-      <Button className={styles.buttonStyle} variant="secondary" onClick={handleShow}>
+      <button className={styles.buttonStyle} type="button" onClick={handleShow}>
         Поднять дух
-      </Button>
+      </button>
     </>
   );
 }
