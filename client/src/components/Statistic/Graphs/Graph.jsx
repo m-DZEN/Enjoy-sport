@@ -63,6 +63,7 @@ function Graph({ userStatisticList, oneGraphName }) {
   });
 
   const graphData = userStatisticList.slice(0, 7)
+    .reverse()
     .map((el) => ({ pointX: transformDateFormat(el.data), pointY: el[`${oneGraphName}`] }));
 
   const minValue = Math.min(...graphData.map((el) => el.pointY));
