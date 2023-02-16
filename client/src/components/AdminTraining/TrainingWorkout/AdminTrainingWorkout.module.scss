@@ -13,11 +13,15 @@ $color7: #4b1a1a;
 
 $mainWidth: 350px;
 $mainHeight: 800px;
+
+.admintrainlist {
+margin-top: 15px;
+}
 body {
   font-family: $ordinaryFont;
 }
 
-table {
+.table1 {
   color: $color2;
   flex-direction: column;
   align-items: center;
@@ -26,6 +30,18 @@ table {
   align-items: center;
   justify-content: center;
   vertical-align: middle;
+  // margin-top: 20px;
+}
+.table2 {
+  color: $color2;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 319px;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  // margin-top: 20px;
 }
 
 thead {
@@ -34,12 +50,12 @@ thead {
   align-items: center;
   justify-content: center;
 }
-td {
-  font-size: 10px;
-  align-items: center;
-  justify-content: center;
-  vertical-align: middle;
-}
+// td {
+//   font-size: 10px;
+//   align-items: center;
+//   justify-content: center;
+//   vertical-align: middle;
+// }
 .addForm{
   font-size: 10px;
 }
@@ -121,6 +137,8 @@ td {
   font-size:small;
   line-height: 1.3;
   border-bottom: 1px solid $color1;
+  border-left: 1px solid $color1;
+
 }
 .tdInput1 {
   border-left: 1px solid $color1;
@@ -138,4 +156,7 @@ td {
     box-shadow: 0px 0px 5px $color5, inset 0px 0px 5px $color5;
   }
 }
-  
+  .tdInputButton {
+  border-left: 1px solid $color1;
+    
+  }
