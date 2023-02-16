@@ -55,7 +55,7 @@ export default function TrainingNutrition() {
 
   // сохрание новой еды
   const saveFood = async () => {
-    // setVisible('none');
+    setVisible('none');
     const res = await fetch('http://localhost:3001/admin/add', {
       method: 'POST',
       headers: {

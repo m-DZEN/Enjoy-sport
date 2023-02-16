@@ -7,7 +7,7 @@ module.exports = {
       {
         name: 'Юля',
         login: 'admin',
-        password: await bcrypt.hash('123456789', 9),
+        password: await bcrypt.hash('123', 9),
         email: '123@123.com',
         birthday: '1987-03-19',
         gender: 'female',
@@ -23,7 +23,7 @@ module.exports = {
       {
         name: 'Biba',
         login: 'Biba',
-        password: await bcrypt.hash('123456789', 9),
+        password: await bcrypt.hash('123', 9),
         email: '1234@1234.com',
         birthday: '1985-01-01',
         gender: 'male',
@@ -39,7 +39,7 @@ module.exports = {
       {
         name: 'Boba',
         login: 'Boba',
-        password: await bcrypt.hash('123456789', 9),
+        password: await bcrypt.hash('123', 9),
         email: '12345@12345.com',
         birthday: '1990-01-01',
         gender: 'female',
