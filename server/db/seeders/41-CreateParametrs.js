@@ -430,7 +430,7 @@ module.exports = {
         // талия
         waistGirth: 770,
         // грудь
-        breastGirth: 1180,
+        breastGirth: 1205,
         // бицепс
         bicepsGirth: 455,
       },
@@ -446,7 +446,7 @@ module.exports = {
         // талия
         waistGirth: 765,
         // грудь
-        breastGirth: 1185,
+        breastGirth: 1200,
         // бицепс
         bicepsGirth: 459,
       },
@@ -462,7 +462,7 @@ module.exports = {
         // талия
         waistGirth: 750,
         // грудь
-        breastGirth: 1185,
+        breastGirth: 1210,
         // бицепс
         bicepsGirth: 459,
       },
@@ -478,7 +478,7 @@ module.exports = {
         // талия
         waistGirth: 745,
         // грудь
-        breastGirth: 1180,
+        breastGirth: 1210,
         // бицепс
         bicepsGirth: 460,
       },
@@ -494,7 +494,7 @@ module.exports = {
         // талия
         waistGirth: 740,
         // грудь
-        breastGirth: 1185,
+        breastGirth: 1215,
         // бицепс
         bicepsGirth: 461,
       },
