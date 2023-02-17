@@ -39,16 +39,17 @@ export default function TrainingNutrition() {
   return (
     <div className={styles.nutrition_container}>
       <caption>{day}</caption>
-      <table>
+      <table className={styles.table}>
         <tbody>
           {typeFood.map((el) => (
-            <div key={el.id}>
-              <tr>
-                <th className={styles.th} colSpan="5">{el.title}</th>
+            <>
+              {/* <div> */}
+              <tr key={el.id}>
+                <th className={styles.day} colSpan="5">{el.title}</th>
               </tr>
               {nutrition.filter((e) => (e['DailyRecipe.Recipe.TypeFood.id'] === el.id)).map((e) => (
                 <tr key={el.id}>
-                  <th>
+                  <th className={styles.title}>
                     <Link className={styles.linkButton} to={`/recipe/${e['DailyRecipe.Recipe.id']}`}>
                       {e['DailyRecipe.Recipe.title']}
                     </Link>
@@ -59,7 +60,8 @@ export default function TrainingNutrition() {
                   </td>
                 </tr>
               ))}
-            </div>
+              {/* </div> */}
+            </>
           ))}
         </tbody>
       </table>

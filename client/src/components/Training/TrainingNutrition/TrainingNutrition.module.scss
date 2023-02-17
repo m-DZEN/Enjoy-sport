@@ -29,6 +29,20 @@ caption {
   color: $color1;
   font-size: medium;
 }
+.day {
+  line-height: 1.5;
+  color:$color2;
+  font-size: large;
+  margin-left: 50px;
+}
+
+.td {
+  border-left: 1px solid black;
+  color: $color3;
+  font-size: small;
+  line-height: 1;
+  padding-left: 5px;
+}
 
 .linkButton{
   color: $color3;
@@ -39,24 +53,10 @@ caption {
   }
 }
 
-.td {
-  border-left: 1px solid black;
-  color: $color3;
-  font-size: small;
-  line-height: 1;
 
+.table {
+  width: 320px;
 }
-
-tbody {
-  text-align: center; 
-}
-tr {
-  margin-bottom: 10px;
-  // line-height: 2;
-}
-
-.th {
-  line-height: 1.5;
-  color:$color1;
-  font-size: large;
+.title {
+  width: 250px;
 }
