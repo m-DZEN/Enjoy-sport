@@ -4,6 +4,7 @@ import { CiDumbbell as Dumbbell } from 'react-icons/ci';
 import StatisticMainInfo from './StatisticMainInfo';
 import StatisticForm from './StatisticForm';
 import Graph from './Graphs/Graph';
+import Diagram from './Graphs/Diagram';
 
 import styles from './Statistic.module.scss';
 
@@ -23,6 +24,7 @@ export default function Statistic() {
   const [userStatisticList, setUserStatisticList] = useState([]);
   const [actualDate, setActualDate] = useState(null);
   const [oneGraphName, setOneGraphName] = useState('currentWeight');
+  const [graphType, setGraphType] = useState(null);
 
   const user = useSelector((store) => store.userStore);
   // console.log('user ===>', user);
@@ -157,6 +159,7 @@ export default function Statistic() {
           setStatisticFormInputs={setStatisticFormInputs}
           handleStatisticFormSubmit={handleStatisticFormSubmit}
           setOneGraphName={setOneGraphName}
+          setGraphType={setGraphType}
         />
       )}
 
@@ -176,31 +179,47 @@ export default function Statistic() {
           {userStatisticList.length >= 31 && (
             <div className={styles.statisticGraphicsContent}>
 
-              {/* <div className={styles.statisticGraphicsButtonsBlock}>
+              <div className={styles.statisticGraphicsButtonsBlock}>
                 <button
                   type="button"
                   className={styles.statisticGraphicsOneButton}
+                  onClick={() => setGraphType('graph')}
                 >
-                  ddd
+                  График
                 </button>
                 <button
                   type="button"
                   className={styles.statisticGraphicsOneButton}
+                  onClick={() => setGraphType('diagram')}
                 >
-                  ddd
+                  Диаграмма
                 </button>
-              </div> */}
+              </div>
 
               <div className={styles.statisticGraphicsMainBlock}>
-                {/* <div className={styles.statisticGraphicsInfoText}>
-                  Выберите график
-                  <br />
-                  для отображения!
-                </div> */}
-                <Graph
-                  userStatisticList={userStatisticList}
-                  oneGraphName={oneGraphName}
-                />
+
+                {!graphType && (
+                  <div className={styles.statisticGraphicsInfoText}>
+                    Выберите график
+                    <br />
+                    для отображения!
+                  </div>
+                )}
+
+                {graphType === 'graph' && (
+                  <Graph
+                    userStatisticList={userStatisticList}
+                    oneGraphName={oneGraphName}
+                  />
+                )}
+
+                {graphType === 'diagram' && (
+                  <Diagram
+                    userStatisticList={userStatisticList}
+                    oneGraphName={oneGraphName}
+                  />
+                )}
+
               </div>
             </div>
           )}
