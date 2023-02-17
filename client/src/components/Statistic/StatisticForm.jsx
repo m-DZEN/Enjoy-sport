@@ -44,7 +44,7 @@ export default function StatisticForm({
               max="300"
                 // step="0.1"
               name="currentWeight"
-              value={statisticFormInputs.currentWeight / 1000}
+              value={statisticFormInputs.currentWeight}
               onChange={handleStatisticFormInputsChange}
               required
             />
