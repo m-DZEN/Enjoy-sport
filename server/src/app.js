@@ -71,6 +71,9 @@ app.use('/training', trainingRoutes);
 app.use('/nutrition', nutritionRoutes);
 app.use('/recipe', recipeRoutes);
 
+app.locals.chatUsersMap = new Map();
+app.locals.chatMessangesMap = new Map();
+
 const server = httpServer.createServer(app);
 server.on('upgrade', (req, socket, head) => {
   sessionParser(req, {}, () => {
@@ -79,7 +82,7 @@ server.on('upgrade', (req, socket, head) => {
       socket.destroy();
     }
     wsServer.handleUpgrade(req, socket, head, (ws) => {
-      wsServer.emit('connection', ws, req);
+      wsServer.emit('connection', ws, req, app.locals.chatUsersMap, app.locals.chatMessangesMap);
     });
   });
 });
