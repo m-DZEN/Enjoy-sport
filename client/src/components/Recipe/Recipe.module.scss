@@ -1,3 +1,19 @@
+$color1: #360000;
+$color2: #6c0202;
+$color3: #a31919;
+$color4: #ee7272;
+$color5: #ffb9b9;
+$color6: #5a0004;
+$color7: #4b1a1a;
+
 .main {
   margin: 15px;
+}
+
+.title {
+  font-weight:300 ;
+}
+
+.description {
+  color: $color3;
 }

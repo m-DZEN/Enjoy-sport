@@ -33,10 +33,10 @@ export default function Recipe() {
     <>
       <div className={styles.main}>
         <div>
-          <p>{recipe?.title}</p>
+          <p className={styles.title}>{recipe?.title}</p>
         </div>
         <div>
-          <p>{recipe?.description}</p>
+          <p className={styles.description}>{recipe?.description}</p>
         </div>
       </div>
       <ButtonChatAndMotivation />
