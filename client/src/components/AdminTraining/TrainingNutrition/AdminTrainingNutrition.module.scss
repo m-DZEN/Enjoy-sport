@@ -29,6 +29,12 @@ caption {
   color: $color1;
   font-size: medium;
 }
+.day {
+  font-size: larger;
+}
+.title {
+  width: 190px;
+}
 
 .td {
   border-left: 1px solid black;
@@ -42,9 +48,6 @@ caption {
   &:hover {
     color: $color4;
   }
-}
-.day {
-  font-size: larger;
 }
 .button {
   color: white;
@@ -123,11 +126,6 @@ margin-top: 10px;
   width: 300px;
 
 }
-
-.title {
-  width: 190px;
-}
-
 .table1 {
   width: 320px;
   margin-right: 10px;

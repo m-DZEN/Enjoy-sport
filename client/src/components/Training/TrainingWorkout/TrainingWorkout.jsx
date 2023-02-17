@@ -33,13 +33,13 @@ export default function TrainingWorkout() {
           <caption>
             {day}
           </caption>
-          <table>
+          <table className={styles.table1}>
             <tr>
-              <th className={styles.th}>Упражнение</th>
-              <th className={styles.th}>Вес</th>
-              <th className={styles.th}>Повторения/Подходы</th>
+              <th className={styles.th2}>Упражнение</th>
+              <th className={styles.th2}>Вес</th>
+              <th className={styles.th2}>Повторения/Подходы</th>
               {/* <th>Подходы</th> */}
-              <th className={styles.th}>Отдых</th>
+              <th className={styles.th2}>Отдых</th>
             </tr>
             {training.length > 0 && (
               training[0].filter((el) => el.dailyTrain_id !== null).map((el) => (
