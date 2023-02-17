@@ -16,9 +16,22 @@ const getUserStatistic = async (req, res) => {
         'bicepsGirth',
       ],
     });
-    console.log('===> STATISTIC-OK', result.map((el) => el.get()));
+
+    const statisticData = result.map((elem) => elem.get())
+      .map((el) => ({
+        data: el.data,
+        currentWeight: el.currentWeight / 1000,
+        hipGirth: el.hipGirth / 10,
+        buttocksGirth: el.buttocksGirth / 10,
+        waistGirth: el.waistGirth / 10,
+        breastGirth: el.breastGirth / 10,
+        bicepsGirth: el.bicepsGirth / 10,
+      }));
+
+    console.log('===> STATISTIC-OK', statisticData);
+
     setTimeout(() => {
-      res.json({ backendResult: 'STATISTIC-OK', statisticData: result });
+      res.json({ backendResult: 'STATISTIC-OK', statisticData });
     }, 2000);
   } catch (error) {
     console.log(error);
@@ -31,14 +44,12 @@ const editUserStatistic = async (req, res) => {
   const { userId, actualDate, statisticFormInputs } = req.body;
   console.log('===>', { userId, actualDate, statisticFormInputs });
 
-  const {
-    currentWeight,
-    hipGirth,
-    buttocksGirth,
-    waistGirth,
-    breastGirth,
-    bicepsGirth,
-  } = statisticFormInputs;
+  const currentWeight = Math.round(statisticFormInputs.currentWeight * 1000);
+  const hipGirth = Math.round(statisticFormInputs.hipGirth * 10);
+  const buttocksGirth = Math.round(statisticFormInputs.buttocksGirth * 10);
+  const waistGirth = Math.round(statisticFormInputs.waistGirth * 10);
+  const breastGirth = Math.round(statisticFormInputs.breastGirth * 10);
+  const bicepsGirth = Math.round(statisticFormInputs.bicepsGirth * 10);
 
   try {
     const result = await Parametr.findOrCreate({

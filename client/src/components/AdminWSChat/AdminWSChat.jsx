@@ -108,7 +108,7 @@ export default function AdminWSChat() {
       userName: myName,
       text: chatFormInputValue,
       date,
-      localeDate: (new Date(date)).toLocaleString(),
+      localeDate: (new Date(date)).toLocaleString('en-GB'),
       toUserId: +userId,
     };
 
