@@ -34,6 +34,7 @@ const createUserSettings = async (req, res) => {
       where: { id: user.userId },
     });
     // console.log('userData', userData);
+    req.session.user.userName = inputs.name; // !!! ################
     res.json(userData);
   } catch (error) {
     console.log(error);

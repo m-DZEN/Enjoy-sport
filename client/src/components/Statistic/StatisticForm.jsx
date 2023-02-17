@@ -42,9 +42,9 @@ export default function StatisticForm({
               type="number"
               min="1"
               max="300"
-                // step="0.1"
+              step="0.1"
               name="currentWeight"
-              value={statisticFormInputs.currentWeight / 1000}
+              value={statisticFormInputs.currentWeight}
               onChange={handleStatisticFormInputsChange}
               required
             />
@@ -57,7 +57,7 @@ export default function StatisticForm({
                 className={styles.statisticFormLabelButton}
                 onClick={() => setOneGraphName('waistGirth')}
               >
-                Талия, мм
+                Талия, см
               </button>
             </label>
             <input
@@ -65,6 +65,7 @@ export default function StatisticForm({
               type="number"
               min="1"
               max="300"
+              step="0.1"
               name="waistGirth"
               value={statisticFormInputs.waistGirth}
               onChange={handleStatisticFormInputsChange}
@@ -79,7 +80,7 @@ export default function StatisticForm({
                 className={styles.statisticFormLabelButton}
                 onClick={() => setOneGraphName('hipGirth')}
               >
-                Бедро, мм
+                Бедро, см
               </button>
             </label>
             <input
@@ -87,8 +88,9 @@ export default function StatisticForm({
               type="number"
               min="1"
               max="300"
+              step="0.1"
               name="hipGirth"
-              value={(statisticFormInputs.hipGirth)}
+              value={statisticFormInputs.hipGirth}
               onChange={handleStatisticFormInputsChange}
               required
             />
@@ -105,7 +107,7 @@ export default function StatisticForm({
                 className={styles.statisticFormLabelButton}
                 onClick={() => setOneGraphName('breastGirth')}
               >
-                Грудь, мм
+                Грудь, см
               </button>
             </label>
             <input
@@ -113,6 +115,7 @@ export default function StatisticForm({
               type="number"
               min="1"
               max="300"
+              step="0.1"
               name="breastGirth"
               value={statisticFormInputs.breastGirth}
               onChange={handleStatisticFormInputsChange}
@@ -127,7 +130,7 @@ export default function StatisticForm({
                 className={styles.statisticFormLabelButton}
                 onClick={() => setOneGraphName('bicepsGirth')}
               >
-                Бицепс, мм
+                Бицепс, см
               </button>
             </label>
             <input
@@ -135,6 +138,7 @@ export default function StatisticForm({
               type="number"
               min="1"
               max="300"
+              step="0.1"
               name="bicepsGirth"
               value={statisticFormInputs.bicepsGirth}
               onChange={handleStatisticFormInputsChange}
@@ -149,7 +153,7 @@ export default function StatisticForm({
                 className={styles.statisticFormLabelButton}
                 onClick={() => setOneGraphName('buttocksGirth')}
               >
-                Ягодицы, мм
+                Ягодицы, см
               </button>
             </label>
             <input
@@ -157,6 +161,7 @@ export default function StatisticForm({
               type="number"
               min="1"
               max="300"
+              step="0.1"
               name="buttocksGirth"
               value={statisticFormInputs.buttocksGirth}
               onChange={handleStatisticFormInputsChange}
