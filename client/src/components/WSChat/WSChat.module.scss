@@ -134,6 +134,7 @@ $color12: #60e860;
     margin-bottom: 5px;
     border: 1px solid $color2;
     border-radius: 10px;
+    word-break: break-all;
     background-color: rgba(255, 255, 255, 0.3);
     align-self: flex-start;
   }
@@ -145,6 +146,26 @@ $color12: #60e860;
     margin-bottom: 5px;
     border: 1px solid $color2;
     border-radius: 10px;
+    word-break: break-all;
     align-self: flex-end;
+
+    &Date {
+      line-height: 1em;
+      opacity: 0.6;
+    }
+
+    &User {
+      width: 100%;
+      margin: 0;
+      padding: 3px 0;
+      line-height: 1.2em;
+      word-break: break-all;
+      text-shadow: 0 0 1px $color2;
+    }
+
+    &Text {
+      padding: 0 10px 5px 10px;
+      text-align: left;
+    }
   }
 }
