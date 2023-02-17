@@ -309,7 +309,29 @@ $mainHeight: 800px;
   }
 
   &OneButton {
-    // border: 1px solid black;
+    height: 22px;
+    width: 125px;
+    color: $color2;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1em;
+    border: 1px solid $color2;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+    margin: 5px 2px;    
+    padding: 0;
+    cursor: pointer;
+    outline: none;
+
+    &:hover,
+    &:active {
+      text-shadow: 0 0 1px $color2;
+      box-shadow: 0px 0px 3px $color2, inset 0px 0px 3px $color2;
+    }
+
+    &:active {
+      transform: scale(0.9);
+    }
   }
 
   &MainBlock {
@@ -317,7 +339,7 @@ $mainHeight: 800px;
     width: 320px;
     padding: 0;
     margin: 0;
-    margin-top: 10px;
+    margin-top: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -329,6 +351,14 @@ $mainHeight: 800px;
 }
 
 .statisticGraphicsOneGraph {
+  padding: 0;
+  margin: 0 auto;
+  margin-left: -15px;
+  font-size: 14px;
+  // border: 1px solid black;
+}
+
+.statisticGraphicsDiagram {
   padding: 0;
   margin: 0 auto;
   margin-left: -15px;

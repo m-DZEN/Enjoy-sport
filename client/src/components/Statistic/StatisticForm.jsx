@@ -9,6 +9,7 @@ export default function StatisticForm({
   setStatisticFormInputs,
   handleStatisticFormSubmit,
   setOneGraphName,
+  setGraphType,
 }) {
   const handleStatisticFormInputsChange = (event) => {
     setStatisticFormInputs((prev) => ({ ...prev, [event.target.name]: +event.target.value }));
@@ -32,7 +33,7 @@ export default function StatisticForm({
               <button
                 type="button"
                 className={styles.statisticFormLabelButton}
-                onClick={() => setOneGraphName('currentWeight')}
+                onClick={() => { setGraphType('graph'); setOneGraphName('currentWeight'); }}
               >
                 Вес, кг
               </button>
@@ -55,7 +56,7 @@ export default function StatisticForm({
               <button
                 type="button"
                 className={styles.statisticFormLabelButton}
-                onClick={() => setOneGraphName('waistGirth')}
+                onClick={() => { setGraphType('graph'); setOneGraphName('waistGirth'); }}
               >
                 Талия, см
               </button>
@@ -78,7 +79,7 @@ export default function StatisticForm({
               <button
                 type="button"
                 className={styles.statisticFormLabelButton}
-                onClick={() => setOneGraphName('hipGirth')}
+                onClick={() => { setGraphType('graph'); setOneGraphName('hipGirth'); }}
               >
                 Бедро, см
               </button>
@@ -105,7 +106,7 @@ export default function StatisticForm({
               <button
                 type="button"
                 className={styles.statisticFormLabelButton}
-                onClick={() => setOneGraphName('breastGirth')}
+                onClick={() => { setGraphType('graph'); setOneGraphName('breastGirth'); }}
               >
                 Грудь, см
               </button>
@@ -128,7 +129,7 @@ export default function StatisticForm({
               <button
                 type="button"
                 className={styles.statisticFormLabelButton}
-                onClick={() => setOneGraphName('bicepsGirth')}
+                onClick={() => { setGraphType('graph'); setOneGraphName('bicepsGirth'); }}
               >
                 Бицепс, см
               </button>
@@ -151,7 +152,7 @@ export default function StatisticForm({
               <button
                 type="button"
                 className={styles.statisticFormLabelButton}
-                onClick={() => setOneGraphName('buttocksGirth')}
+                onClick={() => { setGraphType('graph'); setOneGraphName('buttocksGirth'); }}
               >
                 Ягодицы, см
               </button>

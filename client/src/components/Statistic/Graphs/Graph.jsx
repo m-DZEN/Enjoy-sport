@@ -89,7 +89,7 @@ function Graph({ userStatisticList, oneGraphName }) {
       <div className={styles.statisticGraphicsOneGraph}>
         <AreaChart
           width={330}
-          height={390}
+          height={350}
           data={graphData}
           margin={{
             top: 5,
