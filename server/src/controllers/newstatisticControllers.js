@@ -20,12 +20,12 @@ const getUserStatistic = async (req, res) => {
     const statisticData = result.map((elem) => elem.get())
       .map((el) => ({
         data: el.data,
-        currentWeight: el.currentWeight / 1000,
-        hipGirth: el.hipGirth / 10,
-        buttocksGirth: el.buttocksGirth / 10,
-        waistGirth: el.waistGirth / 10,
-        breastGirth: el.breastGirth / 10,
-        bicepsGirth: el.bicepsGirth / 10,
+        currentWeight: (el.currentWeight ? el.currentWeight / 1000 : el.currentWeight),
+        hipGirth: (el.hipGirth ? el.hipGirth / 10 : el.hipGirth),
+        buttocksGirth: (el.buttocksGirth ? el.buttocksGirth / 10 : el.buttocksGirth),
+        waistGirth: (el.waistGirth ? el.waistGirth / 10 : el.waistGirth),
+        breastGirth: (el.breastGirth ? el.breastGirth / 10 : el.breastGirth),
+        bicepsGirth: (el.bicepsGirth ? el.bicepsGirth / 10 : el.bicepsGirth),
       }));
 
     console.log('===> STATISTIC-OK', statisticData);
