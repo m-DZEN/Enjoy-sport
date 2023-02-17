@@ -161,25 +161,52 @@ export default function Statistic() {
       )}
 
       {!isStatisticLoading && (
-      <div className={styles.statisticGraph}>
-        statisticGraph
-        <div className={styles.statisticGraphOne}>
+        <div className={styles.statisticGraphics}>
 
-          {userStatisticList.length >= 7 ? (
-            <Graph
-              userStatisticList={userStatisticList}
-              oneGraphName={oneGraphName}
-            />
-          ) : (
-            <div>
-              Недостаточно информации
-              <br />
-              для отображения графика!
+          {userStatisticList.length < 31 && (
+            <div className={styles.statisticGraphicsMainBlock}>
+              <div className={styles.statisticGraphicsInfoText}>
+                Недостаточно информации
+                <br />
+                для отображения графиков!
+              </div>
+            </div>
+          )}
+
+          {userStatisticList.length >= 31 && (
+            <div className={styles.statisticGraphicsContent}>
+
+              {/* <div className={styles.statisticGraphicsButtonsBlock}>
+                <button
+                  type="button"
+                  className={styles.statisticGraphicsOneButton}
+                >
+                  ddd
+                </button>
+                <button
+                  type="button"
+                  className={styles.statisticGraphicsOneButton}
+                >
+                  ddd
+                </button>
+              </div> */}
+
+              <div className={styles.statisticGraphicsMainBlock}>
+                {/* <div className={styles.statisticGraphicsInfoText}>
+                  Выберите график
+                  <br />
+                  для отображения!
+                </div> */}
+                <Graph
+                  userStatisticList={userStatisticList}
+                  oneGraphName={oneGraphName}
+                />
+              </div>
             </div>
           )}
         </div>
-      </div>
       )}
+
     </div>
   );
 }

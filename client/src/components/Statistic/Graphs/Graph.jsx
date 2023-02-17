@@ -9,6 +9,8 @@ import {
   Legend, // !!! Подписи к кривым
 } from 'recharts';
 
+import styles from '../Statistic.module.scss';
+
 const transformDateFormat = (date) => date
   .split('-')
   .map((el) => (el.length > 2 ? el.slice(-2) : el))
@@ -62,9 +64,9 @@ function Graph({ userStatisticList, oneGraphName }) {
     oneGraphName, graphColor, graphTitle, graphUnit,
   });
 
-  const graphData = userStatisticList.slice(0, 7)
+  const graphData = userStatisticList.slice(0, 31)
     .reverse()
-    .map((el) => ({ pointX: transformDateFormat(el.data), pointY: el[`${oneGraphName}`] }));
+    .map((el) => ({ pointX: transformDateFormat(el.data).slice(0, -3), pointY: el[`${oneGraphName}`] }));
 
   const minValue = Math.min(...graphData.map((el) => el.pointY));
   const maxValue = Math.max(...graphData.map((el) => el.pointY));
@@ -77,52 +79,63 @@ function Graph({ userStatisticList, oneGraphName }) {
   const tickQuantity = ((maxValueY - minValueY) / 5) + 1;
   console.log({ tickQuantity });
   return (
-    <AreaChart
-      width={320}
-      height={300}
-      data={graphData}
-      margin={{
-        top: 5,
-        right: 30,
-        left: 20,
-        bottom: 5,
-      }}
-    >
-      <defs>
-        <linearGradient id="gradientColor" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="5%" stopColor={graphColor} stopOpacity={0.8} />
-          <stop offset="95%" stopColor={graphColor} stopOpacity={0} />
-        </linearGradient>
-      </defs>
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis
-        dataKey="pointX"
-        tickMargin={15}
-      />
-      <YAxis
-        unit={graphUnit}
-        tickMargin={10}
-        tickCount={tickQuantity}
-        domain={[minValueY, maxValueY]}
-      />
-      <Tooltip
-        formatter={(value, name) => (name === 'Вес' ? `${value} кг` : `${value} см`)}
-      />
-      <Legend
-        verticalAlign="top"
-        height={30}
-      />
-      <Area
-        name={graphTitle}
-        dataKey="pointY"
-        type="monotone"
-        stroke={graphColor}
-        strokeWidth={2}
-        activeDot={{ r: 7 }}
-        fillOpacity={1}
-        fill="url(#gradientColor)"
-      />
-    </AreaChart>
+    <div>
+      <div className={styles.statisticGraphicsTitle}>
+        Изменение выбранного параметра
+        <br />
+        за последний месяц
+      </div>
+
+      <div className={styles.statisticGraphicsOneGraph}>
+        <AreaChart
+          width={330}
+          height={390}
+          data={graphData}
+          margin={{
+            top: 5,
+            right: 30,
+            left: 20,
+            bottom: 5,
+          }}
+        >
+          <defs>
+            <linearGradient id="gradientColor" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor={graphColor} stopOpacity={0.8} />
+              <stop offset="95%" stopColor={graphColor} stopOpacity={0} />
+            </linearGradient>
+          </defs>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis
+            dataKey="pointX"
+            tickCount={6}
+            tickMargin={10}
+          />
+          <YAxis
+            unit={graphUnit}
+            tickMargin={5}
+            tickCount={tickQuantity}
+            domain={[minValueY, maxValueY]}
+          />
+          <Tooltip
+            formatter={(value, name) => (name === 'Вес' ? `${value} кг` : `${value} см`)}
+          />
+          <Legend
+            verticalAlign="top"
+            height={30}
+          />
+          <Area
+            name={graphTitle}
+            dataKey="pointY"
+            type="monotone"
+            stroke={graphColor}
+            strokeWidth={2}
+            activeDot={{ r: 5 }}
+            fillOpacity={1}
+            fill="url(#gradientColor)"
+          />
+        </AreaChart>
+      </div>
+    </div>
   );
 }
 
